@@ -9,7 +9,8 @@ You can either
 2. install only the project dependencies if you are developing the library
 
 <details>
-<summary>### Install as a Library (TODO)</summary>
+<summary>Install as a Library (TODO)</summary>
+### Install as a Library (TODO)
 
 - installing as library package
     - install via `uv`
@@ -18,7 +19,9 @@ You can either
 </details>
 
 <details>
-<summary>### Installing Project Dependencies</summary>
+<summary>Installing Project Dependencies</summary>
+### Installing Project Dependencies
+
 - Install project dependencies via **one** of the options below...
     - [uv](https://docs.astral.sh/uv/) - fast Python dependency manager
     - [Nix](https://nixos.org/) - reproducible development shell
@@ -46,7 +49,8 @@ nix --extra-experimental-features nix-command --extra-experimental-features flak
 
 
 <details>
-<summary>##### Auto-activation with Direnv (Optional)</summary>
+<summary>Auto-activation with Direnv (Optional)</summary>
+##### Auto-activation with Direnv (Optional)
 
 **Warning: `direnv` allow the execution of any arbitrary bash code in `.envrc`, please examine `.envrc` before you proceed!**
 
@@ -91,5 +95,3 @@ direnv disallow # stop automatically executing .envrc upon entering the project 
 
 - set up github pages for wiki, generate documents using `pdoc`
     - example usage/tutorials for each module
-
-- starter templates

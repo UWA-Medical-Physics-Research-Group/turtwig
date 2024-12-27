@@ -3,6 +3,6 @@
 {
   python312 = {
     path = ./python312;
-    description = "Starter template for Python 3.12.7 using uv";
+    description = "Initialise a Python 3.12.7 project using uv as the dependency manager";
   };
 }
