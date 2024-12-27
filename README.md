@@ -11,9 +11,8 @@ Utility library and starter code for medical data analysis
 - `turtwig.functils` - functional utilities
 - `turtwig.metrics`
     - `classification`
-    - `risk`
     - `loss`
-    - `uncertainty`
+    - `uncertainty` + `risk`
 - `turtwig.data`
     - `dicom`
     - `nifti` - maybe idk
@@ -32,8 +31,8 @@ Utility library and starter code for medical data analysis
 - set up
     - via Nix shell + starter template via `nix template`
     - set up via `pip` and `uv`, optionally conda?
-- set up github pages for wiki, generate documents using `sphinx`
-- example usage/tutorials for each module
+- set up github pages for wiki, generate documents using `pdoc`
+    - example usage/tutorials for each module
 - test cases
 
 - logging... by default, log using loguru to stderr instead of print?
