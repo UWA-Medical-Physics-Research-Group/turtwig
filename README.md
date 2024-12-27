@@ -32,6 +32,7 @@ Utility library and starter code for medical data analysis
 - set up
     - via Nix shell + starter template via `nix template`
     - set up via `pip` and `uv`, optionally conda?
+- set up github pages for wiki, generate documents using `sphinx`
 - example usage/tutorials for each module
 - test cases
 
