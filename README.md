@@ -36,3 +36,4 @@ Utility library and starter code for medical data analysis
 - test cases
 
 - logging... by default, log using loguru to stderr instead of print?
+- +wiki documentaiton of APIs
