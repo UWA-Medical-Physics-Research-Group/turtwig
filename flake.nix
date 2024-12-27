@@ -15,7 +15,7 @@
     devShells = forAllSystems (system: let
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      default = import ./shell.nix {inherit pkgs;};
+      default = import ./devshell.nix {inherit pkgs;};
     }); # end mkshell devshell
   };
 }

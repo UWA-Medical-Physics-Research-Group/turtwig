@@ -1,0 +1,7 @@
+[project]
+name = "turtwig"
+version = "0.1.0"
+description = "Utility functions and starter code for medical data analysis."
+readme = "README.md"
+requires-python = ">=3.12.7"
+dependencies = []

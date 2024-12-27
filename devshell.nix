@@ -35,7 +35,7 @@ pkgs.mkShellNoCC {
   ];
 
   shellHook = ''
-    python --version
+    uv run python --version
     uv sync
     alejandra .
   '';
