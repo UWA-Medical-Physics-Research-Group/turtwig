@@ -1,6 +1,19 @@
 # turtwig
 Utility library and starter code for medical data analysis
 
+## Content (TODO)
+
+## Install
+- installing project dependencies
+    - install via `uv`
+    - install via `nix` (+edit `~/.config/nix/config.nix`)
+    - `pip` (ew)
+- installing as library package
+    - install via `uv`
+    - `pip install`
+    - `conda`/`mamba`
+
+
 
 
 # TODOS:
@@ -27,13 +40,11 @@ Utility library and starter code for medical data analysis
     - `models`
     - `datasets`
     - `checkpoint` - set up checkpoint directory
-
-- set up
-    - via Nix shell + starter template via `nix template`
-    - set up via `pip` and `uv`, optionally conda?
-- set up github pages for wiki, generate documents using `pdoc`
-    - example usage/tutorials for each module
 - test cases
 
 - logging... by default, log using loguru to stderr instead of print?
-- +wiki documentaiton of APIs
+
+- set up github pages for wiki, generate documents using `pdoc`
+    - example usage/tutorials for each module
+
+- starter templates
