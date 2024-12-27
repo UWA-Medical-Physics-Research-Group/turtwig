@@ -8,17 +8,17 @@ You can either
 1. install `turtwig` as a library for use in your own project, OR 
 2. install only the project dependencies if you are developing the library
 
-<detail>
+<details>
 <summary>Install as a Library</summary>
 
 - installing as library package
     - install via `uv`
     - `pip install`
     - `conda`/`mamba`
-</detail>
+</details>
 
 
-<detail>
+<details>
 <summary>Installing Project Dependencies</summary>
 - Install project dependencies via **one** of the options below...
     - [uv](https://docs.astral.sh/uv/) - fast Python dependency manager
@@ -46,7 +46,7 @@ nix --extra-experimental-features nix-command --extra-experimental-features flak
 ```
 
 
-<detail>
+<details>
 <summary>Auto-activation with Direnv (Optional)</summary>
 
 **Warning: `direnv` allow the execution of any arbitrary bash code in `.envrc`, please examine `.envrc` before you proceed!**
@@ -57,8 +57,8 @@ nix --extra-experimental-features nix-command --extra-experimental-features flak
 direnv allow  # allow execution of .envrc automatically
 direnv disallow # stop automatically executing .envrc upon entering the project folder
 ```
-</detail>
-</detail>
+</details>
+</details>
 
 
 
