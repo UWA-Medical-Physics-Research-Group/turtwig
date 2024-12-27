@@ -1,6 +1,4 @@
-# Initialise with `nix flake init -t git+ssh://git@github.com/${username}/${private-repo}
-
-# github:UWA-Medical-Physics-Research-Group/turtwig#template-name
+# Initialise with `nix flake init -t github:UWA-Medical-Physics-Research-Group/turtwig#<template-name>
 # files at `path` are copied when initialising flake
 {
   python312 = {
