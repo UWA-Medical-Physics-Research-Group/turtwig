@@ -5,8 +5,6 @@ Collection of common utility functions
 from itertools import starmap as _starmap
 from typing import Any, Callable, Iterable, Iterator
 
-from pydantic import validate_call
-
 from .decorator import curry
 
 

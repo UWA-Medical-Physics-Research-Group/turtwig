@@ -6,9 +6,9 @@ from copy import deepcopy
 from typing import Callable
 
 import toolz as tz
+from fn import _
 
 from .common import side_effect
-from fn import _
 
 
 def call_method[

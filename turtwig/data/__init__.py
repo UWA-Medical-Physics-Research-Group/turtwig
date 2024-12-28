@@ -1,3 +1,20 @@
 """
 Functions for handling various data objects.
 """
+
+from .dicom import (compute_dataset_stats, load_all_masks,
+                    load_all_patient_scans, load_all_volumes, load_mask,
+                    load_patient_scan, load_roi_names, load_volume,
+                    purge_dicom_dir)
+
+__all__ = [
+    "load_volume",
+    "load_mask",
+    "load_all_masks",
+    "load_all_patient_scans",
+    "load_all_volumes",
+    "load_patient_scan",
+    "load_roi_names",
+    "purge_dicom_dir",
+    "compute_dataset_stats",
+]

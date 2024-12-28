@@ -1,4 +1,4 @@
-def assert_all_same_keys(dicts: list[dict]):
+def all_same_keys(dicts: list[dict]) -> list[dict]:
     """
     Assert if all dictionaries have the same keys.
 
@@ -13,3 +13,4 @@ def assert_all_same_keys(dicts: list[dict]):
         Raised if not all dictionaries have the same keys.
     """
     assert all(dicts[0].keys() == d.keys() for d in dicts)
+    return dicts

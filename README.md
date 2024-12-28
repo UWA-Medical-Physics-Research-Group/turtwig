@@ -113,7 +113,12 @@ add(5, c=6)  # equivalent to lambda b: 5 + b + 6
 ```
 #### Validation
 - if function is curried, `@curry` MUST be the last decorator else validators will run and fail and :(
+- also, logger catch is below validate_call()
+    @validate_call()
+@logger.catch()
 
+#### Template with NIIIIX
+todo...
 
 
 # TODOS:
@@ -122,7 +127,6 @@ add(5, c=6)  # equivalent to lambda b: 5 + b + 6
 - `turtwig.validation` - validation decorators, e.g. array shape
     - TODO: add test case for curry where function is decorated with validator - check it's only executed when function is evaluated
 - `turtwig.models` - preset models
-- `turtwig.functils` - functional utilities
 - `turtwig.metrics`
     - `classification`
     - `loss`
@@ -145,5 +149,8 @@ add(5, c=6)  # equivalent to lambda b: 5 + b + 6
 
 - logging... by default, log using loguru to stderr instead of print?
 
-- set up github pages for wiki, generate documents using `pdoc`
-    - example usage/tutorials for each module
+- set up github pages for wiki, generate documents using `pdoc` or `sphinx`??
+    - example usage/tutorials
+        - reading dicom files
+        - preprocessing them
+        

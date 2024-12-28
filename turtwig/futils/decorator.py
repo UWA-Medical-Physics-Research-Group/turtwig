@@ -20,12 +20,12 @@ def curry[T](f: Callable[..., T], fallback: bool = False) -> Any:
 
      Evaluation of the function only occurs when all mandatory arguments
      are provided. Unlike `toolz.curry` and similar libraries, this
-     function does not use `functools.partial` if `fallback=False`, 
-     meaning decorators of the wrapped function will only be applied 
-     once all mandatory arguments are provided. This means, e.g. a 
-     decorator that validates the arguments to a function will not throw 
-     error that mandatory arguments are missing if the function is still 
-     partially applied - it'll only run when all mandatory arguments are 
+     function does not use `functools.partial` if `fallback=False`,
+     meaning decorators of the wrapped function will only be applied
+     once all mandatory arguments are provided. This means, e.g. a
+     decorator that validates the arguments to a function will not throw
+     error that mandatory arguments are missing if the function is still
+     partially applied - it'll only run when all mandatory arguments are
      provided.
 
     Parameters
@@ -50,7 +50,7 @@ def curry[T](f: Callable[..., T], fallback: bool = False) -> Any:
      keyword argument `a=2`. This is because `f(a=2)(5)` is equivalent to
      `f(5, a=2)` which will throw an error for non-curried functions as well.
      - Built-in CPython functions are not supported by the `inspect`
-     module. Set `fallback=True` to curry those functions using `toolz.curry` 
+     module. Set `fallback=True` to curry those functions using `toolz.curry`
      instead.
 
      Example

@@ -1,18 +1,22 @@
 from functools import reduce
-from typing import Callable, Iterable
+from typing import Annotated, Callable
 
 import toolz as tz
+from pydantic import AfterValidator, validate_call
 
+from ..validation import all_same_keys
 from .common import star
 from .decorator import curry
 
 
 @curry
+@validate_call()
 def merge_with_reduce[
     K, V, V2
-](dicts: Iterable[dict[K, V]], f: Callable[[V | V2, V], V2]) -> (
-    dict[K, V] | dict[K, V2]
-):
+](
+    dicts: Annotated[list[dict[K, V]], AfterValidator(all_same_keys)],
+    f: Callable[[V | V2, V], V2],
+) -> (dict[K, V] | dict[K, V2]):
     """
     Reductively merge a list of dictionaries with the same keys into a single dictionary.
 
