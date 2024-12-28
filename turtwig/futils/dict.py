@@ -10,7 +10,7 @@ from .decorator import curry
 @curry
 def merge_with_reduce[
     K, V, V2
-](dicts: Iterable[dict[K, V]], func: Callable[[V | V2, V], V2]) -> (
+](dicts: Iterable[dict[K, V]], f: Callable[[V | V2, V], V2]) -> (
     dict[K, V] | dict[K, V2]
 ):
     """
@@ -22,7 +22,7 @@ def merge_with_reduce[
     ----------
     dicts : Iterable[dict[K, V]]
         Iterable of dictionaries to merge, all with the same keys.
-    func : Callable[[V | V2, V], V2]
+    f : Callable[[V | V2, V], V2]
         Reduction function taking two values and returning a single value.
 
     Returns
@@ -38,7 +38,7 @@ def merge_with_reduce[
     >>> merge_with_reduce(dicts, lambda x, y: x ** y)
     {'b': 1, 'c': 16777216}
     """
-    merge_dicts = lambda dict1, dict2: tz.merge_with(star(func), dict1, dict2)
+    merge_dicts = lambda dict1, dict2: tz.merge_with(star(f), dict1, dict2)
     return reduce(merge_dicts, dicts)
 
 

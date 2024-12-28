@@ -8,6 +8,7 @@ from typing import Callable
 import toolz as tz
 
 from .common import side_effect
+from fn import _
 
 
 def call_method[
@@ -55,9 +56,7 @@ def call_method[
     >>> test is test3
     True
     """
-    return lambda obj: tz.pipe(
-        obj if not pure else deepcopy(obj),
-        side_effect(
-            lambda obj: getattr(obj, method_name)(*args, **kwargs), pass_val=True
-        ),
+    return tz.compose_left(
+        deepcopy if pure else tz.identity,
+        side_effect(_.call(method_name, *args, **kwargs), pass_val=True),
     )

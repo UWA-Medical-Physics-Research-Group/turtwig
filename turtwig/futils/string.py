@@ -56,8 +56,8 @@ def capture_placeholders(
         lambda string: re.sub(r"{[a-zA-Z0-9_]*}", "\x01", string),
         re.escape,
         # Encase provided placeholders in parentheses to create capturing groups
-        _.call('replace', "\x00", f"({re_pattern})"),
-        _.call('replace', "\x01", re_pattern),
+        _.call("replace", "\x00", f"({re_pattern})"),
+        _.call("replace", "\x01", re_pattern),
         str,
     )
 

@@ -76,7 +76,7 @@ def growby_fs[T, R](fs: Callable[[T | R], R], init: T) -> Iterable[T | R]:
 
 
 @curry
-def transform_nth(n: int, func: Callable, seq: Iterable) -> Iterable:
+def transform_nth(n: int, f: Callable, seq: Iterable) -> Iterable:
     """
     Apply a function to the nth element of a sequence
 
@@ -84,7 +84,7 @@ def transform_nth(n: int, func: Callable, seq: Iterable) -> Iterable:
     ----------
     n: int
         Index of the element to be transformed
-    func: Callable
+    f: Callable
         Function to be applied to the nth element
     seq: Iterable
         Sequence to be transformed
@@ -99,4 +99,4 @@ def transform_nth(n: int, func: Callable, seq: Iterable) -> Iterable:
     >>> list(transform_nth(1, lambda _: 'a', [1, 2, 3]))
     [1, 'a', 3]
     """
-    return (func(x) if i == n else x for i, x in enumerate(seq))
+    return (f(x) if i == n else x for i, x in enumerate(seq))

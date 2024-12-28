@@ -95,7 +95,7 @@ Yummy.
 A function can by "curried" if it's decorated with `@curry`. A "curried" function can be called with *only some of the required arguments* (i.e. partially initialised). This is a **new function** that can be called with the remaining arguments.
 
 ```python
-from uncertainty.utils import curry  # wrapper around toolz.curry
+from turtwig.futils import curry
 
 @curry
 def add(a, b, c=3):
@@ -120,6 +120,7 @@ add(5, c=6)  # equivalent to lambda b: 5 + b + 6
 - `turtwig.logging` - add logging to project
 - `turtwig.config` - read and configure functions via a configuration file
 - `turtwig.validation` - validation decorators, e.g. array shape
+    - TODO: add test case for curry where function is decorated with validator - check it's only executed when function is evaluated
 - `turtwig.models` - preset models
 - `turtwig.functils` - functional utilities
 - `turtwig.metrics`

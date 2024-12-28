@@ -22,7 +22,7 @@ def star[T](f: Callable[..., T]) -> Callable[..., T]:
     Returns
     -------
     Callable[..., T]
-        Function that unpacks the argument and pass them to `fzunc`
+        Function that unpacks the argument and pass them to `f`
 
     Examples
     --------
