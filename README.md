@@ -64,6 +64,57 @@ direnv disallow # stop automatically executing .envrc upon entering the project 
 </details>
 
 
+### Tutorials (move to wiki)
+Many parts of the code is written roughly in the **functional programming** paradigm. 
+
+#### Pipe
+
+Given a value `x`, `toolz.pipe` just passes `x` through a series of functions (it's just a for-loop...).
+
+```python
+import toolz as tz
+from toolz import curried
+
+# Below is equivalent to
+# str(curried.get(5)(tz.identity([3, 4] * 4)))
+
+do_nothing = True
+tz.pipe(
+    [3, 4],   # value
+    lambda lst: lst * 4,
+    tz.identity if do_nothing else tz.concat,   # tz.identity will be called here
+    curried.get(5),  # get(5) is still a FUNCTION, see "curry" below
+    str,
+)   # OUTPUT: '4'
+```
+
+#### Curry
+
+Yummy.
+
+A function can by "curried" if it's decorated with `@curry`. A "curried" function can be called with *only some of the required arguments* (i.e. partially initialised). This is a **new function** that can be called with the remaining arguments.
+
+```python
+from uncertainty.utils import curry  # wrapper around toolz.curry
+
+@curry
+def add(a, b, c=3):
+    return a + b + c
+
+# If some positional arguments are not provided, a function is returned instead
+# of raising an error
+add_5 = add(5)  # equivalent to lambda b: 5 + b + 3
+# We can call this function with the remaining argument
+add_5(3) # 11
+# You can also just use the function normally
+add(5, 3)  # 11
+# will also return a function because only one positional argument is provided
+add(5, c=6)  # equivalent to lambda b: 5 + b + 6
+```
+#### Validation
+- if function is curried, `@curry` MUST be the last decorator else validators will run and fail and :(
+
+
 
 # TODOS:
 - `turtwig.logging` - add logging to project

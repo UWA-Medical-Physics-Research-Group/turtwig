@@ -5,7 +5,9 @@ Collection of common utility functions
 from itertools import starmap as _starmap
 from typing import Any, Callable, Iterable, Iterator
 
-from .wrappers import curry
+from pydantic import validate_call
+
+from .decorator import curry
 
 
 def star[T](f: Callable[..., T]) -> Callable[..., T]:
@@ -20,7 +22,7 @@ def star[T](f: Callable[..., T]) -> Callable[..., T]:
     Returns
     -------
     Callable[..., T]
-        Function that unpacks the argument and pass them to `func`
+        Function that unpacks the argument and pass them to `fzunc`
 
     Examples
     --------
@@ -38,7 +40,7 @@ def starmap[T](f: Callable[..., T], iterable: Iterable[tuple[Any]]) -> Iterator[
     """
     Map non-unary function `f(a, b, ...)` over the elements of `iterable`.
 
-    Used this instead of `map` when argument parameters have already been 
+    Used this instead of `map` when argument parameters have already been
     “pre-zipped” into tuples.
 
     Curried version of `itertools.starmap`.
@@ -54,7 +56,7 @@ def starmap[T](f: Callable[..., T], iterable: Iterable[tuple[Any]]) -> Iterator[
     -------
     Iterator[T]
         Iterator of results of calling `f` on each element of `iterable`
-    
+
     Examples
     --------
     >>> def add(a, b):
@@ -87,7 +89,7 @@ def starfilter(
     -------
     Iterator[tuple[Any, ...]]
         Iterator of elements of `iterable` for which `f` returns True
-    
+
     Examples
     --------
     >>> def is_even(a, b):

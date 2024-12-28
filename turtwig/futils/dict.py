@@ -4,7 +4,7 @@ from typing import Callable, Iterable
 import toolz as tz
 
 from .common import star
-from .wrappers import curry
+from .decorator import curry
 
 
 @curry
@@ -60,6 +60,11 @@ def rename_key(old_name: str, new_name: str, dictionary: dict) -> dict:
     -------
     dict
         Dictionary with the key renamed.
+
+    Examples
+    --------
+    >>> rename_key("a", "b", {"a": 1, "c": 2})
+    {'b': 1, 'c': 2}
     """
     return {
         new_name if key == old_name else key: value for key, value in dictionary.items()

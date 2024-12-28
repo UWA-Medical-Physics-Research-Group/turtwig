@@ -3,18 +3,18 @@ Utility functions for generating sequences
 """
 
 from itertools import islice
-from typing import Callable, Generator, Iterable, Iterator
+from typing import Callable, Iterable, Iterator
 
 import toolz as tz
 import toolz.curried as curried
 
-from .wrappers import curry
+from .decorator import curry
 
 
 @curry
 def growby[
     T, R
-](init: T, f: Callable[[T | R], R], length: int | None = None,) -> Iterator[T | R]:
+](f: Callable[[T | R], R], init: T, length: int | None = None) -> Iterator[T | R]:
     """
     Grow a sequence by repeatedly applying f to last item in sequence
 
@@ -29,18 +29,25 @@ def growby[
 
     Returns
     -------
-    Generator[T | R, None, None]
-        Sequence constructed by repeatedly applying f, `[init, f(init), f(f(init)), ...]`
+    Iterator[T | R]
+        Sequence constructed by repeatedly applying f, i.e. compute
+        `[init, f(init), f(f(init)), ...]`
+
+    Examples
+    --------
+    >>> list(growby(lambda x: x + 1, 1, length=5))
+    [1, 2, 3, 4, 5]
     """
     return islice(tz.iterate(f, init), length)
 
 
 @curry
-def growby_accum[
-    T, R
-](init: T, fs: Callable[[T | R], R]) -> Generator[T | R, None, None]:
+def growby_fs[T, R](fs: Callable[[T | R], R], init: T) -> Iterable[T | R]:
     """
     Grow a sequence by applying list of functions to the last element of the current sequence
+
+    i.e. Given a list of functions `[f1, f2, ...]`, compute the sequence
+    `[init, f1(init), f2(f1(init)), f3(f2(f1(init))), ...]`
 
     Parameters
     ----------
@@ -54,6 +61,12 @@ def growby_accum[
     Generator[T | R, None, None]
         Sequence constructed by repeatedly applying each f in fs,
         `[init, f1(init), f2(f1(init)), ...]`
+
+    Examples
+    --------
+    >>> fs = [lambda x: x + 1, lambda x: x * 2, lambda x: x ** 2]
+    >>> list(growby_accum(fs, 1))
+    [1, 2, 4, 16]
     """
     return tz.pipe(
         fs,
@@ -80,5 +93,10 @@ def transform_nth(n: int, func: Callable, seq: Iterable) -> Iterable:
     -------
     Iterable
         Sequence with the nth element transformed
+
+    Examples
+    --------
+    >>> list(transform_nth(1, lambda _: 'a', [1, 2, 3]))
+    [1, 'a', 3]
     """
     return (func(x) if i == n else x for i, x in enumerate(seq))

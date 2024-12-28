@@ -7,7 +7,7 @@ from typing import Any, Callable, Generator, Literal, Optional
 
 from pathos.multiprocessing import ProcessingPool, ThreadingPool
 
-from .wrappers import curry
+from .decorator import curry
 
 
 @curry
@@ -29,6 +29,16 @@ def pmap(
         Number of workers to use. If None, the number of workers is set to the number of CPUs.
     executor: Literal["process", "thread"]
         Executor to use, process or thread workers.
+
+    Returns
+    -------
+    IMapIterator | Generator[Any, None, None] | Any
+        Results of applying the function to each element of the iterable.
+
+    Examples
+    --------
+    >>> list(pmap(lambda x: x ** 2, range(5), n_workers=2))
+    [0, 1, 4, 9, 16]
     """
     Pool = ProcessingPool if executor == "process" else ThreadingPool
     with Pool(n_workers) as pool:

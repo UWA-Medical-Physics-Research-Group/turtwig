@@ -7,8 +7,9 @@ from typing import List
 
 import toolz as tz
 import toolz.curried as curried
+from fn import _
 
-from .wrappers import curry
+from .decorator import curry
 
 
 @curry
@@ -37,6 +38,13 @@ def capture_placeholders(
     -------
     str
         String with placeholders replaced by the specified `re_pattern`.
+
+    Example
+    -------
+    >>> s = "somestuff{a}_{b}adf{c}."
+    >>> placeholders = ["a", "b"]
+    >>> capture_placeholders(s, placeholders)
+    "somestuff(.*?)_(.*?)adf.*?\\."
     """
     return tz.pipe(
         [s] + placeholders,
@@ -48,8 +56,8 @@ def capture_placeholders(
         lambda string: re.sub(r"{[a-zA-Z0-9_]*}", "\x01", string),
         re.escape,
         # Encase provided placeholders in parentheses to create capturing groups
-        lambda string: string.replace("\x00", f"({re_pattern})"),
-        lambda string: string.replace("\x01", re_pattern),
+        _.call('replace', "\x00", f"({re_pattern})"),
+        _.call('replace', "\x01", re_pattern),
         str,
     )
 
@@ -67,16 +75,17 @@ def placeholder_matches(
 
     Parameters
     ----------
-    str_list: list[str]
+    str_list : list[str]
         List of strings to match against the pattern
-    pattern: str
+    pattern : str
         Pattern containing placeholders to match file names, e.g.
         `"/path/to/{organ}_{observer}.nii.gz"`
-    placeholders: list[str]
+    placeholders : list[str]
         List of placeholders to match in the pattern, e.g. `["organ", "observer"]`
-    re_pattern: str, optional
+    re_pattern : str, optional
         Regex pattern filter placeholder matches by, by default any character
         except line terminators
+
     Returns
     -------
     set[tuple[str, ...]]
@@ -84,33 +93,27 @@ def placeholder_matches(
 
     Example
     -------
-    ```
-    placeholder_matches(
-        [
-            "/path/to/bladder_jd.nii.gz",
-            "/path/to/brain_md.nii.gz",
-            "/path/to/eye_sp.nii.gz",
-        ],
-        "/path/to/{organ}_{observer}.nii.gz",
-        ["organ", "observer"],
-    )
-    # Output
+    >>> placeholder_matches(
+    ...     [
+    ...        "/path/to/bladder_jd.nii.gz",
+    ...        "/path/to/brain_md.nii.gz",
+    ...        "/path/to/eye_sp.nii.gz",
+    ...     ],
+    ...     "/path/to/{organ}_{observer}.nii.gz",
+    ...     ["organ", "observer"],
+    ... )
     [("bladder", "jd"), ("brain", "md"), ("eye", "sp")]
-
-        placeholder_matches(
-        [
-            "/path/to/bladder_jd.nii.gz",
-            "/path/to/brain_md.nii.gz",
-            "/path/to/eye_sp.nii.gz",
-        ],
-        "/path/to/{organ}_{observer}.nii.gz",
-        ["organ", "observer"],
-        r"[^b]+",    # Any string that does not contain the letter 'b'
-    )
-    # Output
+    >>> placeholder_matches(
+    ...     [
+    ...         "/path/to/bladder_jd.nii.gz",
+    ...         "/path/to/brain_md.nii.gz",
+    ...         "/path/to/eye_sp.nii.gz",
+    ...     ],
+    ...     "/path/to/{organ}_{observer}.nii.gz",
+    ...     ["organ", "observer"],
+    ...    r"[^b]+",    # Any string that does not contain the letter 'b'
+    ... )
     [("eye", "sp")]
-
-    ```
     """
     return tz.pipe(
         str_list,
