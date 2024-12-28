@@ -1,5 +1,6 @@
 import os
 import sys
+from pydantic import validate_call, ValidationError
 
 import pytest
 
@@ -197,3 +198,26 @@ class TestCurry:
         assert t.test(1)(2, c=4) == (1, 2, 4)  # type: ignore
         assert t.test(1, c=4)(2) == (1, 2, 4)  # type: ignore
         assert t.test(1, c=4)(b=2) == (1, 2, 4)  # type: ignore
+
+    def test_curry_function_with_decorators(self):
+        @curry
+        @validate_call()
+        def test(a: int, b: str, c: bool = False):
+            return a, b, c
+
+        assert test(1)("2") == (1, "2", False)  # type: ignore
+        assert test(1, "2") == (1, "2", False)
+        assert test(1, "2", True) == (1, "2", True)
+        assert test(1, c=True)("2") == (1, "2", True)
+        assert test(1, b="2", c=True) == (1, "2", True)
+
+        with pytest.raises(ValidationError):
+            test(1, 2)
+        with pytest.raises(ValidationError):
+            test(1, "2", 3)
+        with pytest.raises(ValidationError):
+            test(1)(2)
+        with pytest.raises(ValidationError):
+            test(1)('2', 3)
+        with pytest.raises(ValidationError):
+            test(1, c=2)('a')

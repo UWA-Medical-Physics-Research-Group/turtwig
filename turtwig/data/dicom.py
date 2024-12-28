@@ -29,9 +29,9 @@ RT_PLAN: Final[str] = "1.2.840.10008.5.1.4.1.1.481.5"
 
 
 # ============ Helper functions ============
-#@validate_call()
+# @validate_call()
 def _flip_array(
-    array#: Annotated[np.ndarray, AfterValidator(is_ndim(ndim=3))]
+    array,  #: Annotated[np.ndarray, AfterValidator(is_ndim(ndim=3))]
 ) -> np.ndarray:
     """
     Flip on width and depth axes given array of shape (H, W, D)
@@ -166,7 +166,7 @@ def _load_rt_structs(dicom_path: str) -> Iterator[rt_utils.RTStruct]:
 
 
 @curry
-#@validate_call()
+# @validate_call()
 def load_volume(dicom_path: str) -> np.ndarray | None:
     """
     Load 3D volume of shape (H, W, D) from DICOM files in `dicom_path`
@@ -298,7 +298,7 @@ def load_patient_scan(dicom_path: str) -> PatientScan | None:
 
 
 @curry
-#@validate_call()
+# @validate_call()
 def load_all_volumes(dicom_collection_path: str) -> Iterator[np.ndarray]:
     """
     Load 3D volumes from folders of DICOM files in `dicom_collection_path`
@@ -455,7 +455,7 @@ def purge_dicom_dir(dicom_dir: str, prog_bar: bool = True) -> None:
     )
 
 
-#@validate_call()
+# @validate_call()
 def compute_dataset_stats(
     dataset: Iterable[PatientScan],
 ) -> dict[str, dict[str, np.ndarray | set[str]]]:
