@@ -1,8 +1,8 @@
 import os
 import sys
-from pydantic import validate_call, ValidationError
 
 import pytest
+from pydantic import ValidationError, validate_call
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.realpath(f"{dir_path}/../../../turtwig"))
@@ -218,6 +218,6 @@ class TestCurry:
         with pytest.raises(ValidationError):
             test(1)(2)
         with pytest.raises(ValidationError):
-            test(1)('2', 3)
+            test(1)("2", 3)
         with pytest.raises(ValidationError):
-            test(1, c=2)('a')
+            test(1, c=2)("a")
