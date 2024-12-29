@@ -112,10 +112,9 @@ add(5, 3)  # 11
 add(5, c=6)  # equivalent to lambda b: 5 + b + 6
 ```
 #### Validation
-- if function is curried, `@curry` MUST be the last decorator else validators will run and fail and :(
-- also, logger catch is below validate_call()
-    @validate_call()
-@logger.catch()
+- currying functions...
+    1. `@curry` MUST be top-most decorator, else `@validate_call` will run and fail and :( and also `@logger.catch` also won't work if `@curry` is below it
+    2. For validation functions (i.e. functions to be passed to `AfterValidator`, `BeforeValidator` etc), ALL args apart from the data (i.e. first arg) must be KEYWORD ONLY, i.e. `func(data, *, kwarg1, kwarg2)`
 
 #### Template with NIIIIX
 todo...

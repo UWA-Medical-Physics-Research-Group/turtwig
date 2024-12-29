@@ -10,9 +10,9 @@ import toolz as tz
 from toolz import curry as _curry
 
 
-def curry[T](f: Callable[..., T], fallback: bool = False) -> Any:
+def curry[T](func: Callable[..., T], fallback: bool = False) -> Any:
     """
-     A curried function `f` can be partially parameterised.
+     A curried function `func` can be partially parameterised.
 
      If a curried function is passed only some of its arguments, a new
      function is returned with those arguments filled in. The new
@@ -30,11 +30,11 @@ def curry[T](f: Callable[..., T], fallback: bool = False) -> Any:
 
     Parameters
      ----------
-     f : Callable
+     func : Callable
          The function to curry
      fallback : bool
          If `True`, fallback on `toolz.curry` if `curry` fails to extract
-         parameters from `f`. This is useful for built-in CPython functions.
+         parameters from `func`. This is useful for built-in CPython functions.
 
     Returns
     -------
@@ -44,11 +44,11 @@ def curry[T](f: Callable[..., T], fallback: bool = False) -> Any:
 
      Caveats
      -------
-     - If you use the curried function `f(a, b)` with inputs `f(a=2)(5)`, the
+     - If you use the curried function `func(a, b)` with inputs `func(a=2)(5)`, the
      value `5` will the fill the first positional argument `a`, and you'll get
      a `ValueError` for duplicate values because `a` is also filled by the
-     keyword argument `a=2`. This is because `f(a=2)(5)` is equivalent to
-     `f(5, a=2)` which will throw an error for non-curried functions as well.
+     keyword argument `a=2`. This is because `func(a=2)(5)` is equivalent to
+     `func(5, a=2)` which will throw an error for non-curried functions as well.
      - Built-in CPython functions are not supported by the `inspect`
      module. Set `fallback=True` to curry those functions using `toolz.curry`
      instead.
@@ -68,17 +68,17 @@ def curry[T](f: Callable[..., T], fallback: bool = False) -> Any:
      >>> curry(torch.mean, fallback=True)  # not supported by inspect, use fallback!
     """
 
-    @wraps(f)
+    @wraps(func)
     def toolz_curry(*args, **kwargs) -> Callable:
         return _curry(f)(*args, **kwargs)  # type: ignore
 
     try:
-        params = inspect.signature(f).parameters
+        params = inspect.signature(func).parameters
     except ValueError:
         if fallback:
             return toolz_curry
         raise ValueError(
-            f"Cannot extract parameters from function {f}. Use `fallback=True` to use `toolz.curry` instead."
+            f"Cannot extract parameters from function {func}. Use `fallback=True` to use `toolz.curry` instead."
         )
 
     required_args = tz.pipe(
@@ -102,10 +102,10 @@ def curry[T](f: Callable[..., T], fallback: bool = False) -> Any:
         if not (remaining_args := [k for k in required_args if k not in kwargs]) or len(
             args
         ) >= len(remaining_args):
-            return f(*args, **kwargs)
+            return func(*args, **kwargs)
 
         # Define a function instead of using lambda to let docstring etc be copied over
-        @wraps(f)
+        @wraps(func)
         def curried_fn(*args2, **kwargs2):
             # unpack both kwargs separately instead of merging into one dict to throw error
             # for duplicate keyword arguments!

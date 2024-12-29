@@ -12,7 +12,7 @@ from .decorator import curry
 
 @curry
 def pmap(
-    f: Callable[..., Any],
+    func: Callable[..., Any],
     iterable: Any,
     *iterables: Any,
     n_workers: Optional[int] = None,
@@ -23,11 +23,11 @@ def pmap(
 
     Parameters
     ----------
-    f: Callable
+    func : Callable
         Function to apply to each element of the iterable.
-    n_workers: Optional[int]
+    n_workers : Optional[int]
         Number of workers to use. If None, the number of workers is set to the number of CPUs.
-    executor: Literal["process", "thread"]
+    executor : Literal["process", "thread"]
         Executor to use, process or thread workers.
 
     Returns
@@ -42,5 +42,5 @@ def pmap(
     """
     Pool = ProcessingPool if executor == "process" else ThreadingPool
     with Pool(n_workers) as pool:
-        results = pool.imap(f, iterable, *iterables)
+        results = pool.imap(func, iterable, *iterables)
     return results

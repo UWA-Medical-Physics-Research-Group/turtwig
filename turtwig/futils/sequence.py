@@ -14,35 +14,35 @@ from .decorator import curry
 @curry
 def growby[
     T, R
-](f: Callable[[T | R], R], init: T, length: int | None = None) -> Iterator[T | R]:
+](func: Callable[[T | R], R], init: T, length: int | None = None) -> Iterator[T | R]:
     """
-    Grow a sequence by repeatedly applying f to last item in sequence
+    Grow a sequence by repeatedly applying `func` to last item in sequence
 
     Parameters
     ----------
-    f: Callable
+    func : Callable
         Function to be called repeatedly on the last element of the sequence
-    init: any
+    init : any
         Initial value of the sequence
-    length: int | None
+    length : int | None
         Length of the sequence to be generated, if None, sequence is infinite
 
     Returns
     -------
     Iterator[T | R]
-        Sequence constructed by repeatedly applying f, i.e. compute
-        `[init, f(init), f(f(init)), ...]`
+        Sequence constructed by repeatedly applying `func`, i.e. compute
+        `[init, func(init), func(func(init)), ...]`
 
     Examples
     --------
     >>> list(growby(lambda x: x + 1, 1, length=5))
     [1, 2, 3, 4, 5]
     """
-    return islice(tz.iterate(f, init), length)
+    return islice(tz.iterate(func, init), length)
 
 
 @curry
-def growby_fs[T, R](fs: Callable[[T | R], R], init: T) -> Iterable[T | R]:
+def growby_fs[T, R](funcs: Callable[[T | R], R], init: T) -> Iterable[T | R]:
     """
     Grow a sequence by applying list of functions to the last element of the current sequence
 
@@ -51,7 +51,7 @@ def growby_fs[T, R](fs: Callable[[T | R], R], init: T) -> Iterable[T | R]:
 
     Parameters
     ----------
-    fs: Callable
+    funcs : Callable
         List of functions to be called on the last element of the sequence
     init: any
         Initial value of the sequence
@@ -59,7 +59,7 @@ def growby_fs[T, R](fs: Callable[[T | R], R], init: T) -> Iterable[T | R]:
     Returns
     -------
     Generator[T | R, None, None]
-        Sequence constructed by repeatedly applying each f in fs,
+        Sequence constructed by repeatedly applying each function in `funcs`,
         `[init, f1(init), f2(f1(init)), ...]`
 
     Examples
@@ -69,24 +69,24 @@ def growby_fs[T, R](fs: Callable[[T | R], R], init: T) -> Iterable[T | R]:
     [1, 2, 4, 16]
     """
     return tz.pipe(
-        fs,
+        funcs,
         curried.cons(init),  # [init, f1, f2, ...]
         curried.accumulate(lambda x, f: f(x)),
     )  # type: ignore
 
 
 @curry
-def transform_nth(n: int, f: Callable, seq: Iterable) -> Iterable:
+def transform_nth(n: int, func: Callable, seq: Iterable) -> Iterable:
     """
-    Apply a function to the nth element of a sequence
+    Apply a function `func` to the nth element of a sequence
 
     Parameters
     ----------
-    n: int
+    n : int
         Index of the element to be transformed
-    f: Callable
+    func : Callable
         Function to be applied to the nth element
-    seq: Iterable
+    seq : Iterable
         Sequence to be transformed
 
     Returns
@@ -99,4 +99,4 @@ def transform_nth(n: int, f: Callable, seq: Iterable) -> Iterable:
     >>> list(transform_nth(1, lambda _: 'a', [1, 2, 3]))
     [1, 'a', 3]
     """
-    return (f(x) if i == n else x for i, x in enumerate(seq))
+    return (func(x) if i == n else x for i, x in enumerate(seq))

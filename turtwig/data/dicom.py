@@ -4,6 +4,7 @@ Set of methods to load and save DICOM files
 
 import os
 from datetime import date
+from pathlib import Path
 from typing import Annotated, Final, Iterable, Iterator
 
 import numpy as np
@@ -29,6 +30,8 @@ RT_PLAN: Final[str] = "1.2.840.10008.5.1.4.1.1.481.5"
 
 
 # ============ Helper functions ============
+
+
 @validate_call()
 def _flip_array(
     array: Annotated[np.ndarray, NumpyArray, AfterValidator(is_ndim(ndim=3))]
@@ -99,7 +102,7 @@ def _get_uniform_spacing(
 
 
 @validate_call()
-def _get_dicom_slices(dicom_path: str) -> Iterator[dicom.Dataset]:
+def _get_dicom_slices(dicom_path: str | Path) -> Iterator[dicom.Dataset]:
     """
     Return all DICOM files in `dicom_path` containing .dcm files
     """
@@ -112,7 +115,7 @@ def _get_dicom_slices(dicom_path: str) -> Iterator[dicom.Dataset]:
 
 
 @validate_call()
-def _get_ct_image_slices(dicom_path: str) -> Iterable[dicom.Dataset]:
+def _get_ct_image_slices(dicom_path: str | Path) -> Iterable[dicom.Dataset]:
     """
     Return all CT image slices from `dicom_path` in slice order
     """
@@ -141,7 +144,7 @@ def _load_roi_mask(
 
 
 @validate_call()
-def _load_rt_structs(dicom_path: str) -> Iterator[rt_utils.RTStruct]:
+def _load_rt_structs(dicom_path: str | Path) -> Iterator[rt_utils.RTStruct]:
     """
     Create list of RTStructBuilder from DICOM RT struct file in `dicom_path`
     """
@@ -157,7 +160,7 @@ def _load_rt_structs(dicom_path: str) -> Iterator[rt_utils.RTStruct]:
         curried.map(
             lambda rt_struct_path: (
                 rt_utils.RTStructBuilder.create_from(
-                    dicom_series_path=dicom_path,
+                    dicom_series_path=str(dicom_path),
                     rt_struct_path=rt_struct_path,
                 )
             )
@@ -168,9 +171,8 @@ def _load_rt_structs(dicom_path: str) -> Iterator[rt_utils.RTStruct]:
 # ============ Main functions ============
 
 
-@curry
 @validate_call()
-def load_volume(dicom_path: str) -> np.ndarray | None:
+def load_volume(dicom_path: str | Path) -> np.ndarray | None:
     """
     Load 3D volume of shape (H, W, D) from DICOM files in `dicom_path`
 
@@ -181,7 +183,7 @@ def load_volume(dicom_path: str) -> np.ndarray | None:
 
     Parameters
     ----------
-    dicom_path : str
+    dicom_path : str | Path
         Path to the directory containing DICOM files
     """
     dicom_slices = list(_get_ct_image_slices(dicom_path))
@@ -204,10 +206,9 @@ def load_volume(dicom_path: str) -> np.ndarray | None:
     )  # type: ignore
 
 
-@curry
 @validate_call()
 @logger.catch()
-def load_mask(dicom_path: str) -> MaskDict | None:
+def load_mask(dicom_path: str | Path) -> MaskDict | None:
     """
     Load masks of shape (H, W, D) from a folder of DICOM files in `dicom_path`
 
@@ -219,7 +220,7 @@ def load_mask(dicom_path: str) -> MaskDict | None:
 
     Parameters
     ----------
-    dicom_path : str
+    dicom_path : str | Path
         Path to the directory containing DICOM files including the RT struct file
     """
     rt_struct = list(_load_rt_structs(dicom_path))
@@ -246,10 +247,9 @@ def load_mask(dicom_path: str) -> MaskDict | None:
     )  # type: ignore
 
 
-@curry
 @validate_call()
 @logger.catch()
-def load_patient_scan(dicom_path: str) -> PatientScan | None:
+def load_patient_scan(dicom_path: str | Path) -> PatientScan | None:
     """
     Load PatientScan from directory of DICOM files in `dicom_path`
 
@@ -264,7 +264,7 @@ def load_patient_scan(dicom_path: str) -> PatientScan | None:
 
     Parameters
     ----------
-    dicom_path : str
+    dicom_path : str | Path
         Path to the directory containing DICOM files
     """
     dicom_slices = list(_get_ct_image_slices(dicom_path))
@@ -300,9 +300,8 @@ def load_patient_scan(dicom_path: str) -> PatientScan | None:
     }  # type: ignore
 
 
-@curry
 @validate_call()
-def load_all_volumes(dicom_collection_path: str) -> Iterator[np.ndarray]:
+def load_all_volumes(dicom_collection_path: str | Path) -> Iterator[np.ndarray]:
     """
     Load 3D volumes from folders of DICOM files in `dicom_collection_path`
 
@@ -313,7 +312,7 @@ def load_all_volumes(dicom_collection_path: str) -> Iterator[np.ndarray]:
 
     Parameters
     ----------
-    dicom_collection_path : str
+    dicom_collection_path : str | Path
         Path to the directory containing directories of DICOM files
     """
     return tz.pipe(
@@ -324,9 +323,8 @@ def load_all_volumes(dicom_collection_path: str) -> Iterator[np.ndarray]:
     )  # type: ignore
 
 
-@curry
 @validate_call()
-def load_all_masks(dicom_collection_path: str) -> Iterator[MaskDict]:
+def load_all_masks(dicom_collection_path: str | Path) -> Iterator[MaskDict]:
     """
     Load dictionary of masks from folders of DICOM files in `dicom_collection_path`
 
@@ -338,7 +336,7 @@ def load_all_masks(dicom_collection_path: str) -> Iterator[MaskDict]:
 
     Parameters
     ----------
-    dicom_collection_path : str
+    dicom_collection_path : str | Path
         Path to the directory containing directories of DICOM files including the RT struct file
     """
     return tz.pipe(
@@ -349,9 +347,8 @@ def load_all_masks(dicom_collection_path: str) -> Iterator[MaskDict]:
     )  # type: ignore
 
 
-@curry
 @validate_call()
-def load_all_patient_scans(dicom_collection_path: str) -> Iterator[PatientScan]:
+def load_all_patient_scans(dicom_collection_path: str | Path) -> Iterator[PatientScan]:
     """
     Load PatientScans from folders of DICOM files in `dicom_collection_path`
 
@@ -363,7 +360,7 @@ def load_all_patient_scans(dicom_collection_path: str) -> Iterator[PatientScan]:
 
     Parameters
     ----------
-    dicom_collection_path : str
+    dicom_collection_path : str | Path
         Path to the directory containing folders of DICOM files
 
     Returns
@@ -380,13 +377,13 @@ def load_all_patient_scans(dicom_collection_path: str) -> Iterator[PatientScan]:
 
 
 @validate_call()
-def load_roi_names(dicom_dir: str) -> Iterator[list[str]]:
+def load_roi_names(dicom_dir: str | Path) -> Iterator[list[str]]:
     """
     Return an iterator of ROI names for each folders of DICOM files in given directory
 
     Parameters
     ----------
-    dicom_dir : str
+    dicom_dir : str | Path
         Path to the directory containing folders of DICOM files
 
     Returns
@@ -414,7 +411,7 @@ def load_roi_names(dicom_dir: str) -> Iterator[list[str]]:
 
 
 @validate_call()
-def purge_dicom_dir(dicom_dir: str, prog_bar: bool = True) -> None:
+def purge_dicom_dir(dicom_dir: str | Path, prog_bar: bool = True) -> None:
     """
     Remove all .dcm files that are not part of a CT image series or RT struct
 
@@ -428,7 +425,7 @@ def purge_dicom_dir(dicom_dir: str, prog_bar: bool = True) -> None:
 
     Parameters
     ----------
-    dicom_dir : str
+    dicom_dir : str | Path
         Path to the directory containing DICOM files
     prog_bar : bool, optional
         Whether to show a progress bar, by default True

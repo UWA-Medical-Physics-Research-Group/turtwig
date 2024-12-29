@@ -8,19 +8,19 @@ from typing import Any, Callable, Iterable, Iterator
 from .decorator import curry
 
 
-def star[T](f: Callable[..., T]) -> Callable[..., T]:
+def star[T](func: Callable[..., T]) -> Callable[..., T]:
     """
-    Returns function: x -> `f`(*x), i.e. unpacks arguments and pass to `f`
+    Returns function: x -> `func`(*x), i.e. unpacks arguments and pass to `func`
 
     Parameters
     ----------
-    f : Callable[..., T]
+    func : Callable[..., T]
         Function to be called
 
     Returns
     -------
     Callable[..., T]
-        Function that unpacks the argument and pass them to `f`
+        Function that unpacks the argument and pass them to `func`
 
     Examples
     --------
@@ -30,13 +30,13 @@ def star[T](f: Callable[..., T]) -> Callable[..., T]:
     3
     >>> add((1, 2)) # ERROR
     """
-    return lambda args: f(*args)
+    return lambda args: func(*args)
 
 
 @curry
-def starmap[T](f: Callable[..., T], iterable: Iterable[tuple[Any]]) -> Iterator[T]:
+def starmap[T](func: Callable[..., T], iterable: Iterable[tuple[Any]]) -> Iterator[T]:
     """
-    Map non-unary function `f(a, b, ...)` over the elements of `iterable`.
+    Map non-unary function `func(a, b, ...)` over the elements of `iterable`.
 
     Used this instead of `map` when argument parameters have already been
     “pre-zipped” into tuples.
@@ -45,7 +45,7 @@ def starmap[T](f: Callable[..., T], iterable: Iterable[tuple[Any]]) -> Iterator[
 
     Parameters
     ----------
-    f : Callable[..., T]
+    func : Callable[..., T]
         Function to be called on each element of `iterable`
     iterable : Iterable[tuple[Any]]
         Iterable of tuples of arguments
@@ -53,7 +53,7 @@ def starmap[T](f: Callable[..., T], iterable: Iterable[tuple[Any]]) -> Iterator[
     Returns
     -------
     Iterator[T]
-        Iterator of results of calling `f` on each element of `iterable`
+        Iterator of results of calling `func` on each element of `iterable`
 
     Examples
     --------
@@ -63,22 +63,22 @@ def starmap[T](f: Callable[..., T], iterable: Iterable[tuple[Any]]) -> Iterator[
     >>> list(starmap(add, lst))
     [3, 7]
     """
-    return _starmap(f, iterable)
+    return _starmap(func, iterable)
 
 
 @curry
 def starfilter(
-    f: Callable[..., bool], iterable: Iterable[tuple[Any, ...]]
+    func: Callable[..., bool], iterable: Iterable[tuple[Any, ...]]
 ) -> Iterator[tuple[Any, ...]]:
     """
-    Filter elements of `iterable` using non-unary function `f(a, b, ...)`
+    Filter elements of `iterable` using non-unary function `func(a, b, ...)`
 
     Used this instead of `filter` when argument parameters have already been
     “pre-zipped” into tuples.
 
     Parameters
     ----------
-    f : Callable[..., bool]
+    func : Callable[..., bool]
         Function to be called on each element of `iterable`
     iterable : Iterable[tuple[Any]]
         Iterable of tuples of arguments
@@ -86,7 +86,7 @@ def starfilter(
     Returns
     -------
     Iterator[tuple[Any, ...]]
-        Iterator of elements of `iterable` for which `f` returns True
+        Iterator of elements of `iterable` for which `func` returns True
 
     Examples
     --------
@@ -96,29 +96,29 @@ def starfilter(
     >>> list(starfilter(is_even, lst))
     [(4, 4)]
     """
-    return filter(star(f), iterable)
+    return filter(star(func), iterable)
 
 
 @curry
 def iterate_while[
     T, R
-](f: Callable[[T], R], pred: Callable[[T | R], bool], initial: T) -> R | T:
+](func: Callable[[T], R], pred: Callable[[T | R], bool], initial: T) -> R | T:
     """
-    Repeatedly apply `f` to a value until `pred(value)` is false
+    Repeatedly apply `func` to a value until `pred(value)` is false
 
     Parameters
     ----------
-    `f` : Callable[[T], R]
+    `func` : Callable[[T], R]
         Function to be called repeatedly
     pred : Callable[[T | R], bool]
-        Function that takes the output of `f` and returns a boolean
+        Function that takes the output of `func` and returns a boolean
     initial : T
-        Initial value to be passed to `f`
+        Initial value to be passed to `func`
 
     Returns
     -------
     R | T
-        Output of `f` when condition is met
+        Output of `func` when condition is met
 
     Examples
     --------
@@ -131,7 +131,7 @@ def iterate_while[
     >>> iterate_while(f, pred, 5)
     5
     """
-    return iterate_while(f, pred, f(initial)) if pred(initial) else initial
+    return iterate_while(func, pred, func(initial)) if pred(initial) else initial
 
 
 @curry

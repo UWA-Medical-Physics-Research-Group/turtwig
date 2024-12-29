@@ -1,3 +1,5 @@
+.vscode/
+
 # Nix specific
 .direnv/
 
