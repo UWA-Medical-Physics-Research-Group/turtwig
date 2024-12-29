@@ -44,8 +44,8 @@ class NumpyArray:
     >>> from typing import Annotated
     >>> @validate_call()
     ... def test(
-    ...     a: Annotated[np.ndarray, NumpyArray], 
-    ...     b: Annotated[np.ndarray, NumpyArray[np.int64]], 
+    ...     a: Annotated[np.ndarray, NumpyArray],
+    ...     b: Annotated[np.ndarray, NumpyArray[np.int64]],
     ...     c: Annotated[np.ndarray, NumpyArray[np.bool | np.int64]]
     ... ):
     ...     return a, b, c
