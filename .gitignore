@@ -1,5 +1,8 @@
 .vscode/
 
+# sphinx
+docs/_build/
+
 # Nix specific
 .direnv/
 

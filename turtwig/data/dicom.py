@@ -186,6 +186,11 @@ def load_volume(dicom_path: str | Path) -> np.ndarray | None:
     ----------
     dicom_path : str | Path
         Path to the directory containing DICOM files
+    
+    Returns
+    -------
+    np.ndarray | None
+        3D volume in Hounsfield units (HU) or None if no DICOM files are found
     """
     dicom_slices = list(_get_ct_image_slices(dicom_path))
     intercepts = [float(d_slice.RescaleIntercept) for d_slice in dicom_slices]
@@ -222,7 +227,14 @@ def load_mask(dicom_path: str | Path) -> MaskDict | None:
     Parameters
     ----------
     dicom_path : str | Path
-        Path to the directory containing DICOM files including the RT struct file
+        Path to the directory containing DICOM files including the 
+        RT struct file
+    
+    Returns
+    -------
+    MaskDict | None
+        Dictionary containing the masks for each organ, or None if no 
+        masks are found
     """
     rt_struct = list(_load_rt_structs(dicom_path))
     if rt_struct == []:
@@ -267,6 +279,12 @@ def load_patient_scan(dicom_path: str | Path) -> DicomDict | None:
     ----------
     dicom_path : str | Path
         Path to the directory containing DICOM files
+
+    Returns
+    -------
+    DicomDict | None
+        Dictionary containing the volume, mask, and metadata, or None 
+        if no masks are found
     """
     dicom_slices = list(_get_ct_image_slices(dicom_path))
     spacings = _get_uniform_spacing(dicom_slices)
@@ -315,6 +333,11 @@ def load_all_volumes(dicom_collection_path: str | Path) -> Iterator[np.ndarray]:
     ----------
     dicom_collection_path : str | Path
         Path to the directory containing directories of DICOM files
+    
+    Returns
+    -------
+    Iterator[np.ndarray]
+        An iterator of 3D volumes
     """
     return tz.pipe(
         dicom_collection_path,
@@ -339,6 +362,11 @@ def load_all_masks(dicom_collection_path: str | Path) -> Iterator[MaskDict]:
     ----------
     dicom_collection_path : str | Path
         Path to the directory containing directories of DICOM files including the RT struct file
+    
+    Returns
+    -------
+    Iterator[MaskDict]
+        An iterator of dictionaries containing the masks for each organ
     """
     return tz.pipe(
         dicom_collection_path,
@@ -471,16 +499,12 @@ def compute_dataset_stats(
     -------
     dict[str, dict[str, np.ndarray | set[str]]]
         Dictionary containing the keys:
-        - "dimension_original": Mean dimensions of the original volumes
-          when they were loaded
-        - "dimension_actual": Mean dimensions of the volumes
-        - "spacings": Mean spacings of the volumes
-        - "manufacturer": Set of manufacturers for the scanners
-        - "scanner": Set of scanner names
-
-    Side Effects
-    ------------
-    Consumes the input `dataset` iterable if it is an iterator
+          - `"dimension_original"`: Mean dimensions of the original volumes
+            when they were loaded
+          - `"dimension_actual"`: Mean dimensions of the volumes
+          - `"spacings"`: Mean spacings of the volumes
+          - `"manufacturer"`: Set of manufacturers for the scanners
+          - `"scanner"`: Set of scanner names
     """
     return tz.pipe(
         dataset,

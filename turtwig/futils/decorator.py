@@ -12,29 +12,29 @@ from toolz import curry as _curry
 
 def curry[T](func: Callable[..., T], fallback: bool = False) -> Any:
     """
-     A curried function `func` can be partially parameterised.
+    A curried function `func` can be partially parameterised.
 
-     If a curried function is passed only some of its arguments, a new
-     function is returned with those arguments filled in. The new
-     function can be called with the remaining arguments later on.
+    If a curried function is passed only some of its arguments, a new
+    function is returned with those arguments filled in. The new
+    function can be called with the remaining arguments later on.
 
-     Evaluation of the function only occurs when all mandatory arguments
-     are provided. Unlike `toolz.curry` and similar libraries, this
-     function does not use `functools.partial` if `fallback=False`,
-     meaning decorators of the wrapped function will only be applied
-     once all mandatory arguments are provided. This means, e.g. a
-     decorator that validates the arguments to a function will not throw
-     error that mandatory arguments are missing if the function is still
-     partially applied - it'll only run when all mandatory arguments are
-     provided.
+    Evaluation of the function only occurs when all mandatory arguments
+    are provided. Unlike `toolz.curry` and similar libraries, this
+    function does not use `functools.partial` if `fallback=False`,
+    meaning decorators of the wrapped function will only be applied
+    once all mandatory arguments are provided. This means, e.g. a
+    decorator that validates the arguments to a function will not throw
+    error that mandatory arguments are missing if the function is still
+    partially applied - it'll only run when all mandatory arguments are
+    provided.
 
     Parameters
-     ----------
-     func : Callable
-         The function to curry
-     fallback : bool
-         If `True`, fallback on `toolz.curry` if `curry` fails to extract
-         parameters from `func`. This is useful for built-in CPython functions.
+    ----------
+    func : Callable
+        The function to curry
+    fallback : bool
+        If `True`, fallback on `toolz.curry` if `curry` fails to extract
+        parameters from `func`. This is useful for built-in CPython functions.
 
     Returns
     -------
@@ -42,30 +42,30 @@ def curry[T](func: Callable[..., T], fallback: bool = False) -> Any:
         Curried function that can be partially applied if not all mandatory
         arguments are provided. Else, the result of the function is returned.
 
-     Caveats
-     -------
-     - If you use the curried function `func(a, b)` with inputs `func(a=2)(5)`, the
-     value `5` will the fill the first positional argument `a`, and you'll get
-     a `ValueError` for duplicate values because `a` is also filled by the
-     keyword argument `a=2`. This is because `func(a=2)(5)` is equivalent to
-     `func(5, a=2)` which will throw an error for non-curried functions as well.
-     - Built-in CPython functions are not supported by the `inspect`
-     module. Set `fallback=True` to curry those functions using `toolz.curry`
-     instead.
+    Caveats
+    -------
+    - If you use the curried function `func(a, b)` with inputs `func(a=2)(5)`, the
+      value `5` will the fill the first positional argument `a`, and you'll get
+      a `ValueError` for duplicate values because `a` is also filled by the
+      keyword argument `a=2`. This is because `func(a=2)(5)` is equivalent to
+      `func(5, a=2)` which will throw an error for non-curried functions as well.
+    - Built-in CPython functions are not supported by the `inspect`
+      module. Set `fallback=True` to curry those functions using `toolz.curry`
+      instead.
 
-     Example
-     -------
-     >>> @curry
-     ... def add(a, b, c=3):
-     ...     return a + b + c
-     >>> # If not all required parameters are provided, a function is returned
-     >>> add_5 = add(5)  # equivalent to lambda b: 5 + b + 3
-     >>> add_5(3) # call with remaining argument
-     11
-     >>> add(5, 3)  # using function normally
-     11
-     >>> import torch
-     >>> curry(torch.mean, fallback=True)  # not supported by inspect, use fallback!
+    Example
+    -------
+    >>> @curry
+    ... def add(a, b, c=3):
+    ...     return a + b + c
+    >>> # If not all required parameters are provided, a function is returned
+    >>> add_5 = add(5)  # equivalent to lambda b: 5 + b + 3
+    >>> add_5(3) # call with remaining argument
+    11
+    >>> add(5, 3)  # using function normally
+    11
+    >>> import torch
+    >>> curry(torch.mean, fallback=True)  # not supported by inspect, use fallback!
     """
 
     @wraps(func)
