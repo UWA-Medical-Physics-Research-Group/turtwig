@@ -1,3 +1,7 @@
+"""
+Functional utilities for dictionaries.
+"""
+
 from functools import reduce
 from typing import Annotated, Callable
 

@@ -1,3 +1,8 @@
+"""
+Validation functions for dictionaries.
+"""
+
+
 def all_same_keys(dicts: list[dict]) -> list[dict]:
     """
     Assert if all dictionaries have the same keys.

@@ -5,6 +5,7 @@ Datatype definitions for validation.
 from datetime import date
 from typing import Annotated, Any, TypedDict, get_args, get_origin
 
+import h5py
 import numpy as np
 from pydantic import GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
@@ -126,3 +127,45 @@ class _NumpyNumberAnnotation:
 
 
 NumpyNumber = Annotated[np.number, _NumpyNumberAnnotation]
+
+
+class _H5FileAnnotation:
+    """
+    Pydantic core schema for h5 files.
+    """
+
+    @classmethod
+    def __get_pydantic_core_schema__(
+        cls, source_type: Any, handler: GetCoreSchemaHandler
+    ) -> CoreSchema:
+        return core_schema.json_or_python_schema(
+            json_schema=core_schema.is_instance_schema(h5py.File),
+            python_schema=core_schema.is_instance_schema(h5py.File),
+            serialization=core_schema.plain_serializer_function_ser_schema(
+                lambda instance: instance
+            ),
+        )
+
+
+H5File = Annotated[h5py.File, _H5FileAnnotation]
+
+
+class _H5GroupAnnotation:
+    """
+    Pydantic core schema for h5 groups.
+    """
+
+    @classmethod
+    def __get_pydantic_core_schema__(
+        cls, source_type: Any, handler: GetCoreSchemaHandler
+    ) -> CoreSchema:
+        return core_schema.json_or_python_schema(
+            json_schema=core_schema.is_instance_schema(h5py.Group),
+            python_schema=core_schema.is_instance_schema(h5py.Group),
+            serialization=core_schema.plain_serializer_function_ser_schema(
+                lambda instance: instance
+            ),
+        )
+
+
+H5Group = Annotated[h5py.Group, _H5GroupAnnotation]

@@ -1,5 +1,5 @@
 """
-Collection of functions to preprocess numpy arrays and patient scans
+Collection of functions to process numpy arrays
 """
 
 from typing import Annotated, Literal

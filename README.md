@@ -123,28 +123,21 @@ todo...
 # TODOS:
 - `turtwig.logging` - add logging to project
 - `turtwig.config` - read and configure functions via a configuration file
-- `turtwig.validation` - validation decorators, e.g. array shape
-    - TODO: add test case for curry where function is decorated with validator - check it's only executed when function is evaluated
 - `turtwig.models` - preset models
 - `turtwig.metrics`
     - `classification`
     - `loss`
     - `uncertainty` + `risk`
 - `turtwig.data`
-    - `dicom`
     - `nifti` - maybe idk
     - `h5`
-    - `_datatypes`
-- `turtwig.array`
-  - `processing` - functions for generic arrays, e.g. make arrays isotropic
-  - sliding window - `extract_patches()`, `stitch_patches()`
+    - 'numpy'
+      - sliding window - `extract_patches()`, `stitch_patches()`
   - `augmentation`
-  
 - `turtwig.learning`
     - `models`
     - `datasets`
     - `checkpoint` - set up checkpoint directory
-- test cases
 
 - logging... by default, log using loguru to stderr instead of print?
 
