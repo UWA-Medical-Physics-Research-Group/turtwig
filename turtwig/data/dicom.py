@@ -20,7 +20,7 @@ from tqdm import tqdm
 from ..futils import (curry, generate_full_paths, list_files,
                       merge_with_reduce, rename_key, star, starfilter,
                       transform_nth)
-from ..validation import MaskDict, NumpyArray, PatientScan, is_ndim
+from ..validation import MaskDict, NumpyArray, DicomDict, is_ndim
 
 # SOP Class UIDs for different types of DICOM files
 # https://dicom.nema.org/dicom/2013/output/chtml/part04/sect_B.5.html
@@ -250,9 +250,9 @@ def load_mask(dicom_path: str | Path) -> MaskDict | None:
 
 @validate_call()
 @logger.catch()
-def load_patient_scan(dicom_path: str | Path) -> PatientScan | None:
+def load_patient_scan(dicom_path: str | Path) -> DicomDict | None:
     """
-    Load PatientScan from directory of DICOM files in `dicom_path`
+    Load DicomDict from directory of DICOM files in `dicom_path`
 
     Patient scan is a dictionary containing the volume, mask, and metadata
     of the scan. The volume and mask will have shape (width, height, depth)
@@ -349,9 +349,9 @@ def load_all_masks(dicom_collection_path: str | Path) -> Iterator[MaskDict]:
 
 
 @validate_call()
-def load_all_patient_scans(dicom_collection_path: str | Path) -> Iterator[PatientScan]:
+def load_all_patient_scans(dicom_collection_path: str | Path) -> Iterator[DicomDict]:
     """
-    Load PatientScans from folders of DICOM files in `dicom_collection_path`
+    Load DicomDicts from folders of DICOM files in `dicom_collection_path`
 
     Patient scan is a dictionary containing the volume, mask, and metadata
     of the scan. The volume and mask will have shape (width, height, depth)
@@ -366,8 +366,8 @@ def load_all_patient_scans(dicom_collection_path: str | Path) -> Iterator[Patien
 
     Returns
     -------
-    Iterator[PatientScan]
-        An iterator of PatientScan dictionaries.
+    Iterator[DicomDict]
+        An iterator of DicomDict dictionaries.
     """
     return tz.pipe(
         dicom_collection_path,
@@ -457,14 +457,14 @@ def purge_dicom_dir(dicom_dir: str | Path, prog_bar: bool = True) -> None:
 
 
 def compute_dataset_stats(
-    dataset: Iterable[PatientScan],
+    dataset: Iterable[DicomDict],
 ) -> dict[str, dict[str, np.ndarray | set[str]]]:
     """
     Return dictionary of statistics from patient scans in `dataset`
 
     Parameters
     ----------
-    dataset : Iterable[PatientScan]
+    dataset : Iterable[DicomDict]
         List of patient scans
 
     Returns

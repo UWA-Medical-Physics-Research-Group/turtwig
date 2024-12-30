@@ -13,8 +13,8 @@ from pydantic_core import CoreSchema, core_schema
 MaskDict = dict[Annotated[str, "organ name"], np.ndarray]
 
 
-PatientScan = TypedDict(
-    "PatientScan",
+DicomDict = TypedDict(
+    "DicomDict",
     {
         "patient_id": int,
         "volume": np.ndarray,

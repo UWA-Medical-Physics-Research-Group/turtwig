@@ -1,20 +1,18 @@
+import os
+import sys
 import tempfile
 from datetime import date
 
 import h5py
 import numpy as np
 
-import os
-import sys
-
 dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.realpath(f"{dir_path}/../../../turtwig"))
 
-from turtwig.data import dict_to_h5, dict_from_h5
+from turtwig.data import dict_from_h5, dict_to_h5
 
-
-dataset = { "0":
-    {
+dataset = {
+    "0": {
         "patient_id": 5,
         "volume": np.zeros((10, 10, 10)),
         "dimension_original": (10, 10, 10),
@@ -72,7 +70,7 @@ class TestDictToH5:
         with h5py.File(test_path, "w") as f:
             group = f.create_group("test_group")
             dict_to_h5(dataset2, group)
-            
+
             assert "test_group" in f
             assert f["test_group"]["patient_id"][()] == 5  # type: ignore
             assert np.array_equal(f["test_group"]["volume"][()], np.zeros((10, 10, 10)))  # type: ignore
@@ -84,7 +82,6 @@ class TestDictToH5:
             assert np.array_equal(f["test_group"]["masks/list"][()], np.array([[1.0, 2.0, 3.0] for _ in range(2)]))  # type: ignore
             assert np.array_equal(f["test_group"]["list"][()], np.array([1, 2, 3]))  # type: ignore
             assert np.array_equal(f["test_group"]["list2"][()], np.array([[1.0, 2.0, 3.0] for _ in range(2)]))  # type: ignore
-
 
     # Successfully saves single dictionary with all fields to H5 file
     def test_save_dict(self):
@@ -111,7 +108,7 @@ class TestDictFromH5:
     def test_load_dataset(self):
         with tempfile.NamedTemporaryFile() as tmp:
             test_path = tmp.name
-            
+
             dict_to_h5(dataset, test_path)
             loaded = dict_from_h5(test_path)
 
@@ -133,4 +130,3 @@ class TestDictFromH5:
                 assert data["spacings"].tolist() == [1.0, 1.0, 1.0]
                 assert data["manufacturer"] == "GE"
                 assert data["scanner"] == "Optima"
-

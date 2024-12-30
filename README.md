@@ -67,6 +67,10 @@ direnv disallow # stop automatically executing .envrc upon entering the project 
 ### Tutorials (move to wiki)
 Many parts of the code is written roughly in the **functional programming** paradigm. 
 
+- HDF5 - efficient data storage + mmap
+- operating on DicomDict
+- constructing preprocessing pipelines
+
 #### Pipe
 
 Given a value `x`, `toolz.pipe` just passes `x` through a series of functions (it's just a for-loop...).
