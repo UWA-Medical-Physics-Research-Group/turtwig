@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Annotated, Final, Iterable, Iterator
 
 import numpy as np
+from fn import _
 import pydicom as dicom
 import rt_utils
 import toolz as tz
@@ -109,7 +110,7 @@ def _get_dicom_slices(dicom_path: str | Path) -> Iterator[dicom.Dataset]:
     return tz.pipe(
         dicom_path,
         list_files,
-        curried.filter(lambda fname: fname.endswith(".dcm")),
+        curried.filter(_.call("endswith", ".dcm")),
         curried.map(lambda fname: dicom.dcmread(fname, force=True)),
     )  # type: ignore
 
@@ -151,7 +152,7 @@ def _load_rt_structs(dicom_path: str | Path) -> Iterator[rt_utils.RTStruct]:
     return tz.pipe(
         dicom_path,
         list_files,
-        curried.filter(lambda path: path.endswith(".dcm")),
+        curried.filter(_.call("endswith", ".dcm")),
         curried.filter(
             lambda path: _dicom_type_is(
                 dicom.dcmread(path, force=True), RT_STRUCTURE_SET
@@ -193,7 +194,7 @@ def load_volume(dicom_path: str | Path) -> np.ndarray | None:
     return tz.pipe(
         dicom_path,
         _get_ct_image_slices,
-        curried.map(lambda d_slice: d_slice.pixel_array),
+        curried.map(_.pixel_array),
         # Convert to HD scale
         lambda slices: [
             (slice_ * slope) + intercept
@@ -404,9 +405,9 @@ def load_roi_names(dicom_dir: str | Path) -> Iterator[list[str]]:
         generate_full_paths(path_generator=os.listdir),
         curried.map(_load_rt_structs),
         curried.map(list),
-        curried.filter(lambda lst: lst != []),
+        curried.filter(_ != []),
         curried.map(curried.get(0)),
-        curried.map(lambda rt_struct: rt_struct.get_roi_names()),
+        curried.map(_.call("get_roi_names")),
     )  # type: ignore
 
 
@@ -441,7 +442,7 @@ def purge_dicom_dir(dicom_dir: str | Path, prog_bar: bool = True) -> None:
         lambda files: tqdm(
             files, desc="Purging DICOM files", disable=not prog_bar, total=len(files)
         ),
-        curried.filter(lambda path: path.endswith(".dcm")),
+        curried.filter(_.call("endswith", ".dcm")),
         curried.filter(
             lambda path: (
                 not _dicom_type_is(dicom.dcmread(path, force=True), CT_IMAGE)
@@ -495,7 +496,7 @@ def compute_dataset_stats(
                 ]
             )
         ),
-        curried.map(curried.update_in(keys=["volume"], func=lambda v: v.shape)),
+        curried.map(curried.update_in(keys=["volume"], func=_.shape)),
         merge_with_reduce(
             func=lambda x, y: [x] + [y] if not isinstance(x, list) else x + [y]
         ),
