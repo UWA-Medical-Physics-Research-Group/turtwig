@@ -73,4 +73,4 @@ class TestNumpyArray:
         with pytest.raises(ValidationError):
             func(np.array([[[1, 2, 3, "a"]]]))
         with pytest.raises(ValidationError):
-            func(np.array([[1, 2, 3, True], [4,4, 5, 6.0]]))
+            func(np.array([[1, 2, 3, True], [4, 4, 5, 6.0]]))

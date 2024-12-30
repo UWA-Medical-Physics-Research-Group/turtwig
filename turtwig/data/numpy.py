@@ -167,11 +167,11 @@ def make_isotropic(
 
 
 @validate_call()
-def bounding_box3d(
+def bounding_box_3d(
     arr: Annotated[np.ndarray, NumpyArray, AfterValidator(is_ndim(ndim=3))],
 ) -> tuple[int, int, int, int, int, int]:
     """
-    Compute bounding box of a 3d binary array
+    Compute bounding box of a 3D binary array
 
     Parameters
     ----------
@@ -189,7 +189,7 @@ def bounding_box3d(
     --------
     >>> a = np.zeros((10, 10, 10))
     >>> a[2:5, 3:7, 4:8] = 1
-    >>> bounding_box3d(a)
+    >>> bounding_box_3d(a)
     (2, 4, 3, 6, 4, 7)
     """
     row = np.any(arr, axis=(1, 2))
@@ -204,7 +204,7 @@ def bounding_box3d(
 
 
 @curry
-def crop_to_bbox3d(
+def crop_to_bbox_3d(
     arr: Annotated[np.ndarray, NumpyArray, AfterValidator(is_ndim(ndim=3))],
     thresh: float | None = None,
 ):
@@ -228,7 +228,7 @@ def crop_to_bbox3d(
     return tz.pipe(
         arr,
         (_ > thresh) if thresh is not None else tz.identity,
-        bounding_box3d,
+        bounding_box_3d,
         star(
             lambda rmin, rmax, cmin, cmax, zmin, zmax: arr[
                 :, rmin:rmax, cmin:cmax, zmin:zmax

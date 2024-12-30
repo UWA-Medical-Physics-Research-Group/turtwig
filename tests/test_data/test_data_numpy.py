@@ -6,7 +6,7 @@ import numpy as np
 dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.realpath(f"{dir_path}/../../../turtwig"))
 
-from turtwig.data import bounding_box3d, make_isotropic, map_interval
+from turtwig.data import bounding_box_3d, make_isotropic, map_interval
 
 
 class TestMapInterval:
@@ -144,7 +144,7 @@ class TestBoundingBox3d:
         img[2:5, 3:7, 4:8] = 1
 
         # Call the function
-        rmin, rmax, cmin, cmax, zmin, zmax = bounding_box3d(img)
+        rmin, rmax, cmin, cmax, zmin, zmax = bounding_box_3d(img)
 
         # Assert the correct bounding box coordinates
         assert rmin == 2
@@ -187,7 +187,7 @@ class TestBoundingBox3d:
         rmax, cmax, zmax = bbox[1]
 
         # Call the function
-        rmin_, rmax_, cmin_, cmax_, zmin_, zmax_ = bounding_box3d(binary_oval)
+        rmin_, rmax_, cmin_, cmax_, zmin_, zmax_ = bounding_box_3d(binary_oval)
 
         # Assert the correct bounding box coordinates
         assert rmin == rmin_
