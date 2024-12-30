@@ -186,7 +186,7 @@ def load_volume(dicom_path: str | Path) -> np.ndarray | None:
     ----------
     dicom_path : str | Path
         Path to the directory containing DICOM files
-    
+
     Returns
     -------
     np.ndarray | None
@@ -227,13 +227,13 @@ def load_mask(dicom_path: str | Path) -> MaskDict | None:
     Parameters
     ----------
     dicom_path : str | Path
-        Path to the directory containing DICOM files including the 
+        Path to the directory containing DICOM files including the
         RT struct file
-    
+
     Returns
     -------
     MaskDict | None
-        Dictionary containing the masks for each organ, or None if no 
+        Dictionary containing the masks for each organ, or None if no
         masks are found
     """
     rt_struct = list(_load_rt_structs(dicom_path))
@@ -283,7 +283,7 @@ def load_patient_scan(dicom_path: str | Path) -> DicomDict | None:
     Returns
     -------
     DicomDict | None
-        Dictionary containing the volume, mask, and metadata, or None 
+        Dictionary containing the volume, mask, and metadata, or None
         if no masks are found
     """
     dicom_slices = list(_get_ct_image_slices(dicom_path))
@@ -333,7 +333,7 @@ def load_all_volumes(dicom_collection_path: str | Path) -> Iterator[np.ndarray]:
     ----------
     dicom_collection_path : str | Path
         Path to the directory containing directories of DICOM files
-    
+
     Returns
     -------
     Iterator[np.ndarray]
@@ -362,7 +362,7 @@ def load_all_masks(dicom_collection_path: str | Path) -> Iterator[MaskDict]:
     ----------
     dicom_collection_path : str | Path
         Path to the directory containing directories of DICOM files including the RT struct file
-    
+
     Returns
     -------
     Iterator[MaskDict]

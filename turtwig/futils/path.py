@@ -86,6 +86,7 @@ def resolve_path_placeholders(path_pattern: str, placeholders: list[str]) -> lis
         List of placeholders to match in the pattern, e.g. ["b", "c"]
 
     Returns
+    -------
     list[str]
         List of paths with placeholders replaced with actual values
 

@@ -40,10 +40,6 @@ def dict_to_h5(
     hf: h5py.File | h5py.Group | str | Path
         H5 file or group to save to. If a string or Path, then the file
         is opened in append mode
-
-    Examples
-    --------
-    TODO
     """
     if isinstance(hf, str | Path):
         with h5py.File(hf, "a") as hf:

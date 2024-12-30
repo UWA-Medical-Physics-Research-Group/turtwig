@@ -97,6 +97,7 @@ def curry[T](func: Callable[..., T], fallback: bool = False) -> Any:
         list,
     )
 
+    @wraps(func)
     def curried(*args, **kwargs):
         # Evaluate only if mandatory keyword args are provided, OR args fill remaining params
         if not (remaining_args := [k for k in required_args if k not in kwargs]) or len(
