@@ -2,86 +2,36 @@
 Collection of functions to preprocess numpy arrays and patient scans
 """
 
-from typing import Iterable, Iterator, Literal, Optional, Sequence
+from typing import Annotated, Iterable, Iterator, Literal, Optional, Sequence
 
 import numpy as np
 import SimpleITK as sitk
 import toolz as tz
-import torchio as tio
 from loguru import logger
 from toolz import curried
+from pydantic import validate_call
 
+from turtwig.validation.datatype import NumpyArray
 
 from ..futils import call_method, curry, pmap, transform_nth
 from ..validation import MaskDict, PatientScan
 
 
-def _to_torchio_subject(volume_mask: tuple[np.ndarray, np.ndarray]) -> tio.Subject:
-    """
-    Transform a (volume, mask) pair into a torchio Subject object
-
-    Parameters
-    ----------
-    volume_mask : tuple[np.ndarray, np.ndarray]
-        Tuple containing the volume and mask arrays, must have shape
-        (channel, height, width, depth)
-    """
-    volume = volume_mask[0]
-    mask = volume_mask[1]
-    return tio.Subject(
-        volume=tio.ScalarImage(tensor=volume),
-        mask=tio.LabelMap(
-            # ignore channel dimension from volume
-            tensor=tio.CropOrPad(volume.shape[1:], padding_mode="minimum")(  # type: ignore
-                mask
-            ),
-        ),
-    )
-
-
-def _from_torchio_subject(subject: tio.Subject) -> tuple[np.ndarray, np.ndarray]:
-    """
-    Transform a torchio Subject object into a (volume, mask) pair
-    """
-    return subject["volume"].data.numpy(), subject["mask"].data.numpy()  # type: ignore
-
 
 @curry
-def ensure_min_size(
-    vol_mask: tuple[np.ndarray, np.ndarray], min_size: tuple[int, int, int]
-) -> tuple[np.ndarray, np.ndarray]:
-    """
-    Ensure volume and mask (C, H, W, D) are at least size `min_size` (H, W, D)
-    """
-    volume = vol_mask[0]
-    target_shape = [
-        max(dim, min_dim) for dim, min_dim in zip(volume.shape[1:], min_size)
-    ]
-    return tz.pipe(
-        vol_mask,
-        _to_torchio_subject,
-        tio.CropOrPad(
-            target_shape,  # type: ignore
-            padding_mode=np.min(volume),
-            mask_name="mask",
-        ),
-        _from_torchio_subject,
-    )
-
-
-@curry
+@validate_call()
 def map_interval(
-    array: np.ndarray,
+    array: Annotated[np.ndarray, NumpyArray[np.number]],
     from_range: tuple[np.number, np.number],
     to_range: tuple[np.number, np.number],
-) -> np.ndarray:
+) -> Annotated[np.ndarray, NumpyArray[np.float64]]:
     """
     Map values in an `array` in range `from_range` to `to_range`
     """
     return tz.pipe(
         array,
         lambda a: np.array(
-            (a - from_range[0]) / float(from_range[1] - from_range[0]), dtype=float
+            (a - from_range[0]) / float(from_range[1] - from_range[0]), dtype=np.float64
         ),
         lambda arr_scaled: to_range[0] + (arr_scaled * (to_range[1] - to_range[0])),
     )
@@ -368,7 +318,7 @@ def preprocess_patient_scan(
     organ_ordering : list[str]
         List of organ names in order to keep
     """
-    assert isinstance(scan['masks'], dict), "Masks must be a dictionary"
+    assert isinstance(scan["masks"], dict), "Masks must be a dictionary"
     old_mask_keys = scan["masks"].keys()
 
     scan = tz.pipe(

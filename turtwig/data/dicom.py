@@ -8,11 +8,11 @@ from pathlib import Path
 from typing import Annotated, Final, Iterable, Iterator
 
 import numpy as np
-from fn import _
 import pydicom as dicom
 import rt_utils
 import toolz as tz
 import toolz.curried as curried
+from fn import _
 from loguru import logger
 from pydantic import AfterValidator, validate_call
 from tqdm import tqdm
