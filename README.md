@@ -68,6 +68,7 @@ direnv disallow # stop automatically executing .envrc upon entering the project 
 Many parts of the code is written roughly in the **functional programming** paradigm. 
 
 - HDF5 - efficient data storage + mmap
+- reading dicom files
 - operating on DicomDict
 - constructing preprocessing pipelines
 
@@ -119,34 +120,18 @@ add(5, c=6)  # equivalent to lambda b: 5 + b + 6
 - currying functions...
     1. `@curry` MUST be top-most decorator, else `@validate_call` will run and fail and :( and also `@logger.catch` also won't work if `@curry` is below it
     2. For validation functions (i.e. functions to be passed to `AfterValidator`, `BeforeValidator` etc), ALL args apart from the data (i.e. first arg) must be KEYWORD ONLY, i.e. `func(data, *, kwarg1, kwarg2)`
+- adding validation via Annotation
+- writing custom pydantic model
+- writing valiadation functions and After/BeforeValidator
 
 #### Template with NIIIIX
-todo...
+todo... also add turtwig to `pyproject.toml` in template
 
 
 # TODOS:
-- `turtwig.logging` - add logging to project
-- `turtwig.config` - read and configure functions via a configuration file
-- `turtwig.models` - preset models
-- `turtwig.metrics`
+- `turtwig.metrics`? need to install torch and that's biiiiig
     - `classification`
     - `loss`
     - `uncertainty` + `risk`
-- `turtwig.data`
-    - `nifti` - maybe idk
-    - `h5`
-    - 'numpy'
-      - sliding window - `extract_patches()`, `stitch_patches()`
-  - `augmentation`
-- `turtwig.learning`
-    - `models`
-    - `datasets`
-    - `checkpoint` - set up checkpoint directory
-
-- logging... by default, log using loguru to stderr instead of print?
 
 - set up github pages for wiki, generate documents using `pdoc` or `sphinx`??
-    - example usage/tutorials
-        - reading dicom files
-        - preprocessing them
-        

@@ -2,8 +2,8 @@
 Decorators for validating function arguments.
 """
 
-from .datatype import (H5File, H5Group, MaskDict, NumpyArray, NumpyNumber,
-                       DicomDict)
+from .datatype import (DicomDict, H5File, H5Group, MaskDict, NumpyArray,
+                       NumpyNumber)
 from .dict import all_same_keys
 from .numpy import is_ndim
 

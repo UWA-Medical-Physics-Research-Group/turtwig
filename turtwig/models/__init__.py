@@ -1,3 +1,0 @@
-"""
-Various machine learning models.
-"""
