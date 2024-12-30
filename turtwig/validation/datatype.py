@@ -3,7 +3,7 @@ Datatype definitions for validation.
 """
 
 from datetime import date
-from typing import Annotated, Any, Iterable, TypedDict
+from typing import Annotated, Any, TypedDict, get_args, get_origin
 
 import numpy as np
 from pydantic import GetCoreSchemaHandler
@@ -64,7 +64,10 @@ class NumpyArray:
         """
 
         class TypedNumpyArray(cls):
-            type__: type | None = type_
+            # If type is annotated, get first argument (i.e. the wrapped type)
+            type__: type | None = (
+                type_ if not get_origin(type_) is Annotated else get_args(type_)[0]
+            )
 
         TypedNumpyArray.__name__ = f"TypedNumpyArray[{type_}]"
         return TypedNumpyArray
@@ -79,7 +82,7 @@ class NumpyArray:
             if (
                 not hasattr(cls, "type__")  # means cls is not typed
                 or cls.type__ is None  # type: ignore
-                or all(isinstance(i, cls.type__) for i in arr)  # type: ignore
+                or all(isinstance(i, cls.type__) for i in arr.ravel())  # type: ignore
             ):
                 return arr
             raise ValueError(f"All items must be of the type {cls.type__}")  # type: ignore
@@ -102,3 +105,24 @@ class NumpyArray:
                 lambda instance: instance.tolist()
             ),
         )
+
+
+class _NumpyNumberAnnotation:
+    """
+    Pydantic core schema for numpy numbers.
+    """
+
+    @classmethod
+    def __get_pydantic_core_schema__(
+        cls, source_type: Any, handler: GetCoreSchemaHandler
+    ) -> CoreSchema:
+        return core_schema.json_or_python_schema(
+            json_schema=core_schema.is_instance_schema(np.number),
+            python_schema=core_schema.is_instance_schema(np.number),
+            serialization=core_schema.plain_serializer_function_ser_schema(
+                lambda instance: instance
+            ),
+        )
+
+
+NumpyNumber = Annotated[np.number, _NumpyNumberAnnotation]

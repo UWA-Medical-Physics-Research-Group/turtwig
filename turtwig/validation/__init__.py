@@ -2,7 +2,7 @@
 Decorators for validating function arguments.
 """
 
-from .datatype import MaskDict, NumpyArray, PatientScan
+from .datatype import MaskDict, NumpyArray, NumpyNumber, PatientScan
 from .dict import all_same_keys
 from .numpy import is_ndim
 

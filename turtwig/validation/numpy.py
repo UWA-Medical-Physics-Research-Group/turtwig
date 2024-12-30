@@ -21,9 +21,13 @@ def is_ndim(arr: np.ndarray, *, ndim: int | list[int] | tuple[int]) -> np.ndarra
         for any of the dimensions in the list.
     """
     if isinstance(ndim, int):
-        assert len(arr.shape) == ndim
+        assert (
+            len(arr.shape) == ndim
+        ), f"Expected {ndim} dimensions, got {len(arr.shape)}"
     elif isinstance(ndim, list | tuple):
-        assert len(arr.shape) in ndim
+        assert (
+            len(arr.shape) in ndim
+        ), f"Expected {ndim} dimensions, got {len(arr.shape)}"
     else:
         raise TypeError(f"Expected int, list, or tuple, got {type(ndim)}")
     return arr

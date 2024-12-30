@@ -13,7 +13,7 @@ from .common import side_effect
 
 def call_method[
     T
-](method_name: str, pure: bool = True, /, *args, **kwargs) -> Callable[[T], T]:
+](method_name: str, *args, pure: bool = True, **kwargs,) -> Callable[[T], T]:
     """
     Return a function that take an object, calls `method_name` on it, and returns the object
 

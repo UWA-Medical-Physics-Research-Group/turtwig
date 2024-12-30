@@ -51,3 +51,26 @@ class TestNumpyArray:
             func(np.array([1, "a", 3.14]))
         with pytest.raises(ValidationError):
             func(np.array([1, 2, 3.14]))
+
+    # test NumpyArray correctly extract wrapped type from Annotated
+    def test_annotated_type(self):
+        @validate_call()
+        def func(arr: Annotated[np.ndarray, NumpyArray[Annotated[np.int64, "int64"]]]):
+            return arr
+
+        func(np.array([1, 2, 3]))
+
+        with pytest.raises(ValidationError):
+            func(np.array([1, "a", 3.14]))
+
+    def test_nested_array(self):
+        @validate_call()
+        def func(arr: Annotated[np.ndarray, NumpyArray[np.int64]]):
+            return arr
+
+        func(np.array([[[1, 2, 3]], [[4, 5, 6]]]))
+
+        with pytest.raises(ValidationError):
+            func(np.array([[[1, 2, 3, "a"]]]))
+        with pytest.raises(ValidationError):
+            func(np.array([[1, 2, 3, True], [4,4, 5, 6.0]]))
