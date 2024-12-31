@@ -11,11 +11,6 @@ def all_same_keys(dicts: list[dict]) -> list[dict]:
     ----------
     dicts : list[dict]
         List of dictionaries to check.
-
-    Side Effects
-    ------------
-    AssertionError
-        Raised if not all dictionaries have the same keys.
     """
     assert all(dicts[0].keys() == d.keys() for d in dicts)
     return dicts

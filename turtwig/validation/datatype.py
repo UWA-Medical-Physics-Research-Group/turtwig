@@ -13,21 +13,32 @@ from pydantic_core import CoreSchema, core_schema
 MaskDict = dict[Annotated[str, "organ name"], np.ndarray]
 
 
-DicomDict = TypedDict(
-    "DicomDict",
-    {
-        "patient_id": int,
-        "volume": np.ndarray,
-        "dimension_original": tuple[int, int, int],
-        "spacings": tuple[float, float, float],
-        "modality": str,
-        "manufacturer": str,
-        "scanner": str,
-        "study_date": date,
-        "masks": np.ndarray | MaskDict,
-        "organ_ordering": list[str],
-    },
-)
+class DicomDict(TypedDict):
+    """
+    A dictionary containing information about a DICOM scan.
+    """
+
+    patient_id: int
+    """Patient ID."""
+    volume: np.ndarray
+    """DICOM volume."""
+    dimension_original: tuple[int, int, int]
+    """Original dimensions of the volume at the time of loading the .dcm files."""
+    spacings: tuple[float, float, float]
+    """Original spacings of the volume at the time of loading the .dcm files."""
+    modality: str
+    """Modality of the scan, e.g. CT, MR."""
+    manufacturer: str
+    """Manufacturer of the scanner."""
+    scanner: str
+    """Scanner model name."""
+    study_date: date
+    """Date of the scan."""
+    masks: np.ndarray | MaskDict 
+    """Masks for the volume; either a single numpy array with channels for each organ, or a dictionary with the organ names as keys and the masks as values."""
+    organ_ordering: list[str]
+    """Order of the organs in the masks."""
+
 
 
 class NumpyArray:

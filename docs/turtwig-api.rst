@@ -1,10 +1,7 @@
 ``turtwig`` API Reference
-===============
+=========================
 
 API references of public functions and classes in the ``turtwig`` package.
-
-Subpackages
------------
 
 .. toctree::
    :maxdepth: 4

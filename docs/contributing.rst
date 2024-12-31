@@ -53,6 +53,41 @@ development shell with the command
 
         Direnv allow the execution of arbitrary code in the .envrc file. Please examine `.envrc` before enabling it!
 
+Testing
+-------
+
+Run the tests with the command
+
+.. code-block:: bash
+
+    uv run pytest
+
+To create a new test file, create a file with the name ``test_<module_name>.py`` in the ``tests`` directory.
+A template for a test file is shown below:
+
+.. code-block:: python
+
+    import os
+    import sys
+
+    # Add the project directory to the path so that the module can be imported
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    sys.path.append(os.path.realpath(f"{dir_path}/../../../turtwig"))
+
+    from turtwig import some_function
+
+
+    class TestSomeFunction:
+    
+        # MUST start with 'test_'
+        def test_it_does_something_cool(self):
+            # 1. initialise some test input
+            # 2. call some_function with the test input
+            # 3. assert the output is as expected
+            # 4. ???
+            # 5. profit
+
+
 Concepts
 --------
 Many parts of the project are written roughly in the **functional programming** paradigm. Various
@@ -168,3 +203,39 @@ it with ``typing.Annotated[..., pydantic.AfterValidator(my_validator)]``.
     A curried validation function must list all arguments apart from
     the input data as strictly keyword-only for curry to work. I.e. the 
     function signature must have the form ``my_validator(value, *, kwarg1, kwarg2, ...)``.
+
+
+Useful Pre-Commit Hook
+----------------------
+
+Below is a useful sample pre-commit hook that
+
+    1. Dumps ``uv`` dependencies to ``requirements.txt``
+    2. Updates sphinx pages
+    3. Runs pytest
+    4. Runs code formatters (``black``, ``isort``)
+
+.. code:: bash
+    :number-lines:
+
+    #!/usr/bin/env zsh
+
+    set -e # Exit immediately if a command exits with a non-zero status
+
+    echo "Dumping requirements.txt..."
+    if [ -e "requirements.txt" ]; then
+        rm requirements.txt
+    fi
+    uv pip compile pyproject.toml --quiet --output-file requirements.txt
+
+    echo "Updating sphinx pages..."
+    pushd ./docs
+    make html
+    popd
+
+    echo "Running pytest..."
+    uv run black .
+    uv run isort .
+    uv run pytest
+    PYTEST_STATUS=$?  # capture exit status
+    exit $PYTEST_STATUS

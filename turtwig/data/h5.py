@@ -25,17 +25,17 @@ def dict_to_h5(
 ) -> None:
     """
     Serialise a dictionary to an h5 file. Supported types are:
-    - str, int, float: saved as is
-    - date: saved as a string
-    - dict: saved as a group recursively
-    - np.ndarray: saved as a dataset
-    - tuple/list: If all elements are numeric or are numpy arrays,
-      saved as a dataset. Else, saved as a group with indices as keys
-    - None: skipped
+        - ``str, int, float``: saved as is
+        - ``date``: saved as a string
+        - ``dict``: saved as a group recursively
+        - ``numpy.ndarray``: saved as a dataset
+        - ``tuple, list:`` If all elements are numeric or are numpy arrays,
+          saved as a dataset. Else, saved as a group with indices as keys
+        - ``None``: skipped
 
     Parameters
     ----------
-    dict_: dict
+    data: dict
         Dictionary to save. Each value is saved as a dataset or group.
     hf: h5py.File | h5py.Group | str | Path
         H5 file or group to save to. If a string or Path, then the file
