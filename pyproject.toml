@@ -29,7 +29,5 @@ dependencies = [
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.hatch.build.targets.sdist]
-include = [
-  "/turtwig",
-]
+[tool.hatch.build.targets.wheel]
+packages = ["/turtwig"]
