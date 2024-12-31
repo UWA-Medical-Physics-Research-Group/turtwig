@@ -54,14 +54,14 @@ development shell with the command
         Direnv allow the execution of arbitrary code in the .envrc file. Please examine `.envrc` before enabling it!
 
 3. Installing via `pip <https://pip.pypa.io/en/stable/>`_ (``venv``)
-#########################################################
+#####################################################################
 First, create and activate a virtual environment, then install the dependencies with pip:
 
 .. code-block:: bash
+    
     pip -m venv .venv   # Create a virtual environment
     source .venv/bin/activate  # Activate the environment on linux (see online documentation for other systems)
     pip install -r ./requirements.txt
-
 
 
 Testing

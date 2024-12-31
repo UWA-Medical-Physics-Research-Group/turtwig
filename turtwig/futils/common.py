@@ -10,7 +10,7 @@ from .decorator import curry
 
 def star[T](func: Callable[..., T]) -> Callable[..., T]:
     """
-    Returns function: x -> ``func``(*x), i.e. unpacks arguments and pass to `func`
+    Returns function: x -> ``func``(*x), i.e. unpacks arguments and pass to ``func``
 
     Parameters
     ----------
@@ -20,7 +20,7 @@ def star[T](func: Callable[..., T]) -> Callable[..., T]:
     Returns
     -------
     Callable[..., T]
-        Function that unpacks the argument and pass them to `func`
+        Function that unpacks the argument and pass them to ``func``
 
     Examples
     --------
