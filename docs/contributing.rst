@@ -210,10 +210,10 @@ Useful Pre-Commit Hook
 
 Below is a useful sample pre-commit hook that
 
-    1. Dumps ``uv`` dependencies to ``requirements.txt``
-    2. Updates sphinx pages
-    3. Runs pytest
-    4. Runs code formatters (``black``, ``isort``)
+1. Dumps ``uv`` dependencies to ``requirements.txt``
+2. Updates sphinx pages
+3. Runs pytest
+4. Runs code formatters (``black``, ``isort``)
 
 .. code:: bash
     :number-lines:
@@ -233,9 +233,10 @@ Below is a useful sample pre-commit hook that
     make html
     popd
 
-    echo "Running pytest..."
     uv run black .
     uv run isort .
+
+    echo "Running pytest..."
     uv run pytest
     PYTEST_STATUS=$?  # capture exit status
     exit $PYTEST_STATUS

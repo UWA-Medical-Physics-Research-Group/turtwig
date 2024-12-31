@@ -320,7 +320,6 @@ def load_patient_scan(dicom_path: str | Path) -> DicomDict | None:
     }  # type: ignore
 
 
-
 @validate_call()
 def load_all_volumes(dicom_collection_path: str | Path) -> Iterator[np.ndarray]:
     """

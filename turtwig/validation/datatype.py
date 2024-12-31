@@ -34,11 +34,10 @@ class DicomDict(TypedDict):
     """Scanner model name."""
     study_date: date
     """Date of the scan."""
-    masks: np.ndarray | MaskDict 
+    masks: np.ndarray | MaskDict
     """Masks for the volume; either a single numpy array with channels for each organ, or a dictionary with the organ names as keys and the masks as values."""
     organ_ordering: list[str]
     """Order of the organs in the masks."""
-
 
 
 class NumpyArray:

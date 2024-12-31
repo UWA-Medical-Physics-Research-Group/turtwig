@@ -3,10 +3,6 @@ turtwig
 
 Utility functions and starter code for medical data analysis.
 
-- features
-- Installation
-- tutorials
-
 
 Content Overview
 ----------------
