@@ -3,12 +3,12 @@
 Installation
 ============
 
-Options to install `turtwig` as a library.
+Options to install ``turtwig`` as a library.
 
 
 ``uv``
 ------
-Ensure that you've run `uv init` or that a `pyproject.toml` file exists in the current directory. Then, run
+Ensure that you've run ``uv init`` or that a ``pyproject.toml`` file exists in the current directory. Then, run
 
 .. code-block:: bash
 
@@ -18,7 +18,7 @@ Ensure that you've run `uv init` or that a `pyproject.toml` file exists in the c
 
 ``pip``
 -------
-To install the package with pip, run
+To install the package with ``pip``, run
 
 .. code-block:: bash
 

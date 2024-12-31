@@ -19,6 +19,28 @@ def is_ndim(arr: np.ndarray, *, ndim: int | list[int] | tuple[int]) -> np.ndarra
     ndim : int | list[int] | tuple[int]
         Number of dimensions to check for. If a list or tuple, check
         for any of the dimensions in the list.
+    
+    Returns
+    -------
+    np.ndarray
+        The input array.
+
+    Example
+    -------
+    >>> from pydantic import AfterValidator, validate_call
+    >>> from typing import Annotated
+    >>> import numpy as np
+    >>> @validate_call()
+    ... def test(
+    ...     arr: Annotated[np.ndarray, AfterValidator(is_ndim(ndim=2))]
+    ... ):
+    ...     return arr
+    ...
+    >>> test(np.array([[1, 2], [3, 4]]))
+    array([[1, 2],
+           [3, 4]])
+    >>> test(np.array([1, 2, 3])) # Error, expected 2 dimensions, got 1
+    >>> test(np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])) # Error, expected 2 dimensions, got 3
     """
     if isinstance(ndim, int):
         assert (

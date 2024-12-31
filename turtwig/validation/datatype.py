@@ -121,6 +121,24 @@ class NumpyArrayAnnotation:
 class _NumpyNumberAnnotation:
     """
     Pydantic core schema for numpy numbers.
+    
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from pydantic import validate_call
+    >>> from typing import Annotated
+    >>> from turtwig.validation import NumpyArrayAnnotation
+    >>> @validate_call()
+    ... def test(
+    ...     a: Annotated[np.ndarray, NumpyArrayAnnotation[NumpyNumber]]
+    ... ):
+    ...     return a
+    >>> test(np.array([1, 2, 3]))  # no error
+    array([1, 2, 3])
+    >>> test(np.array([1, 2, 3.0]))  # no error
+    array([1., 2., 3.])
+    >>> test(np.array([1, 2, '3']))  # error
+    >>> test(np.array([True, 2, 3]))  # error
     """
 
     @classmethod
@@ -137,7 +155,27 @@ class _NumpyNumberAnnotation:
 
 
 NumpyNumber = Annotated[np.number, _NumpyNumberAnnotation]
+NumpyNumber.__doc__ = """
+Pydantic schema for numpy numbers.
 
+Examples
+--------
+>>> import numpy as np
+>>> from pydantic import validate_call
+>>> from typing import Annotated
+>>> from turtwig.validation import NumpyArrayAnnotation
+>>> @validate_call()
+... def test(
+...     a: Annotated[np.ndarray, NumpyArrayAnnotation[NumpyNumber]]
+... ):
+...     return a
+>>> test(np.array([1, 2, 3]))  # no error
+array([1, 2, 3])
+>>> test(np.array([1, 2, 3.0]))  # no error
+array([1., 2., 3.])
+>>> test(np.array([1, 2, '3']))  # error
+>>> test(np.array([True, 2, 3]))  # error
+"""
 
 class _H5FileAnnotation:
     """
@@ -158,7 +196,23 @@ class _H5FileAnnotation:
 
 
 H5File = Annotated[h5py.File, _H5FileAnnotation]
+H5File.__doc__ = """
+Pydantic schema for h5 files.
 
+Examples
+--------
+>>> import h5py
+>>> from pydantic import validate_call
+>>> from typing import Annotated
+>>> @validate_call()
+... def test(f: H5File):
+...     return f
+...
+>>> with h5py.File('test.h5', 'w') as f:
+...     test(f)  # no error
+...
+>>> test('test.h5')  # error
+"""
 
 class _H5GroupAnnotation:
     """
@@ -179,11 +233,26 @@ class _H5GroupAnnotation:
 
 
 H5Group = Annotated[h5py.Group, _H5GroupAnnotation]
-
+H5Group.__doc__ = """
+Pydantic schema for h5 groups. See ``turtwig.validation.H5File`` for examples.
+"""
 
 class IteratorAnnotation:
     """
     Pydantic core schema for iterators.
+
+    Examples
+    --------
+    >>> from pydantic import validate_call
+    >>> from typing import Annotated
+    >>> @validate_call()
+    ... def test(
+    ...     a: Annotated[Iterator, IteratorAnnotation]
+    ... ):
+    ...     return a
+    >>> test(iter([1, 2, 3]))  # no error
+    <list_iterator object at 0x7f7f3c7b5d00>
+    >>> test([1, 2, 3])  # error
     """
 
     @classmethod

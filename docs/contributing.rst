@@ -99,8 +99,48 @@ A template for a test file is shown below:
             # 5. profit
 
 
-Concepts
---------
+Validating Function Arguments
+-----------------------------
+
+Decorate a function with ``@pydantic.validate_call`` to validate its input arguments. 
+To add a custom validation function ``my_validator``` to specific argument, annotate 
+it with ``typing.Annotated[..., pydantic.AfterValidator(my_validator)]``.
+
+>>> from pydantic import validate_call, AfterValidator
+>>> from typing import Annotated
+>>> 
+>>> def my_validator(value):
+...     """ Ensure that value is positive """
+...     if value < 0:
+...         raise ValueError("Value must be positive")
+...     return value
+... 
+>>> @validate_call()
+... def add(
+...     a: Annotated[float, AfterValidator(my_validator)], 
+...     b: int
+... ) -> float:
+...     return a + b
+...
+>>> add(0.5, 3)
+3.5
+>>> add(-0.5, 3) # ValueError: Value must be positive
+>>> add(4, 3) # ValidationError: Parameter 'a' must be of type 'float'
+
+.. tip::
+
+    See `Pydantic Functional Validators <https://docs.pydantic.dev/latest/api/functional_validators/>`_ for other validators like ``AfterValidator``.
+
+.. admonition:: Curried Validation Functions
+    :class: warning
+
+    A curried validation function must list all arguments apart from
+    the input data as strictly keyword-only for curry to work. I.e. the 
+    function signature must have the form ``my_validator(value, *, kwarg1, kwarg2, ...)``.
+
+
+Functional Programming Concepts
+-------------------------------
 Many parts of the project are written roughly in the **functional programming** paradigm. Various
 concepts related to this paradigm are listed below.
 
@@ -172,48 +212,6 @@ one argument.
     ...
     >>> add2(5)(3)  # ValidationError: Parameter 'b' not provided
 
-
-Validation
-##########
-
-Validating Function Arguments
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Decorate a function with ``@pydantic.validate_call`` to validate its input arguments. 
-To add a custom validation function ``my_validator``` to specific argument, annotate 
-it with ``typing.Annotated[..., pydantic.AfterValidator(my_validator)]``.
-
->>> from pydantic import validate_call, AfterValidator
->>> from typing import Annotated
->>> 
->>> def my_validator(value):
-...     """ Ensure that value is positive """
-...     if value < 0:
-...         raise ValueError("Value must be positive")
-...     return value
-... 
->>> @validate_call()
-... def add(
-...     a: Annotated[float, AfterValidator(my_validator)], 
-...     b: int
-... ) -> float:
-...     return a + b
-...
->>> add(0.5, 3)
-3.5
->>> add(-0.5, 3) # ValueError: Value must be positive
->>> add(4, 3) # ValidationError: Parameter 'a' must be of type 'float'
-
-.. tip::
-
-    See `Pydantic Functional Validators <https://docs.pydantic.dev/latest/api/functional_validators/>`_ for other validators like ``AfterValidator``.
-
-.. admonition:: Curried Validation Functions
-    :class: warning
-
-    A curried validation function must list all arguments apart from
-    the input data as strictly keyword-only for curry to work. I.e. the 
-    function signature must have the form ``my_validator(value, *, kwarg1, kwarg2, ...)``.
 
 
 Useful Pre-Commit Hook
