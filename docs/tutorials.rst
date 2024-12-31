@@ -1,18 +1,20 @@
+.. _tutorials:
+
 Tutorials
 =========
 
-Tutorials and usage examples using functions from `turtwig`.
+Tutorials and usage examples using functions from ``turtwig``.
 
 Working with DICOM Files
 ------------------------
 `DICOM <https://www.dicomstandard.org/>`_ is the standard dataset 
 for medical imaging. Unfortunately, working with DICOM files sucks. 
 Fortunately, most of the (tedious) work have been done. Functions
-from `turtwig.data <turtwig.data.html>`_ will load DICOM files, flip
+from :ref:`turtwig-api.data` will load DICOM files, flip
 the arrays to the correct orientation, make the spacings isotropic,
 and convert the pixel values to Hounsfield Units (HU) for CT scans.
 
-Ensure you have a folder of `.dcm` files, OR a folder of these folders
+Ensure you have a folder of ``.dcm`` files, OR a folder of these folders
 for the example below.
 
 
@@ -51,14 +53,14 @@ for the example below.
 
 
 
-Validation Function Arguments
+Validating Function Arguments
 -----------------------------
 
 Decorate a function with ``@pydantic.validate_call`` to check the type of the 
 input arguments to a function.
 
-To use classes and validation functions from `turtwig.validation <turtwig.validation.html>`_,
-annotate specific parameters using `typing.Annotated`.
+To use classes and validation functions from :ref:`turtwig-api.validation`,
+annotate specific parameters using ``typing.Annotated``.
 
 .. code-block:: python
 

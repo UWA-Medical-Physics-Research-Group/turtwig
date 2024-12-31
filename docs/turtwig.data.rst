@@ -1,3 +1,5 @@
+.. _turtwig-api.data:
+
 ``turtwig.data``
 ====================
 
