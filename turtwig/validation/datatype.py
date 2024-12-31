@@ -3,7 +3,7 @@ Datatype definitions for validation.
 """
 
 from datetime import date
-from typing import Annotated, Any, TypedDict, get_args, get_origin
+from typing import Annotated, Any, Iterator, TypedDict, get_args, get_origin
 
 import h5py
 import numpy as np
@@ -40,13 +40,13 @@ class DicomDict(TypedDict):
     """Order of the organs in the masks."""
 
 
-class NumpyArray:
+class NumpyArrayAnnotation:
     """
     Pydantic core schema for numpy arrays.
 
-    You can either annotate using ``NumpyArray`` for a numpy array
-    of any type, or ``NumpyArray[type]`` for a numpy array of a
-    specific type.
+    You can either annotate using ``Annotation[np.ndarray, NumpyArrayAnnotation]``
+    for a numpy array of any type, or ``Annotated[np.ndarray, NumpyArrayAnnotation[type]]``
+    for a numpy array of a specific type.
 
     Examples
     --------
@@ -55,9 +55,9 @@ class NumpyArray:
     >>> from typing import Annotated
     >>> @validate_call()
     ... def test(
-    ...     a: Annotated[np.ndarray, NumpyArray],
-    ...     b: Annotated[np.ndarray, NumpyArray[np.int64]],
-    ...     c: Annotated[np.ndarray, NumpyArray[np.bool | np.int64]]
+    ...     a: Annotated[np.ndarray, NumpyArrayAnnotation],
+    ...     b: Annotated[np.ndarray, NumpyArrayAnnotation[np.int64]],
+    ...     c: Annotated[np.ndarray, NumpyArrayAnnotation[np.bool | np.int64]]
     ... ):
     ...     return a, b, c
     >>> test(np.array(['a']), np.array(1), np.array([True, 4]))  # no error
@@ -71,17 +71,17 @@ class NumpyArray:
 
     def __class_getitem__(cls, type_: type):  # type: ignore
         """
-        Dynamically create a subclass of NumpyArray with the specified type.
+        Dynamically create a subclass of NumpyArrayAnnotation with the specified type.
         """
 
-        class TypedNumpyArray(cls):
+        class TypedNumpyArrayAnnotation(cls):
             # If type is annotated, get first argument (i.e. the wrapped type)
             type__: type | None = (
                 type_ if not get_origin(type_) is Annotated else get_args(type_)[0]
             )
 
-        TypedNumpyArray.__name__ = f"TypedNumpyArray[{type_}]"
-        return TypedNumpyArray
+        TypedNumpyArrayAnnotation.__name__ = f"TypedNumpyArrayAnnotation[{type_}]"
+        return TypedNumpyArrayAnnotation
 
     @classmethod
     def __get_pydantic_core_schema__(
@@ -179,3 +179,21 @@ class _H5GroupAnnotation:
 
 
 H5Group = Annotated[h5py.Group, _H5GroupAnnotation]
+
+
+class IteratorAnnotation:
+    """
+    Pydantic core schema for iterators.
+    """
+
+    @classmethod
+    def __get_pydantic_core_schema__(
+        cls, source_type: Any, handler: GetCoreSchemaHandler
+    ) -> CoreSchema:
+        return core_schema.json_or_python_schema(
+            json_schema=core_schema.is_instance_schema(Iterator),
+            python_schema=core_schema.is_instance_schema(Iterator),
+            serialization=core_schema.plain_serializer_function_ser_schema(
+                lambda instance: list(instance)
+            ),
+        )

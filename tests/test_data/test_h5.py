@@ -101,6 +101,25 @@ class TestDictToH5:
                     assert patient["modality"][()].decode() == "CT"  # type: ignore
                     assert np.array_equal(patient["masks/organ1"][()], dataset[str(i)]["masks"]["organ1"])  # type: ignore
 
+    def test_save_dict_iterator(self):
+        def iter_dataset():
+            for i in range(2):
+                yield dataset[str(i)]
+
+        with tempfile.NamedTemporaryFile() as tmp:
+            test_path = tmp.name
+
+            it = iter_dataset()
+            dict_to_h5(it, test_path)
+
+            # Verify file exists and contents
+            assert os.path.exists(test_path)
+
+            with h5py.File(test_path, "r") as f:
+                for i in range(2):
+                    patient = f[str(i)]
+                    assert patient["patient_id"][()] == dataset[str(i)]["patient_id"]  # type: ignore
+
 
 class TestDictFromH5:
 

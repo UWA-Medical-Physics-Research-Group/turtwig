@@ -13,16 +13,16 @@ from pydantic import AfterValidator, validate_call
 from turtwig.validation.datatype import NumpyNumber
 
 from ..futils import call_method, curry, star
-from ..validation import NumpyArray, is_ndim
+from ..validation import NumpyArrayAnnotation, is_ndim
 
 
 @curry
 @validate_call()
 def map_interval(
-    array: Annotated[np.ndarray, NumpyArray[NumpyNumber]],
+    array: Annotated[np.ndarray, NumpyArrayAnnotation[NumpyNumber]],
     from_range: tuple[int | float, int | float],
     to_range: tuple[int | float, int | float],
-) -> Annotated[np.ndarray, NumpyArray[np.float64]]:
+) -> Annotated[np.ndarray, NumpyArrayAnnotation[np.float64]]:
     """
     Map values in an ``array`` in range ``from_range`` to ``to_range``
 
@@ -57,8 +57,8 @@ def map_interval(
 
 @validate_call()
 def z_score_scale(
-    array: Annotated[np.ndarray, NumpyArray[NumpyNumber]],
-) -> Annotated[np.ndarray, NumpyArray[np.float64]]:
+    array: Annotated[np.ndarray, NumpyArrayAnnotation[NumpyNumber]],
+) -> Annotated[np.ndarray, NumpyArrayAnnotation[np.float64]]:
     """
     Z-score normalise ``array`` to have mean 0 and standard deviation 1
 
@@ -88,7 +88,9 @@ def z_score_scale(
 @validate_call()
 def make_isotropic(
     array: Annotated[
-        np.ndarray, NumpyArray[NumpyNumber], AfterValidator(is_ndim(ndim=[2, 3]))
+        np.ndarray,
+        NumpyArrayAnnotation[NumpyNumber],
+        AfterValidator(is_ndim(ndim=[2, 3])),
     ],
     spacings: list[int | float] | tuple[int | float],
     method: Literal["nearest", "linear", "b_spline", "gaussian"] = "linear",
@@ -168,7 +170,7 @@ def make_isotropic(
 
 @validate_call()
 def bounding_box_3d(
-    arr: Annotated[np.ndarray, NumpyArray, AfterValidator(is_ndim(ndim=3))],
+    arr: Annotated[np.ndarray, NumpyArrayAnnotation, AfterValidator(is_ndim(ndim=3))],
 ) -> tuple[int, int, int, int, int, int]:
     """
     Compute bounding box of a 3D binary array
@@ -205,7 +207,7 @@ def bounding_box_3d(
 
 @curry
 def crop_to_bbox_3d(
-    arr: Annotated[np.ndarray, NumpyArray, AfterValidator(is_ndim(ndim=3))],
+    arr: Annotated[np.ndarray, NumpyArrayAnnotation, AfterValidator(is_ndim(ndim=3))],
     thresh: float | None = None,
 ):
     """

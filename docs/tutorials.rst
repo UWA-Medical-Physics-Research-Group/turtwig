@@ -51,6 +51,25 @@ for the example below.
         - ``pixel_array``: the actual image data, *often* in the `LPS orientation <https://www.slicer.org/wiki/Coordinate_systems>`_
         - ``Modality``: Imaging modality, e.g. CT, MR
 
+.. admonition:: TIP: Saving Your Data to HDF5 Format
+    :class: tip
+
+    As opposed to saving the loaded DICOM dictionaries as pickle files,
+    it's better to save them in the `HDF5 <https://www.hdfgroup.org/solutions/hdf5/>`_ 
+    format which offers better compression and extremely faster read/write
+    speeds. For example,
+
+    .. code-block:: python
+
+        from turtwig.data import load_all_patient_scans, dict_to_h5
+        import h5py
+
+        scans = load_all_patient_scans("path/to/dicom/collection/folder")
+        dict_to_h5(scans, "path/to/save/hdf5/file.h5")
+
+        with h5py.File("path/to/save/hdf5/file.h5", "r") as f:
+            print(f.keys())  # ['Patient0', 'Patient1', ...]
+            print(f['Patient0'].keys())  # ['volume', 'masks', ...]
 
 
 Validating Function Arguments
@@ -67,13 +86,13 @@ annotate specific parameters using ``typing.Annotated``.
     from pydantic import validate_call, AfterValidator
     from typing import Annotated
     import numpy as np
-    from turtwig.validation import is_ndim, NumpyArray
+    from turtwig.validation import is_ndim, NumpyArrayAnnotation
 
     # Check that 'a' is 1) a numpy array, 2) have 3 dimensions
-    # Note that np.ndarray is not supported by pydantic, so we need NumpyArray
+    # Note that np.ndarray is not supported by pydantic, so we need NumpyArrayAnnotation
     @validate_call()
     def test(
-        a: Annotated[np.ndarray, NumpyArray, AfterValidator(is_ndim(ndim=3))],
+        a: Annotated[np.ndarray, NumpyArrayAnnotation, AfterValidator(is_ndim(ndim=3))],
         b: int
     ) -> np.ndarray:
         return a, b

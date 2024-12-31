@@ -4,7 +4,7 @@ Functions for serialising and deserialising data to and from HDF5 files.
 
 from datetime import date
 from pathlib import Path
-from typing import Any
+from typing import Annotated, Any, Iterator
 
 import h5py
 import numpy as np
@@ -12,15 +12,29 @@ from loguru import logger
 from pydantic import validate_call
 
 from ..futils import curry
-from ..validation import H5File, H5Group, NumpyArray
+from ..validation import (H5File, H5Group, IteratorAnnotation,
+                          NumpyArrayAnnotation)
 
-SUPPORTED_TYPES = str | int | float | date | dict | NumpyArray | tuple | list | None
+SUPPORTED_TYPES = (
+    str
+    | int
+    | float
+    | date
+    | dict
+    | Annotated[np.ndarray, NumpyArrayAnnotation]
+    | tuple
+    | list
+    | None
+)
 
 
 @curry
 @validate_call()
 def dict_to_h5(
-    data: dict[str, SUPPORTED_TYPES],
+    data: (
+        dict[str, SUPPORTED_TYPES]
+        | Annotated[Iterator[dict[str, SUPPORTED_TYPES]], IteratorAnnotation]
+    ),
     hf: H5File | H5Group | str | Path,
 ) -> None:
     """
@@ -31,6 +45,7 @@ def dict_to_h5(
         - ``numpy.ndarray``: saved as a dataset
         - ``tuple, list:`` If all elements are numeric or are numpy arrays,
           saved as a dataset. Else, saved as a group with indices as keys
+        - ``Iterator[dict]``: saved as a group with indices as keys
         - ``None``: skipped
 
     Parameters
@@ -44,6 +59,11 @@ def dict_to_h5(
     if isinstance(hf, str | Path):
         with h5py.File(hf, "a") as hf:
             dict_to_h5(data, hf)
+        return
+
+    if isinstance(data, Iterator):
+        for i, d in enumerate(data):
+            dict_to_h5(d, hf.create_group(str(i)))
         return
 
     for key, val in data.items():

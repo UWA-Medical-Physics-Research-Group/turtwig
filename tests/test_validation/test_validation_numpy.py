@@ -9,7 +9,7 @@ from pydantic import AfterValidator, ValidationError, validate_call
 dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.realpath(f"{dir_path}/../../../turtwig"))
 
-from turtwig.validation import NumpyArray, is_ndim
+from turtwig.validation import NumpyArrayAnnotation, is_ndim
 
 
 class TestIsNdim:
@@ -31,7 +31,9 @@ class TestIsNdim:
     def test_validate_using_pydantic(self):
         @validate_call()
         def func(
-            arr: Annotated[np.ndarray, NumpyArray, AfterValidator(is_ndim(ndim=3))]
+            arr: Annotated[
+                np.ndarray, NumpyArrayAnnotation, AfterValidator(is_ndim(ndim=3))
+            ]
         ):
             return arr
 
@@ -49,7 +51,9 @@ class TestIsNdim:
     def test_multiple_ndims(self):
         @validate_call()
         def func(
-            arr: Annotated[np.ndarray, NumpyArray, AfterValidator(is_ndim(ndim=[2, 5]))]
+            arr: Annotated[
+                np.ndarray, NumpyArrayAnnotation, AfterValidator(is_ndim(ndim=[2, 5]))
+            ]
         ):
             return arr
 

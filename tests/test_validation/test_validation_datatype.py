@@ -9,16 +9,16 @@ from pydantic import ValidationError, validate_call
 dir_path = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.realpath(f"{dir_path}/../../../turtwig"))
 
-from turtwig.validation import NumpyArray
+from turtwig.validation import NumpyArrayAnnotation
 
 
-class TestNumpyArray:
+class TestNumpyArrayAnnotation:
 
     # Validate numpy array with no type constraints
     def test_validate_untyped_array(self):
 
         @validate_call()
-        def func(arr: Annotated[np.ndarray, NumpyArray]) -> np.ndarray:
+        def func(arr: Annotated[np.ndarray, NumpyArrayAnnotation]) -> np.ndarray:
             return arr
 
         func(np.array([1, "a", 3.14]))
@@ -30,7 +30,7 @@ class TestNumpyArray:
     def test_validate_typed_array_with_wrong_type(self):
 
         @validate_call()
-        def func(arr: Annotated[np.ndarray, NumpyArray[np.int64]]):
+        def func(arr: Annotated[np.ndarray, NumpyArrayAnnotation[np.int64]]):
             return arr
 
         with pytest.raises(ValidationError):
@@ -41,7 +41,7 @@ class TestNumpyArray:
     def test_union_type(self):
 
         @validate_call()
-        def func(arr: Annotated[np.ndarray, NumpyArray[np.int64 | np.bool]]):
+        def func(arr: Annotated[np.ndarray, NumpyArrayAnnotation[np.int64 | np.bool]]):
             return arr
 
         func(np.array([1, 2, 3]))
@@ -52,10 +52,14 @@ class TestNumpyArray:
         with pytest.raises(ValidationError):
             func(np.array([1, 2, 3.14]))
 
-    # test NumpyArray correctly extract wrapped type from Annotated
+    # test NumpyArrayAnnotation correctly extract wrapped type from Annotated
     def test_annotated_type(self):
         @validate_call()
-        def func(arr: Annotated[np.ndarray, NumpyArray[Annotated[np.int64, "int64"]]]):
+        def func(
+            arr: Annotated[
+                np.ndarray, NumpyArrayAnnotation[Annotated[np.int64, "int64"]]
+            ]
+        ):
             return arr
 
         func(np.array([1, 2, 3]))
@@ -65,7 +69,7 @@ class TestNumpyArray:
 
     def test_nested_array(self):
         @validate_call()
-        def func(arr: Annotated[np.ndarray, NumpyArray[np.int64]]):
+        def func(arr: Annotated[np.ndarray, NumpyArrayAnnotation[np.int64]]):
             return arr
 
         func(np.array([[[1, 2, 3]], [[4, 5, 6]]]))
