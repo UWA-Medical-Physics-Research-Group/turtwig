@@ -1,5 +1,7 @@
-turtwig package
+``turtwig`` API Reference
 ===============
+
+API references of public functions and classes in the ``turtwig`` package.
 
 Subpackages
 -----------
@@ -8,11 +10,8 @@ Subpackages
    :maxdepth: 4
 
    turtwig.data
-   turtwig.futils
    turtwig.validation
-
-Module contents
----------------
+   turtwig.futils
 
 .. automodule:: turtwig
    :members:

@@ -10,7 +10,7 @@ from .decorator import curry
 
 def star[T](func: Callable[..., T]) -> Callable[..., T]:
     """
-    Returns function: x -> `func`(*x), i.e. unpacks arguments and pass to `func`
+    Returns function: x -> ``func``(*x), i.e. unpacks arguments and pass to `func`
 
     Parameters
     ----------
@@ -36,12 +36,12 @@ def star[T](func: Callable[..., T]) -> Callable[..., T]:
 @curry
 def starmap[T](func: Callable[..., T], iterable: Iterable[tuple[Any]]) -> Iterator[T]:
     """
-    Map non-unary function `func(a, b, ...)` over the elements of `iterable`.
+    Map non-unary function ``func(a, b, ...)`` over the elements of ``iterable``.
 
-    Used this instead of `map` when argument parameters have already been
+    Used this instead of ``map`` when argument parameters have already been
     “pre-zipped” into tuples.
 
-    Curried version of `itertools.starmap`.
+    Curried version of ``itertools.starmap``.
 
     Parameters
     ----------
@@ -53,7 +53,7 @@ def starmap[T](func: Callable[..., T], iterable: Iterable[tuple[Any]]) -> Iterat
     Returns
     -------
     Iterator[T]
-        Iterator of results of calling `func` on each element of `iterable`
+        Iterator of results of calling ``func`` on each element of ``iterable``
 
     Examples
     --------
@@ -71,9 +71,9 @@ def starfilter(
     func: Callable[..., bool], iterable: Iterable[tuple[Any, ...]]
 ) -> Iterator[tuple[Any, ...]]:
     """
-    Filter elements of `iterable` using non-unary function `func(a, b, ...)`
+    Filter elements of ``iterable`` using non-unary function ``func(a, b, ...)``
 
-    Used this instead of `filter` when argument parameters have already been
+    Used this instead of ``filter`` when argument parameters have already been
     “pre-zipped” into tuples.
 
     Parameters
@@ -86,7 +86,7 @@ def starfilter(
     Returns
     -------
     Iterator[tuple[Any, ...]]
-        Iterator of elements of `iterable` for which `func` returns True
+        Iterator of elements of ``iterable`` for which ``func`` returns True
 
     Examples
     --------
@@ -104,21 +104,21 @@ def iterate_while[
     T, R
 ](func: Callable[[T], R], pred: Callable[[T | R], bool], initial: T) -> R | T:
     """
-    Repeatedly apply `func` to a value until `pred(value)` is false
+    Repeatedly apply ``func`` to a value until ``pred(value)`` is false
 
     Parameters
     ----------
-    `func` : Callable[[T], R]
+    func : Callable[[T], R]
         Function to be called repeatedly
     pred : Callable[[T | R], bool]
-        Function that takes the output of `func` and returns a boolean
+        Function that takes the output of ``func`` and returns a boolean
     initial : T
         Initial value to be passed to `func`
 
     Returns
     -------
     R | T
-        Output of `func` when condition is met
+        Output of ``func`` when condition is met
 
     Examples
     --------
@@ -137,17 +137,17 @@ def iterate_while[
 @curry
 def side_effect[T](func: Callable[..., Any], val: T, pass_val: bool = False) -> T:
     """
-    Perform side effect by calling `func` and let `val` pass through
+    Perform side effect by calling ``func`` and let ``val`` pass through
 
     Parameters
     ----------
     func : Callable
-        Function to be called, cannot take any arguments if `pass_val` is False,
-        otherwise must take `val` as its only argument
+        Function to be called, cannot take any arguments if ``pass_val`` is False,
+        otherwise must take ``val`` as its only argument
     val : T
         Value to be returned
     pass_val : bool
-        Whether to pass `val` to `func`
+        Whether to pass ``val`` to `func`
 
     Returns
     -------

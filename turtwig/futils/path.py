@@ -57,12 +57,12 @@ def generate_full_paths(
     root: str
         Root directory to concatenate onto paths
     path_generator: Callable
-        Function that take `root` as input and returns a generator of paths
+        Function that take ``root`` as input and returns a generator of paths
 
     Returns
     -------
     Generator[str, None, None]
-        Generator of full paths by appending `root` to paths generated
+        Generator of full paths by appending ``root`` to paths generated
         by `path_generator`
 
     Example

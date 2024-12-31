@@ -24,7 +24,7 @@ def merge_with_reduce[
     """
     Reductively merge a list of dictionaries with the same keys into a single dictionary.
 
-    Reduced version of `toolz.merge_with`.
+    Reduced version of ``toolz.merge_with``.
 
     Parameters
     ----------

@@ -34,8 +34,8 @@ class NumpyArray:
     """
     Pydantic core schema for numpy arrays.
 
-    You can either annotate using `NumpyArray` for a numpy array
-    of any type, or `NumpyArray[type]` for a numpy array of a
+    You can either annotate using ``NumpyArray`` for a numpy array
+    of any type, or ``NumpyArray[type]`` for a numpy array of a
     specific type.
 
     Examples

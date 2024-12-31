@@ -24,14 +24,14 @@ def map_interval(
     to_range: tuple[int | float, int | float],
 ) -> Annotated[np.ndarray, NumpyArray[np.float64]]:
     """
-    Map values in an `array` in range `from_range` to `to_range`
+    Map values in an ``array`` in range ``from_range`` to ``to_range``
 
     Parameters
     ----------
     array : np.ndarray
         Array with numeric elements to map
     from_range : tuple[int | float, int | float]
-        Range of values in `array`, a tuple of (min, max) values
+        Range of values in ``array``, a tuple of (min, max) values
     to_range : tuple[int | float, int | float]
         Range of values to map to, a tuple of (min, max) values
 
@@ -60,7 +60,7 @@ def z_score_scale(
     array: Annotated[np.ndarray, NumpyArray[NumpyNumber]],
 ) -> Annotated[np.ndarray, NumpyArray[np.float64]]:
     """
-    Z-score normalise `array` to have mean 0 and standard deviation 1
+    Z-score normalise ``array`` to have mean 0 and standard deviation 1
 
     Z-score normalisation is calculated as (x - mean) / std
 
@@ -214,11 +214,11 @@ def crop_to_bbox_3d(
     Parameters
     ----------
     arr : np.ndarray
-        3D array to crop. Must be be binart if `thresh` is None.
+        3D array to crop. Must be be binart if ``thresh`` is None.
     thresh : float, optional
         Threshold value to apply to the array before cropping if provided. If
-        None, no thresholding is applied and `arr` is assumed to be binary. If
-        provided, values greater than `thresh` are considered as True.
+        None, no thresholding is applied and ``arr`` is assumed to be binary. If
+        provided, values greater than ``thresh`` are considered as True.
 
     Returns
     -------

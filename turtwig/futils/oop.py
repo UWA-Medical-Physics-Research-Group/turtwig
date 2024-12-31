@@ -15,7 +15,7 @@ def call_method[
     T
 ](method_name: str, *args, pure: bool = True, **kwargs,) -> Callable[[T], T]:
     """
-    Return a function that take an object, calls `method_name` on it, and returns the object
+    Return a function that take an object, calls ``method_name`` on it, and returns the object
 
     Parameters
     ----------
@@ -30,7 +30,7 @@ def call_method[
     Returns
     -------
     Callable[[T], T]
-        Unary Function that takes an object, calls `method_name` on it, and
+        Unary Function that takes an object, calls ``method_name`` on it, and
         returns the object
 
     Examples

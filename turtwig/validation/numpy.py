@@ -10,7 +10,7 @@ from ..futils import curry
 @curry
 def is_ndim(arr: np.ndarray, *, ndim: int | list[int] | tuple[int]) -> np.ndarray:
     """
-    Assert that `arr` has `ndim` dimensions.
+    Assert that ``arr`` has ``ndim`` dimensions.
 
     Parameters
     ----------

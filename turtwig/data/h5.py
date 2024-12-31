@@ -75,7 +75,7 @@ def dict_from_h5(hf: H5File | H5Group | str | Path) -> dict[str, Any]:
     Load a h5 file as a dictionary.
 
     WARNING: this loads the entire H5 file at once. To take advantage
-    of lazy loading, use the `h5py` library directly.
+    of lazy loading, use the ``h5py`` library directly.
 
     Parameters
     ----------

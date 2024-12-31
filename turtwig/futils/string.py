@@ -17,11 +17,11 @@ def capture_placeholders(
     s: str, placeholders: List[str], re_pattern: str = r".*?"
 ) -> str:
     """
-    Replace placeholders in a string `s` with `"(re_pattern)"`
+    Replace placeholders in a string ``s`` with `"(re_pattern)"`
 
     Placeholders are strings in the form of ``"{placeholder}"``. They can be any
     combination of numbers, characters, and underscore. Placeholders in `s`
-    but not in the list of `placeholders` will not be encased in parentheses
+    but not in the list of ``placeholders`` will not be encased in parentheses
     (i.e., not in a capturing group) but will still be replaced.
 
     Parameters
@@ -37,7 +37,7 @@ def capture_placeholders(
     Returns
     -------
     str
-        String with placeholders replaced by the specified `re_pattern`.
+        String with placeholders replaced by the specified ``re_pattern``.
 
     Example
     -------

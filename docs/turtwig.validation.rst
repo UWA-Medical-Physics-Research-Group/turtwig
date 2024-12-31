@@ -1,8 +1,5 @@
-turtwig.validation package
+``turtwig.validation``
 ==========================
-
-Module contents
----------------
 
 .. automodule:: turtwig.validation
    :members:

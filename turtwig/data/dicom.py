@@ -80,7 +80,7 @@ def _get_uniform_spacing(
     dicom_files: Iterable[dicom.Dataset],
 ) -> tuple[float, float, float] | None:
     """
-    Return spacings from `dicom_files` if they are the same across all DICOM files, else None
+    Return spacings from ``dicom_files`` if they are the same across all DICOM files, else None
     """
     # Check that each spacing in each axis is the same
     is_uniform = lambda spacings: all(
@@ -105,7 +105,7 @@ def _get_uniform_spacing(
 @validate_call()
 def _get_dicom_slices(dicom_path: str | Path) -> Iterator[dicom.Dataset]:
     """
-    Return all DICOM files in `dicom_path` containing .dcm files
+    Return all DICOM files in ``dicom_path`` containing .dcm files
     """
     return tz.pipe(
         dicom_path,
@@ -118,7 +118,7 @@ def _get_dicom_slices(dicom_path: str | Path) -> Iterator[dicom.Dataset]:
 @validate_call()
 def _get_ct_image_slices(dicom_path: str | Path) -> Iterable[dicom.Dataset]:
     """
-    Return all CT image slices from `dicom_path` in slice order
+    Return all CT image slices from ``dicom_path`` in slice order
     """
     return tz.pipe(
         dicom_path,
@@ -137,7 +137,7 @@ def _load_roi_mask(
     rt_struct: rt_utils.RTStruct,
 ) -> np.ndarray | None:
     """
-    Return ROI mask given `name` in `rt_struct`, else None if exception occurs
+    Return ROI mask given ``name`` in ``rt_struct``, else None if exception occurs
 
     Just a functional wrapper around rt_struct.get_roi_mask_by_name
     """
@@ -175,7 +175,7 @@ def _load_rt_structs(dicom_path: str | Path) -> Iterator[rt_utils.RTStruct]:
 @validate_call()
 def load_volume(dicom_path: str | Path) -> np.ndarray | None:
     """
-    Load 3D volume of shape (H, W, D) from DICOM files in `dicom_path`
+    Load 3D volume of shape (H, W, D) from DICOM files in ``dicom_path``
 
     Returned volume will have each 2D slice's width increase from left to
     right and height from top to bottom. The depth of the volume will
@@ -272,8 +272,8 @@ def load_patient_scan(dicom_path: str | Path) -> DicomDict | None:
     top to bottom. The depth of the arrays will increase from top to bottom
     (head to feet). The volume is in Hounsfield units (HU).
 
-    None is returned if no organ masks are found. Use `load_volume` and
-    `load_mask` if only one of the volume or mask is available.
+    None is returned if no organ masks are found. Use ``load_volume`` and
+    ``load_mask`` if only one of the volume or mask is available.
 
     Parameters
     ----------
@@ -447,7 +447,7 @@ def purge_dicom_dir(dicom_dir: str | Path, prog_bar: bool = True) -> None:
     WARNING: This searches through all subdirectories as well!
 
     This is necessary before loading masks from rt_struct files as
-    `rt_utils.RTStructBuilder.create_from` may try to use e.g. array dimensions
+    ``rt_utils.RTStructBuilder.create_from`` may try to use e.g. array dimensions
     in dose plans which will be different from actual array dimensions in the
     CT image series -> hence an array broadcasting error.
     See https://github.com/qurit/rt-utils/issues/62
@@ -462,7 +462,7 @@ def purge_dicom_dir(dicom_dir: str | Path, prog_bar: bool = True) -> None:
     Side Effects
     ------------
     Removes all .dcm files that are not part of a CT image series or RT struct
-    in `dicom_dir`.
+    in ``dicom_dir``.
     """
     tz.pipe(
         dicom_dir,
@@ -499,12 +499,12 @@ def compute_dataset_stats(
     -------
     dict[str, dict[str, np.ndarray | set[str]]]
         Dictionary containing the keys:
-          - `"dimension_original"`: Mean dimensions of the original volumes
+          - ``"dimension_original"``: Mean dimensions of the original volumes
             when they were loaded
-          - `"dimension_actual"`: Mean dimensions of the volumes
-          - `"spacings"`: Mean spacings of the volumes
-          - `"manufacturer"`: Set of manufacturers for the scanners
-          - `"scanner"`: Set of scanner names
+          - ``"dimension_actual"``: Mean dimensions of the volumes
+          - ``"spacings"``: Mean spacings of the volumes
+          - ``"manufacturer"``: Set of manufacturers for the scanners
+          - ``"scanner"``: Set of scanner names
     """
     return tz.pipe(
         dataset,

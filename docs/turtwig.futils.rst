@@ -1,8 +1,5 @@
-turtwig.futils package
+``turtwig.futils``
 ======================
-
-Module contents
----------------
 
 .. automodule:: turtwig.futils
    :members:

@@ -1,8 +1,5 @@
-turtwig.data package
+``turtwig.data``
 ====================
-
-Module contents
----------------
 
 .. automodule:: turtwig.data
    :members:

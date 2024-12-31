@@ -12,15 +12,15 @@ from toolz import curry as _curry
 
 def curry[T](func: Callable[..., T], fallback: bool = False) -> Any:
     """
-    A curried function `func` can be partially parameterised.
+    A curried function ``func`` can be partially parameterised.
 
     If a curried function is passed only some of its arguments, a new
     function is returned with those arguments filled in. The new
     function can be called with the remaining arguments later on.
 
     Evaluation of the function only occurs when all mandatory arguments
-    are provided. Unlike `toolz.curry` and similar libraries, this
-    function does not use `functools.partial` if `fallback=False`,
+    are provided. Unlike ``toolz.curry`` and similar libraries, this
+    function does not use ``functools.partial`` if ``fallback=False``,
     meaning decorators of the wrapped function will only be applied
     once all mandatory arguments are provided. This means, e.g. a
     decorator that validates the arguments to a function will not throw
@@ -33,8 +33,8 @@ def curry[T](func: Callable[..., T], fallback: bool = False) -> Any:
     func : Callable
         The function to curry
     fallback : bool
-        If `True`, fallback on `toolz.curry` if `curry` fails to extract
-        parameters from `func`. This is useful for built-in CPython functions.
+        If ``True``, fallback on ``toolz.curry`` if ``curry`` fails to extract
+        parameters from ``func``. This is useful for built-in CPython functions.
 
     Returns
     -------
@@ -44,13 +44,13 @@ def curry[T](func: Callable[..., T], fallback: bool = False) -> Any:
 
     Caveats
     -------
-    - If you use the curried function `func(a, b)` with inputs `func(a=2)(5)`, the
-      value `5` will the fill the first positional argument `a`, and you'll get
-      a `ValueError` for duplicate values because `a` is also filled by the
-      keyword argument `a=2`. This is because `func(a=2)(5)` is equivalent to
-      `func(5, a=2)` which will throw an error for non-curried functions as well.
+    - If you use the curried function ``func(a, b)`` with inputs ``func(a=2)(5)``, the
+      value ``5`` will the fill the first positional argument ``a``, and you'll get
+      a ``ValueError`` for duplicate values because ``a`` is also filled by the
+      keyword argument ``a=2``. This is because ``func(a=2)(5)`` is equivalent to
+      ``func(5, a=2)`` which will throw an error for non-curried functions as well.
     - Built-in CPython functions are not supported by the `inspect`
-      module. Set `fallback=True` to curry those functions using `toolz.curry`
+      module. Set ``fallback=True`` to curry those functions using `toolz.curry`
       instead.
 
     Example
@@ -78,7 +78,7 @@ def curry[T](func: Callable[..., T], fallback: bool = False) -> Any:
         if fallback:
             return toolz_curry
         raise ValueError(
-            f"Cannot extract parameters from function {func}. Use `fallback=True` to use `toolz.curry` instead."
+            f"Cannot extract parameters from function {func}. Use fallback=True to use toolz.curry instead."
         )
 
     required_args = tz.pipe(
