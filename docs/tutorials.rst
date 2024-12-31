@@ -1,6 +1,8 @@
 Tutorials
 =========
 
+Tutorials and usage examples using functions from `turtwig`.
+
 Working with DICOM Files
 ------------------------
 `DICOM <https://www.dicomstandard.org/>`_ is the standard dataset 

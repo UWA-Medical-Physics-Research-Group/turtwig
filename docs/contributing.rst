@@ -27,6 +27,16 @@ file defines project dependencies and is used to create a development shell. Ins
 following the `Nix installation guide <https://nixos.org/download/>`_. Then, start a 
 development shell with the command
 
+3. Installing via `pip <https://pip.pypa.io/en/stable/>`_ (``venv``)
+#########################################################
+First, create and activate a virtual environment, then install the dependencies with pip:
+
+.. code-block:: bash
+    pip -m venv .venv   # Create a virtual environment
+    source .venv/bin/activate  # Activate the environment on linux (see online documentation for other systems)
+    pip install -r ./requirements.txt
+
+
 .. code-block:: bash
 
     # Enable experimental features `nix-command` and `flakes`, then run `develop`
