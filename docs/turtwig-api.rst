@@ -6,7 +6,7 @@
 API references of public functions and classes in the ``turtwig`` package.
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    turtwig.data
    turtwig.validation
