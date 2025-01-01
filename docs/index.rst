@@ -10,6 +10,7 @@ Content Overview
    :maxdepth: 2
 
    installation
+   nix-templates
    tutorials
    contributing
    turtwig-api

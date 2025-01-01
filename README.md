@@ -1,5 +1,5 @@
 # turtwig
-Utility library and starter code for medical data analysis. See [documentations](https://uwa-medical-physics-research-group.github.io/turtwig/).
+Utility library and starter code for medical data analysis. See documentations [here](https://uwa-medical-physics-research-group.github.io/turtwig/).
 
 
 ## Installation
@@ -19,13 +19,16 @@ pip install https://github.com/UWA-Medical-Physics-Research-Group/turtwig/releas
 ```
 
 
+### Nix Templates
+You can quickly initialise a new project using the available templates if you have installed [Nix](https://nixos.org/). Run the command
 
-### Tutorials (move to wiki)
+```bash
+# Or, run " nix flake init -t ..." if experimental features are enabled already
+nix --extra-experimental-features flakes flake init -t github:UWA-Medical-Physics-Research-Group/turtwig#<template-name>
+```
 
-- Template with NIIIIX
+| `<template-name>` | Description |
+| --- | --- |
+| `python312` | Initialise a project with Python 3.12.7, uv, and `turtwig` installed |
 
-# TODOS:
-- `turtwig.metrics`? need to install torch and that's biiiiig
-    - `classification`
-    - `loss`
-    - `uncertainty` + `risk`
+(wow that's a lot of templates)
