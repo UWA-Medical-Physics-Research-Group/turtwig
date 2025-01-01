@@ -155,7 +155,7 @@ Pipe
 >>> pipe(
 ...     [3, 4],   # value to be passed along
 ...     lambda lst: lst * 4,
-...     identity if do_nothing else concat,   # tz.identity will be called here
+...     identity if do_nothing else concat,   # identity will be called here
 ...     curried.get(5),  # get(5) is still a FUNCTION, see "curry" below
 ...     str,
 ... )
@@ -238,9 +238,8 @@ Below is a useful sample pre-commit hook for ``.git/hooks/pre-commit`` that
     uv pip compile pyproject.toml --quiet --output-file requirements.txt
 
     echo "Updating sphinx pages..."
-    pushd ./docs
-    make html
-    popd
+    make -C docs clean
+    make -C docs html
 
     uv run black .
     uv run isort .
