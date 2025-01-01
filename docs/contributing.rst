@@ -29,8 +29,9 @@ development shell with the command
 
 .. code-block:: bash
 
-    # Enable experimental features `nix-command` and `flakes`, then run `develop`
-    # Or if already enabled, just run `nix develop`
+    # Run if experimental features are enabled
+    nix develop
+    # Run if experimental features are not enabled
     nix --extra-experimental-features nix-command --extra-experimental-features flakes develop
     # you can now run `uv run python ...` etc
 
@@ -172,7 +173,7 @@ A "curried" function (decorated with ``@curry``) can be called with
 If not all arguments are provided, a *new function* is returned which
 can be called with the remaining arguments.
 
-All functions in `turtwig` are curried, excluding those that only take in
+All functions in ``turtwig`` are curried, excluding those that only take in
 one argument.
 
 >>> from turtwig.futils import curry

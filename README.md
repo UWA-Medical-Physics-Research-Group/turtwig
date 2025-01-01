@@ -4,11 +4,13 @@ Utility library and starter code for medical data analysis. See documentations [
 
 ## Installation
 
+Install via **one** of the options below
+
 ### `uv`
 Ensure that you’ve run `uv init` or that a `pyproject.toml` file exists in the current directory. Then, run
 
 ```bash
-uv add "turtwig @ git+https://github.com/UWA-Medical-Physics-Research-Group/turtwig/releases/latest/download/turtwig-0.1.0-py3-none-any.whl"
+uv add "turtwig @ git+https://github.com/UWA-Medical-Physics-Research-Group/turtwig"
 ```
 
 ### `pip`
@@ -20,15 +22,22 @@ pip install https://github.com/UWA-Medical-Physics-Research-Group/turtwig/releas
 
 
 ### Nix Templates
-You can quickly initialise a new project using the available templates if you have installed [Nix](https://nixos.org/). Run the command
+You can quickly initialise a new Python 3.12.7 project if you have installed [Nix](https://nixos.org/). Initialise a folder for your project, `cd` into it and run
 
 ```bash
-# Or, run " nix flake init -t ..." if experimental features are enabled already
-nix --extra-experimental-features flakes flake init -t github:UWA-Medical-Physics-Research-Group/turtwig#<template-name>
+# If experimental features are enabled
+nix flake init -t git+https://github.com/UWA-Medical-Physics-Research-Group/turtwig.git#python312
+
+# if experimental features are NOT enabled
+nix --extra-experimental-features flakes flake init -t git+https://github.com/UWA-Medical-Physics-Research-Group/turtwig.git#python312
 ```
 
-| `<template-name>` | Description |
-| --- | --- |
-| `python312` | Initialise a project with Python 3.12.7, uv, and `turtwig` installed |
+Then, run **one** of the commands below to install `turtwig`
 
-(wow that's a lot of templates)
+```bash
+# remember to add --extra-experimental-features flags if they are not enabled
+nix develop -c uv sync  # use if uv is NOT installed, OR you want to use nix still
+uv sync   # use if uv IS installed
+```
+
+See the list of templates [here](file:///home/tin/Documents/UWA/turtwig/docs/_build/html/nix-templates.html).

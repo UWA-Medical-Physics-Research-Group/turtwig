@@ -5,12 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12.7"
 dependencies = [
-    "turtwig>=0.1.0"
+    "turtwig",
 ]
 
 [tool.uv.sources]
-turtwig = { index = "turtwig" }
-
-[[tool.uv.index]]
-name = "turtwig"
-url = "https://github.com/UWA-Medical-Physics-Research-Group/turtwig/releases/latest/download/turtwig-0.1.0-py3-none-any.whl"
+turtwig = { git = "https://github.com/UWA-Medical-Physics-Research-Group/turtwig" }
