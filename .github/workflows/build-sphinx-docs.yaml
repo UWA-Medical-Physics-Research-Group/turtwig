@@ -48,7 +48,7 @@ jobs:
             - name: Force push to gh-pages
               uses: ad-m/github-push-action@master
               with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
+                token: ${{ secrets.PAT }}
                 branch: gh-pages
                 force: true
                 directory: ./docs/_build/html
