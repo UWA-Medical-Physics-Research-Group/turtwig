@@ -13,4 +13,4 @@ turtwig = { index = "turtwig" }
 
 [[tool.uv.index]]
 name = "turtwig"
-url = "https://github.com/UWA-Medical-Physics-Research-Group/turtwig/releases/download/v2024.12.31/turtwig-0.1.0-py3-none-any.whl"
+url = "https://github.com/UWA-Medical-Physics-Research-Group/turtwig/releases/latest/download/turtwig-0.1.0-py3-none-any.whl"
