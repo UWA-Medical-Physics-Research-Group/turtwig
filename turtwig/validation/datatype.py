@@ -12,7 +12,6 @@ from pydantic_core import CoreSchema, core_schema
 
 MaskDict = dict[Annotated[str, "organ name"], np.ndarray]
 
-
 class DicomDict(TypedDict):
     """
     A dictionary containing information about a DICOM scan.
@@ -121,7 +120,7 @@ class NumpyArrayAnnotation:
 class _NumpyNumberAnnotation:
     """
     Pydantic core schema for numpy numbers.
-    
+
     Examples
     --------
     >>> import numpy as np
@@ -177,6 +176,7 @@ array([1., 2., 3.])
 >>> test(np.array([True, 2, 3]))  # error
 """
 
+
 class _H5FileAnnotation:
     """
     Pydantic core schema for h5 files.
@@ -214,6 +214,7 @@ Examples
 >>> test('test.h5')  # error
 """
 
+
 class _H5GroupAnnotation:
     """
     Pydantic core schema for h5 groups.
@@ -237,6 +238,7 @@ H5Group.__doc__ = """
 Pydantic schema for h5 groups. See ``turtwig.validation.H5File`` for examples.
 """
 
+
 class IteratorAnnotation:
     """
     Pydantic core schema for iterators.
@@ -244,7 +246,7 @@ class IteratorAnnotation:
     Examples
     --------
     >>> from pydantic import validate_call
-    >>> from typing import Annotated
+    >>> from typing import Annotated, Iterator
     >>> @validate_call()
     ... def test(
     ...     a: Annotated[Iterator, IteratorAnnotation]

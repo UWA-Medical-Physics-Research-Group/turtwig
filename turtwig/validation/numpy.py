@@ -19,7 +19,7 @@ def is_ndim(arr: np.ndarray, *, ndim: int | list[int] | tuple[int]) -> np.ndarra
     ndim : int | list[int] | tuple[int]
         Number of dimensions to check for. If a list or tuple, check
         for any of the dimensions in the list.
-    
+
     Returns
     -------
     np.ndarray

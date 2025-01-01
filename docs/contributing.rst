@@ -217,7 +217,7 @@ one argument.
 Useful Pre-Commit Hook
 ----------------------
 
-Below is a useful sample pre-commit hook that
+Below is a useful sample pre-commit hook for ``.git/hooks/pre-commit`` that
 
 1. Dumps ``uv`` dependencies to ``requirements.txt``
 2. Updates sphinx pages

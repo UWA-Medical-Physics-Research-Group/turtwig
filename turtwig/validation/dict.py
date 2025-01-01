@@ -11,7 +11,7 @@ def all_same_keys(dicts: list[dict]) -> list[dict]:
     ----------
     dicts : list[dict]
         List of dictionaries to check.
-    
+
     Returns
     -------
     list[dict]
@@ -32,5 +32,7 @@ def all_same_keys(dicts: list[dict]) -> list[dict]:
     >>> test([{"a": 1, "b": 2}, {"a": 3}])  # Error, all dictionaries must have the same keys
     >>> test([{"a": 1, "b": 2}, {"a": 3, "c": 4}])  # Error, all dictionaries must have the same keys
     """
-    assert all(dicts[0].keys() == d.keys() for d in dicts), "All dictionaries must have the same keys"
+    assert all(
+        dicts[0].keys() == d.keys() for d in dicts
+    ), "All dictionaries must have the same keys"
     return dicts
