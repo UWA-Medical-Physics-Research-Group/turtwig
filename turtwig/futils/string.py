@@ -17,10 +17,10 @@ def capture_placeholders(
     s: str, placeholders: List[str], re_pattern: str = r".*?"
 ) -> str:
     """
-    Replace placeholders in a string ``s`` with `"(re_pattern)"`
+    Replace placeholders in a string ``s`` with ``"(re_pattern)"``
 
     Placeholders are strings in the form of ``"{placeholder}"``. They can be any
-    combination of numbers, characters, and underscore. Placeholders in `s`
+    combination of numbers, characters, and underscore. Placeholders in ``s``
     but not in the list of ``placeholders`` will not be encased in parentheses
     (i.e., not in a capturing group) but will still be replaced.
 
@@ -79,9 +79,9 @@ def placeholder_matches(
         List of strings to match against the pattern
     pattern : str
         Pattern containing placeholders to match file names, e.g.
-        `"/path/to/{organ}_{observer}.nii.gz"`
+        ``"/path/to/{organ}_{observer}.nii.gz"``
     placeholders : list[str]
-        List of placeholders to match in the pattern, e.g. `["organ", "observer"]`
+        List of placeholders to match in the pattern, e.g. ``["organ", "observer"]``
     re_pattern : str, optional
         Regex pattern filter placeholder matches by, by default any character
         except line terminators

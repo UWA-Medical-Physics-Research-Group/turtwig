@@ -63,7 +63,7 @@ def generate_full_paths(
     -------
     Generator[str, None, None]
         Generator of full paths by appending ``root`` to paths generated
-        by `path_generator`
+        by ``path_generator``
 
     Example
     -------

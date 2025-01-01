@@ -10,7 +10,7 @@ from .decorator import curry
 
 def star[T](func: Callable[..., T]) -> Callable[..., T]:
     """
-    Returns function: x -> ``func``(*x), i.e. unpacks arguments and pass to ``func``
+    Returns function: x -> ``func(*x)``, i.e. unpacks arguments and pass to ``func``
 
     Parameters
     ----------
@@ -46,7 +46,7 @@ def starmap[T](func: Callable[..., T], iterable: Iterable[tuple[Any]]) -> Iterat
     Parameters
     ----------
     func : Callable[..., T]
-        Function to be called on each element of `iterable`
+        Function to be called on each element of ``iterable``
     iterable : Iterable[tuple[Any]]
         Iterable of tuples of arguments
 
@@ -79,7 +79,7 @@ def starfilter(
     Parameters
     ----------
     func : Callable[..., bool]
-        Function to be called on each element of `iterable`
+        Function to be called on each element of ``iterable``
     iterable : Iterable[tuple[Any]]
         Iterable of tuples of arguments
 
@@ -113,7 +113,7 @@ def iterate_while[
     pred : Callable[[T | R], bool]
         Function that takes the output of ``func`` and returns a boolean
     initial : T
-        Initial value to be passed to `func`
+        Initial value to be passed to ``func``
 
     Returns
     -------
@@ -147,12 +147,12 @@ def side_effect[T](func: Callable[..., Any], val: T, pass_val: bool = False) -> 
     val : T
         Value to be returned
     pass_val : bool
-        Whether to pass ``val`` to `func`
+        Whether to pass ``val`` to ``func``
 
     Returns
     -------
     T
-        The input value `val`
+        The input value ``val``
 
     Examples
     --------

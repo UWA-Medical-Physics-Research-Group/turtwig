@@ -31,7 +31,7 @@ def growby[
     -------
     Iterator[T | R]
         Sequence constructed by repeatedly applying ``func``, i.e. compute
-        `[init, func(init), func(func(init)), ...]`
+        ``[init, func(init), func(func(init)), ...]``
 
     Examples
     --------
@@ -60,7 +60,7 @@ def growby_fs[T, R](funcs: Callable[[T | R], R], init: T) -> Iterable[T | R]:
     -------
     Generator[T | R, None, None]
         Sequence constructed by repeatedly applying each function in ``funcs``,
-        `[init, f1(init), f2(f1(init)), ...]`
+        ``[init, f1(init), f2(f1(init)), ...]``
 
     Examples
     --------

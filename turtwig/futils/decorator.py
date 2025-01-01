@@ -49,8 +49,8 @@ def curry[T](func: Callable[..., T], fallback: bool = False) -> Any:
       a ``ValueError`` for duplicate values because ``a`` is also filled by the
       keyword argument ``a=2``. This is because ``func(a=2)(5)`` is equivalent to
       ``func(5, a=2)`` which will throw an error for non-curried functions as well.
-    - Built-in CPython functions are not supported by the `inspect`
-      module. Set ``fallback=True`` to curry those functions using `toolz.curry`
+    - Built-in CPython functions are not supported by the ``inspect``
+      module. Set ``fallback=True`` to curry those functions using ``toolz.curry``
       instead.
 
     Example
