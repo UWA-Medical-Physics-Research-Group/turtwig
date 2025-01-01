@@ -36,8 +36,8 @@ Then, run **one** of the commands below to install `turtwig`
 
 ```bash
 # remember to add --extra-experimental-features flags if they are not enabled
-nix develop -c uv sync  # use if uv is NOT installed, OR you want to use nix still
-uv sync   # use if uv IS installed
+nix develop -c uv sync  # use if uv is NOT installed, OR you want to use nix
+uv sync   # use if uv IS installed and you don't want to use nix
 ```
 
-See the list of templates [here](file:///home/tin/Documents/UWA/turtwig/docs/_build/html/nix-templates.html).
+See the list of templates [here](https://uwa-medical-physics-research-group.github.io/turtwig/nix-templates.html).
