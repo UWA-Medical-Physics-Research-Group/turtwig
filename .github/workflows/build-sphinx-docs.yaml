@@ -3,20 +3,23 @@ name: build_sphinx_docs
 on:
   push:
     branches: [ main ]
-permissions:
-    actions: write
 
 jobs:
 
     build_sphinx_docs:
         name: Build Sphinx documentations
         runs-on: ubuntu-latest
+        permissions:
+          contents: write
+          pull-requests: write
 
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
+              run: git config --global --add url."https://${{ secrets.GITHUB_TOKEN }}:x-oauth-basic@github.com/".insteadOf "git@github.com:"
               with:
-                token: ${{ secrets.GITHUB_TOKEN }}
+                persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+                fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
 
             - name: Set up Python
               uses: actions/setup-python@v4
@@ -49,9 +52,8 @@ jobs:
             
             - name: Force push to gh-pages
               uses: ad-m/github-push-action@master
-              env:
-                GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
               with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
                 branch: gh-pages
                 force: true
                 directory: ./docs/_build/html
