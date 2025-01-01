@@ -3,6 +3,8 @@ name: build_sphinx_docs
 on:
   push:
     branches: [ main ]
+permissions:
+    actions: write
 
 jobs:
 
