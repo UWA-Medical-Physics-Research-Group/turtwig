@@ -49,4 +49,4 @@ To install the package with ``pip``, run
 
 .. code-block:: bash
 
-    pip install https://github.com/UWA-Medical-Physics-Research-Group/turtwig/releases/latest/download/turtwig-0.1.0-py3-none-any.whl"
+    pip install https://github.com/UWA-Medical-Physics-Research-Group/turtwig/releases/latest/download/turtwig-0.1.0-py3-none-any.whl
