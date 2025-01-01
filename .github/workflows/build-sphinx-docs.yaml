@@ -1,0 +1,54 @@
+name: build_sphinx_docs
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+    build_sphinx_docs:
+        name: Build Sphinx documentations
+        runs-on: ubuntu-latest
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Python
+              uses: actions/setup-python@v4
+              with:
+                  python-version: "3.12.7"
+
+            - name: Set up uv
+              uses: astral-sh/setup-uv@v5
+              with:
+                version: "latest"
+            
+            - name: Install dependencies
+              run: uv sync -p 3.12.7
+
+            - name: Build documentation
+              run: |
+                make -C docs clean
+                make -C docs html
+
+            - name: Make new repo and commit generated documents
+              run: |
+                cd docs/_build/html
+                git init
+                touch .nojekyll   # don't ignore files starting with underscore
+                git add -A
+                git config --local user.email "action@github.com"
+                git config --local user.name "GitHub Action"
+                git commit -m "deploy documentations"
+            
+            - name: Force push to gh-pages
+              uses: ad-m/github-push-action@master
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                branch: gh-pages
+                force: true
+                directory: ./docs/_build/html
+                

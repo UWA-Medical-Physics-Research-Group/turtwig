@@ -12,6 +12,7 @@ from pydantic_core import CoreSchema, core_schema
 
 MaskDict = dict[Annotated[str, "organ name"], np.ndarray]
 
+
 class DicomDict(TypedDict):
     """
     A dictionary containing information about a DICOM scan.
