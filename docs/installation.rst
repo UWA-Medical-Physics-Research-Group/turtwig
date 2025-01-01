@@ -17,9 +17,8 @@ To initialise a project with Python 3.12.7 and ``uv`` using the ``python312`` te
 Then, depending if you have ``uv`` installed or not... install ``turtwig`` with
 
 .. code-block:: bash
-    
+
     nix develop -c uv sync # uv is not installed
-    # 
     uv sync                # uv is installed
 
 See :ref:`nix-templates` for a list of available templates.
