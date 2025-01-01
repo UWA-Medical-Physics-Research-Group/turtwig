@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.abspath(".."))
 
 
 project = "turtwig"
-copyright = "2024, Tin Chi Pang"
+copyright = "2025, Tin Chi Pang"
 author = "Tin Chi Pang"
 
 # -- General configuration ---------------------------------------------------

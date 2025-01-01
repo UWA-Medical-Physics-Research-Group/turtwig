@@ -19,8 +19,8 @@ Available Templates
 +---------------------+-----------------------------------------------------------+
 | ``<template-name>`` | Description                                               |
 +=====================+===========================================================+
-| ``python312``       | Initialise a project with Python 3.12.7, uv, and          |
-|                     | ``turtwig`` installed                                     |
+| ``python312``       | Initialise a project with Python 3.12.7, ``uv``, and      |
+|                     | ``turtwig`` added in ``pyproject.toml``                   |
 +---------------------+-----------------------------------------------------------+
 
 (wow that's a lot of templates)
