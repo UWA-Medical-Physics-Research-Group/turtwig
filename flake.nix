@@ -13,7 +13,10 @@
     forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
   in {
     devShells = forAllSystems (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
     in {
       default = import ./devshell.nix {inherit pkgs;};
     }); # end mkshell devshell
