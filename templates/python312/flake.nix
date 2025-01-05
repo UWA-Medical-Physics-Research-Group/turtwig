@@ -20,8 +20,5 @@
     in {
       default = import ./devshell.nix {inherit pkgs;};
     }); # end mkshell devshell
-
-    # Various template project to get started
-    templates = import ./templates;
   };
 }
