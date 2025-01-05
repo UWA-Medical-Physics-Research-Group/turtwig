@@ -1,0 +1,979 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>turtwig.data.dicom &#8212; turtwig  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/turtwig/data/dicom';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">turtwig  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../nix-templates.html">
+    Nix Templates
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../contributing.html">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../turtwig-api.html">
+    turtwig API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../nix-templates.html">
+    Nix Templates
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../contributing.html">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../turtwig-api.html">
+    turtwig API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">turtwig.data.dicom</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for turtwig.data.dicom</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Set of methods to load and save DICOM files</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Iterator</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pydicom</span> <span class="k">as</span> <span class="nn">dicom</span>
+<span class="kn">import</span> <span class="nn">rt_utils</span>
+<span class="kn">import</span> <span class="nn">toolz</span> <span class="k">as</span> <span class="nn">tz</span>
+<span class="kn">import</span> <span class="nn">toolz.curried</span> <span class="k">as</span> <span class="nn">curried</span>
+<span class="kn">from</span> <span class="nn">fn</span> <span class="kn">import</span> <span class="n">_</span>
+<span class="kn">from</span> <span class="nn">loguru</span> <span class="kn">import</span> <span class="n">logger</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">AfterValidator</span><span class="p">,</span> <span class="n">validate_call</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">from</span> <span class="nn">turtwig.validation.datatype</span> <span class="kn">import</span> <span class="n">NumpyArrayAnnotation</span>
+
+<span class="kn">from</span> <span class="nn">..futils</span> <span class="kn">import</span> <span class="p">(</span><span class="n">curry</span><span class="p">,</span> <span class="n">generate_full_paths</span><span class="p">,</span> <span class="n">list_files</span><span class="p">,</span>
+                      <span class="n">merge_with_reduce</span><span class="p">,</span> <span class="n">rename_key</span><span class="p">,</span> <span class="n">star</span><span class="p">,</span> <span class="n">starfilter</span><span class="p">,</span>
+                      <span class="n">transform_nth</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..validation</span> <span class="kn">import</span> <span class="n">DicomDict</span><span class="p">,</span> <span class="n">MaskDict</span><span class="p">,</span> <span class="n">NumpyArrayAnnotation</span><span class="p">,</span> <span class="n">is_ndim</span>
+
+<span class="c1"># SOP Class UIDs for different types of DICOM files</span>
+<span class="c1"># https://dicom.nema.org/dicom/2013/output/chtml/part04/sect_B.5.html</span>
+<span class="n">CT_IMAGE</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;1.2.840.10008.5.1.4.1.1.2&quot;</span>
+<span class="n">RT_STRUCTURE_SET</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;1.2.840.10008.5.1.4.1.1.481.3&quot;</span>
+<span class="n">RT_DOSE</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;1.2.840.10008.5.1.4.1.1.481.2&quot;</span>
+<span class="n">RT_PLAN</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;1.2.840.10008.5.1.4.1.1.481.5&quot;</span>
+
+
+<span class="c1"># ============ Helper functions ============</span>
+
+
+<span class="nd">@validate_call</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">_flip_array</span><span class="p">(</span>
+    <span class="n">array</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">NumpyArrayAnnotation</span><span class="p">,</span> <span class="n">AfterValidator</span><span class="p">(</span><span class="n">is_ndim</span><span class="p">(</span><span class="n">ndim</span><span class="o">=</span><span class="mi">3</span><span class="p">))]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Flip on width and depth axes given array of shape (H, W, D)</span>
+
+<span class="sd">    Assuming LPS orientation where L axis is right to left, flipping</span>
+<span class="sd">    along width and depth axes makes the width increase from left to right</span>
+<span class="sd">    and depth from top to bottom.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">tz</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="n">array</span><span class="p">,</span>
+        <span class="n">curry</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">)(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>  <span class="c1"># Flip depth to be top-down in ascending order</span>
+        <span class="n">curry</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">)(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>  <span class="c1"># Flip width from right-&gt;left to left-&gt;right</span>
+    <span class="p">)</span>
+
+
+<span class="nd">@curry</span>
+<span class="k">def</span> <span class="nf">_dicom_type_is</span><span class="p">(</span><span class="n">dicom</span><span class="p">:</span> <span class="n">dicom</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">uid</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="c1"># Some dicom files do not have SOPClassUID...</span>
+    <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dicom</span><span class="p">,</span> <span class="s2">&quot;SOPClassUID&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">dicom</span><span class="o">.</span><span class="n">SOPClassUID</span> <span class="o">==</span> <span class="n">uid</span>
+
+
+<span class="k">def</span> <span class="nf">_standardise_roi_name</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_dicom_slice_order</span><span class="p">(</span><span class="n">dicom_file</span><span class="p">:</span> <span class="n">dicom</span><span class="o">.</span><span class="n">Dataset</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return slice order of input DICOM slice within its volume</span>
+
+<span class="sd">    Computes the projection dot(IPP, cross(IOP, IOP)), where IPP is the Image</span>
+<span class="sd">    Position (Patient) and IOP is the Image Orientation (Patient). See</span>
+<span class="sd">    https://blog.redbrickai.com/blog-posts/introduction-to-dicom-coordinate</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">tz</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dicom_file</span><span class="o">.</span><span class="n">ImageOrientationPatient</span><span class="p">),</span>
+        <span class="k">lambda</span> <span class="n">iop</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">iop</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">iop</span><span class="p">[</span><span class="mi">3</span><span class="p">:]),</span>
+        <span class="k">lambda</span> <span class="n">normal</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dicom_file</span><span class="o">.</span><span class="n">ImagePositionPatient</span><span class="p">),</span> <span class="n">normal</span><span class="p">),</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_get_uniform_spacing</span><span class="p">(</span>
+    <span class="n">dicom_files</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">dicom</span><span class="o">.</span><span class="n">Dataset</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return spacings from ``dicom_files`` if they are the same across all DICOM files, else None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Check that each spacing in each axis is the same</span>
+    <span class="n">is_uniform</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">spacings</span><span class="p">:</span> <span class="nb">all</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="nb">all</span><span class="p">([</span><span class="n">spacing</span> <span class="o">==</span> <span class="n">spacings</span><span class="p">[:,</span> <span class="n">axis</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">spacing</span> <span class="ow">in</span> <span class="n">spacings</span><span class="p">[:,</span> <span class="n">axis</span><span class="p">]])</span>
+            <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">spacings</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">tz</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="n">dicom_files</span><span class="p">,</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">dicom_file</span><span class="p">:</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">spacing</span><span class="p">)</span> <span class="k">for</span> <span class="n">spacing</span> <span class="ow">in</span> <span class="n">dicom_file</span><span class="o">.</span><span class="n">PixelSpacing</span><span class="p">]</span>
+            <span class="o">+</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">dicom_file</span><span class="o">.</span><span class="n">SliceThickness</span><span class="p">)],</span>
+        <span class="p">),</span>
+        <span class="nb">list</span><span class="p">,</span>
+        <span class="k">lambda</span> <span class="n">spacings</span><span class="p">:</span> <span class="p">(</span>
+            <span class="nb">tuple</span><span class="p">(</span><span class="n">spacings</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">spacings</span> <span class="ow">and</span> <span class="n">is_uniform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">spacings</span><span class="p">))</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">),</span>
+    <span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="nd">@validate_call</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">_get_dicom_slices</span><span class="p">(</span><span class="n">dicom_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">dicom</span><span class="o">.</span><span class="n">Dataset</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return all DICOM files in ``dicom_path`` containing .dcm files</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">tz</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="n">dicom_path</span><span class="p">,</span>
+        <span class="n">list_files</span><span class="p">,</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;endswith&quot;</span><span class="p">,</span> <span class="s2">&quot;.dcm&quot;</span><span class="p">)),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">fname</span><span class="p">:</span> <span class="n">dicom</span><span class="o">.</span><span class="n">dcmread</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
+    <span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="nd">@validate_call</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">_get_ct_image_slices</span><span class="p">(</span><span class="n">dicom_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">dicom</span><span class="o">.</span><span class="n">Dataset</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return all CT image slices from ``dicom_path`` in slice order</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">tz</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="n">dicom_path</span><span class="p">,</span>
+        <span class="n">_get_dicom_slices</span><span class="p">,</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">_dicom_type_is</span><span class="p">(</span><span class="n">uid</span><span class="o">=</span><span class="n">CT_IMAGE</span><span class="p">)),</span>
+        <span class="c1"># Some slice are not part of the volume (have thickness = 0)</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">dicom_file</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">dicom_file</span><span class="o">.</span><span class="n">SliceThickness</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">sorted</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">_dicom_slice_order</span><span class="p">),</span>
+    <span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="nd">@curry</span>
+<span class="nd">@logger</span><span class="o">.</span><span class="n">catch</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">_load_roi_mask</span><span class="p">(</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">rt_struct</span><span class="p">:</span> <span class="n">rt_utils</span><span class="o">.</span><span class="n">RTStruct</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return ROI mask given ``name`` in ``rt_struct``, else None if exception occurs</span>
+
+<span class="sd">    Just a functional wrapper around rt_struct.get_roi_mask_by_name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">rt_struct</span><span class="o">.</span><span class="n">get_roi_mask_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="nd">@validate_call</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">_load_rt_structs</span><span class="p">(</span><span class="n">dicom_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">rt_utils</span><span class="o">.</span><span class="n">RTStruct</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create list of RTStructBuilder from DICOM RT struct file in `dicom_path`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">tz</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="n">dicom_path</span><span class="p">,</span>
+        <span class="n">list_files</span><span class="p">,</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;endswith&quot;</span><span class="p">,</span> <span class="s2">&quot;.dcm&quot;</span><span class="p">)),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">path</span><span class="p">:</span> <span class="n">_dicom_type_is</span><span class="p">(</span>
+                <span class="n">dicom</span><span class="o">.</span><span class="n">dcmread</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">RT_STRUCTURE_SET</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">rt_struct_path</span><span class="p">:</span> <span class="p">(</span>
+                <span class="n">rt_utils</span><span class="o">.</span><span class="n">RTStructBuilder</span><span class="o">.</span><span class="n">create_from</span><span class="p">(</span>
+                    <span class="n">dicom_series_path</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">dicom_path</span><span class="p">),</span>
+                    <span class="n">rt_struct_path</span><span class="o">=</span><span class="n">rt_struct_path</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+    <span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="c1"># ============ Main functions ============</span>
+
+
+<div class="viewcode-block" id="load_volume">
+<a class="viewcode-back" href="../../../turtwig.data.html#turtwig.data.load_volume">[docs]</a>
+<span class="nd">@validate_call</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">load_volume</span><span class="p">(</span><span class="n">dicom_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load 3D volume of shape (H, W, D) from DICOM files in ``dicom_path``</span>
+
+<span class="sd">    Returned volume will have each 2D slice&#39;s width increase from left to</span>
+<span class="sd">    right and height from top to bottom. The depth of the volume will</span>
+<span class="sd">    increase from top to bottom (head to feet). The intensity values are also</span>
+<span class="sd">    in Hounsfield units (HU).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dicom_path : str | Path</span>
+<span class="sd">        Path to the directory containing DICOM files</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray | None</span>
+<span class="sd">        3D volume in Hounsfield units (HU) or None if no DICOM files are found</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dicom_slices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_get_ct_image_slices</span><span class="p">(</span><span class="n">dicom_path</span><span class="p">))</span>
+    <span class="n">intercepts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">d_slice</span><span class="o">.</span><span class="n">RescaleIntercept</span><span class="p">)</span> <span class="k">for</span> <span class="n">d_slice</span> <span class="ow">in</span> <span class="n">dicom_slices</span><span class="p">]</span>
+    <span class="n">slopes</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">d_slice</span><span class="o">.</span><span class="n">RescaleSlope</span><span class="p">)</span> <span class="k">for</span> <span class="n">d_slice</span> <span class="ow">in</span> <span class="n">dicom_slices</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">tz</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="n">dicom_path</span><span class="p">,</span>
+        <span class="n">_get_ct_image_slices</span><span class="p">,</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">pixel_array</span><span class="p">),</span>
+        <span class="c1"># Convert to HD scale</span>
+        <span class="k">lambda</span> <span class="n">slices</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">(</span><span class="n">slice_</span> <span class="o">*</span> <span class="n">slope</span><span class="p">)</span> <span class="o">+</span> <span class="n">intercept</span>
+            <span class="k">for</span> <span class="n">slice_</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">slices</span><span class="p">,</span> <span class="n">intercepts</span><span class="p">,</span> <span class="n">slopes</span><span class="p">)</span>
+        <span class="p">],</span>
+        <span class="nb">list</span><span class="p">,</span>
+        <span class="c1"># put depth on last axis</span>
+        <span class="k">lambda</span> <span class="n">slices</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">slices</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">slices</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="k">lambda</span> <span class="n">volume</span><span class="p">:</span> <span class="n">_flip_array</span><span class="p">(</span><span class="n">volume</span><span class="p">)</span> <span class="k">if</span> <span class="n">volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+
+<div class="viewcode-block" id="load_mask">
+<a class="viewcode-back" href="../../../turtwig.data.html#turtwig.data.load_mask">[docs]</a>
+<span class="nd">@validate_call</span><span class="p">()</span>
+<span class="nd">@logger</span><span class="o">.</span><span class="n">catch</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">load_mask</span><span class="p">(</span><span class="n">dicom_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MaskDict</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load masks of shape (H, W, D) from a folder of DICOM files in `dicom_path`</span>
+
+<span class="sd">    Returned mask will have each 2D slice&#39;s width increase from left to</span>
+<span class="sd">    right and height from top to bottom. The depth of the volume will</span>
+<span class="sd">    increase from top to bottom (head to feet).</span>
+
+<span class="sd">    **NOTE**: May not be the same shape as the volume.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dicom_path : str | Path</span>
+<span class="sd">        Path to the directory containing DICOM files including the</span>
+<span class="sd">        RT struct file</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    MaskDict | None</span>
+<span class="sd">        Dictionary containing the masks for each organ, or None if no</span>
+<span class="sd">        masks are found</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rt_struct</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_load_rt_structs</span><span class="p">(</span><span class="n">dicom_path</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">rt_struct</span> <span class="o">==</span> <span class="p">[]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No RT struct file found in </span><span class="si">{</span><span class="n">dicom_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">rt_struct</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Multiple RT struct files found! Using the first one at </span><span class="si">{</span><span class="n">rt_struct</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">roi_names</span> <span class="o">=</span> <span class="n">rt_struct</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_roi_names</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">tz</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">roi_names</span><span class="p">,</span> <span class="n">roi_names</span><span class="p">),</span>
+        <span class="n">star</span><span class="p">(</span><span class="nb">zip</span><span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+            <span class="n">transform_nth</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">_load_roi_mask</span><span class="p">(</span><span class="n">rt_struct</span><span class="o">=</span><span class="n">rt_struct</span><span class="p">[</span><span class="mi">0</span><span class="p">])),</span>
+        <span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">tuple</span><span class="p">),</span>
+        <span class="n">starfilter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">name</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">transform_nth</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">_flip_array</span><span class="p">)),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">transform_nth</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_standardise_roi_name</span><span class="p">)),</span>
+        <span class="nb">dict</span><span class="p">,</span>
+    <span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+
+<div class="viewcode-block" id="load_patient_scan">
+<a class="viewcode-back" href="../../../turtwig.data.html#turtwig.data.load_patient_scan">[docs]</a>
+<span class="nd">@validate_call</span><span class="p">()</span>
+<span class="nd">@logger</span><span class="o">.</span><span class="n">catch</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">load_patient_scan</span><span class="p">(</span><span class="n">dicom_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DicomDict</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load DicomDict from directory of DICOM files in `dicom_path`</span>
+
+<span class="sd">    Patient scan is a dictionary containing the volume, mask, and metadata</span>
+<span class="sd">    of the scan. The volume and mask will have shape (width, height, depth)</span>
+<span class="sd">    where each 2D slice&#39;s width increases from left to right and height from</span>
+<span class="sd">    top to bottom. The depth of the arrays will increase from top to bottom</span>
+<span class="sd">    (head to feet). The volume is in Hounsfield units (HU).</span>
+
+<span class="sd">    None is returned if no organ masks are found. Use ``load_volume`` and</span>
+<span class="sd">    ``load_mask`` if only one of the volume or mask is available.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dicom_path : str | Path</span>
+<span class="sd">        Path to the directory containing DICOM files</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DicomDict | None</span>
+<span class="sd">        Dictionary containing the volume, mask, and metadata, or None</span>
+<span class="sd">        if no masks are found</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dicom_slices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_get_ct_image_slices</span><span class="p">(</span><span class="n">dicom_path</span><span class="p">))</span>
+    <span class="n">spacings</span> <span class="o">=</span> <span class="n">_get_uniform_spacing</span><span class="p">(</span><span class="n">dicom_slices</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">dicom_slices</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No DICOM files found in </span><span class="si">{</span><span class="n">dicom_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">spacings</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to load DICOM at </span><span class="si">{</span><span class="n">dicom_path</span><span class="si">}</span><span class="s2">: non-uniform spacing&quot;</span><span class="p">)</span>
+
+    <span class="n">d_file</span> <span class="o">=</span> <span class="n">dicom_slices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Get one dicom file to extract PatientID</span>
+    <span class="n">volume</span> <span class="o">=</span> <span class="n">load_volume</span><span class="p">(</span><span class="n">dicom_path</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">load_mask</span><span class="p">(</span><span class="n">dicom_path</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">volume</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to load volume from </span><span class="si">{</span><span class="n">dicom_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">mask</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to load mask from </span><span class="si">{</span><span class="n">dicom_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;patient_id&quot;</span><span class="p">:</span> <span class="n">d_file</span><span class="o">.</span><span class="n">PatientID</span><span class="p">,</span>
+        <span class="s2">&quot;volume&quot;</span><span class="p">:</span> <span class="n">volume</span><span class="p">,</span>
+        <span class="s2">&quot;masks&quot;</span><span class="p">:</span> <span class="n">mask</span><span class="p">,</span>
+        <span class="s2">&quot;dimension_original&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">d_file</span><span class="o">.</span><span class="n">Rows</span><span class="p">,</span> <span class="n">d_file</span><span class="o">.</span><span class="n">Columns</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dicom_slices</span><span class="p">)),</span>
+        <span class="s2">&quot;spacings&quot;</span><span class="p">:</span> <span class="n">spacings</span><span class="p">,</span>
+        <span class="s2">&quot;modality&quot;</span><span class="p">:</span> <span class="n">d_file</span><span class="o">.</span><span class="n">Modality</span><span class="p">,</span>
+        <span class="s2">&quot;manufacturer&quot;</span><span class="p">:</span> <span class="n">d_file</span><span class="o">.</span><span class="n">Manufacturer</span><span class="p">,</span>
+        <span class="s2">&quot;scanner&quot;</span><span class="p">:</span> <span class="n">d_file</span><span class="o">.</span><span class="n">ManufacturerModelName</span><span class="p">,</span>
+        <span class="s2">&quot;study_date&quot;</span><span class="p">:</span> <span class="n">date</span><span class="p">(</span>
+            <span class="nb">int</span><span class="p">(</span><span class="n">d_file</span><span class="o">.</span><span class="n">StudyDate</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]),</span>
+            <span class="nb">int</span><span class="p">(</span><span class="n">d_file</span><span class="o">.</span><span class="n">StudyDate</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]),</span>
+            <span class="nb">int</span><span class="p">(</span><span class="n">d_file</span><span class="o">.</span><span class="n">StudyDate</span><span class="p">[</span><span class="mi">6</span><span class="p">:]),</span>
+        <span class="p">),</span>
+        <span class="s2">&quot;organ_ordering&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+    <span class="p">}</span>  <span class="c1"># type: ignore</span></div>
+
+
+
+<div class="viewcode-block" id="load_all_volumes">
+<a class="viewcode-back" href="../../../turtwig.data.html#turtwig.data.load_all_volumes">[docs]</a>
+<span class="nd">@validate_call</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">load_all_volumes</span><span class="p">(</span><span class="n">dicom_collection_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load 3D volumes from folders of DICOM files in `dicom_collection_path`</span>
+
+<span class="sd">    Returned volumes will have each 2D slice&#39;s width increase from left to</span>
+<span class="sd">    right and height from top to bottom. The depth of the volumes will</span>
+<span class="sd">    increase from top to bottom (head to feet). The intensity values are also</span>
+<span class="sd">    in Hounsfield units (HU).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dicom_collection_path : str | Path</span>
+<span class="sd">        Path to the directory containing directories of DICOM files</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Iterator[np.ndarray]</span>
+<span class="sd">        An iterator of 3D volumes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">tz</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="n">dicom_collection_path</span><span class="p">,</span>
+        <span class="n">generate_full_paths</span><span class="p">(</span><span class="n">path_generator</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">load_volume</span><span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">volume</span><span class="p">:</span> <span class="n">volume</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">),</span>
+    <span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+
+<div class="viewcode-block" id="load_all_masks">
+<a class="viewcode-back" href="../../../turtwig.data.html#turtwig.data.load_all_masks">[docs]</a>
+<span class="nd">@validate_call</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">load_all_masks</span><span class="p">(</span><span class="n">dicom_collection_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">MaskDict</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load dictionary of masks from folders of DICOM files in `dicom_collection_path`</span>
+
+<span class="sd">    Returned masks will have each 2D slice&#39;s width increase from left to</span>
+<span class="sd">    right and height from top to bottom. The depth of the masks will</span>
+<span class="sd">    increase from top to bottom (head to feet).</span>
+
+<span class="sd">    **NOTE**: May not be the same shape as the volume.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dicom_collection_path : str | Path</span>
+<span class="sd">        Path to the directory containing directories of DICOM files including the RT struct file</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Iterator[MaskDict]</span>
+<span class="sd">        An iterator of dictionaries containing the masks for each organ</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">tz</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="n">dicom_collection_path</span><span class="p">,</span>
+        <span class="n">generate_full_paths</span><span class="p">(</span><span class="n">path_generator</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">load_mask</span><span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">mask</span><span class="p">:</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">),</span>
+    <span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+
+<div class="viewcode-block" id="load_all_patient_scans">
+<a class="viewcode-back" href="../../../turtwig.data.html#turtwig.data.load_all_patient_scans">[docs]</a>
+<span class="nd">@validate_call</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">load_all_patient_scans</span><span class="p">(</span><span class="n">dicom_collection_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">DicomDict</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load DicomDicts from folders of DICOM files in `dicom_collection_path`</span>
+
+<span class="sd">    Patient scan is a dictionary containing the volume, mask, and metadata</span>
+<span class="sd">    of the scan. The volume and mask will have shape (width, height, depth)</span>
+<span class="sd">    where each 2D slice&#39;s width increases from left to right and height from</span>
+<span class="sd">    top to bottom. The depth of the arrays will increase from top to bottom</span>
+<span class="sd">    (head to feet). The volume is in Hounsfield units (HU).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dicom_collection_path : str | Path</span>
+<span class="sd">        Path to the directory containing folders of DICOM files</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Iterator[DicomDict]</span>
+<span class="sd">        An iterator of DicomDict dictionaries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">tz</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="n">dicom_collection_path</span><span class="p">,</span>
+        <span class="n">generate_full_paths</span><span class="p">(</span><span class="n">path_generator</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">load_patient_scan</span><span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">scan</span><span class="p">:</span> <span class="n">scan</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">),</span>
+    <span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+
+<div class="viewcode-block" id="load_roi_names">
+<a class="viewcode-back" href="../../../turtwig.data.html#turtwig.data.load_roi_names">[docs]</a>
+<span class="nd">@validate_call</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">load_roi_names</span><span class="p">(</span><span class="n">dicom_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return an iterator of ROI names for each folders of DICOM files in given directory</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dicom_dir : str | Path</span>
+<span class="sd">        Path to the directory containing folders of DICOM files</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Iterator[list[str]]</span>
+<span class="sd">        Iterator of lists of ROI names for each folder of DICOM files</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; it = load_roi_names(&quot;path/to/dicom_dir&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; next(it)</span>
+<span class="sd">    [&quot;brain&quot;, &quot;liver&quot;, &quot;heart&quot;]</span>
+<span class="sd">    &gt;&gt;&gt; next(it)</span>
+<span class="sd">    [&quot;bladder&quot;, &quot;prostate&quot;]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">tz</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="n">dicom_dir</span><span class="p">,</span>
+        <span class="n">generate_full_paths</span><span class="p">(</span><span class="n">path_generator</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_load_rt_structs</span><span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">list</span><span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">_</span> <span class="o">!=</span> <span class="p">[]),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">curried</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;get_roi_names&quot;</span><span class="p">)),</span>
+    <span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+
+
+<div class="viewcode-block" id="purge_dicom_dir">
+<a class="viewcode-back" href="../../../turtwig.data.html#turtwig.data.purge_dicom_dir">[docs]</a>
+<span class="nd">@validate_call</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">purge_dicom_dir</span><span class="p">(</span><span class="n">dicom_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">prog_bar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Remove all .dcm files that are not part of a CT image series or RT struct</span>
+
+<span class="sd">    WARNING: This searches through all subdirectories as well!</span>
+
+<span class="sd">    This is necessary before loading masks from rt_struct files as</span>
+<span class="sd">    ``rt_utils.RTStructBuilder.create_from`` may try to use e.g. array dimensions</span>
+<span class="sd">    in dose plans which will be different from actual array dimensions in the</span>
+<span class="sd">    CT image series -&gt; hence an array broadcasting error.</span>
+<span class="sd">    See https://github.com/qurit/rt-utils/issues/62</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dicom_dir : str | Path</span>
+<span class="sd">        Path to the directory containing DICOM files</span>
+<span class="sd">    prog_bar : bool, optional</span>
+<span class="sd">        Whether to show a progress bar, by default True</span>
+
+<span class="sd">    Side Effects</span>
+<span class="sd">    ------------</span>
+<span class="sd">    Removes all .dcm files that are not part of a CT image series or RT struct</span>
+<span class="sd">    in ``dicom_dir``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tz</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="n">dicom_dir</span><span class="p">,</span>
+        <span class="n">list_files</span><span class="p">,</span>
+        <span class="k">lambda</span> <span class="n">files</span><span class="p">:</span> <span class="n">tqdm</span><span class="p">(</span>
+            <span class="n">files</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Purging DICOM files&quot;</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="ow">not</span> <span class="n">prog_bar</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+        <span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="s2">&quot;endswith&quot;</span><span class="p">,</span> <span class="s2">&quot;.dcm&quot;</span><span class="p">)),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">path</span><span class="p">:</span> <span class="p">(</span>
+                <span class="ow">not</span> <span class="n">_dicom_type_is</span><span class="p">(</span><span class="n">dicom</span><span class="o">.</span><span class="n">dcmread</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">CT_IMAGE</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="ow">not</span> <span class="n">_dicom_type_is</span><span class="p">(</span>
+                    <span class="n">dicom</span><span class="o">.</span><span class="n">dcmread</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">RT_STRUCTURE_SET</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">),</span>
+        <span class="nb">list</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="compute_dataset_stats">
+<a class="viewcode-back" href="../../../turtwig.data.html#turtwig.data.compute_dataset_stats">[docs]</a>
+<span class="k">def</span> <span class="nf">compute_dataset_stats</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">DicomDict</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return dictionary of statistics from patient scans in `dataset`</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dataset : Iterable[DicomDict]</span>
+<span class="sd">        List of patient scans</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict[str, dict[str, np.ndarray | set[str]]]</span>
+<span class="sd">        Dictionary containing the keys:</span>
+<span class="sd">          - ``&quot;dimension_original&quot;``: Mean dimensions of the original volumes</span>
+<span class="sd">            when they were loaded</span>
+<span class="sd">          - ``&quot;dimension_actual&quot;``: Mean dimensions of the volumes</span>
+<span class="sd">          - ``&quot;spacings&quot;``: Mean spacings of the volumes</span>
+<span class="sd">          - ``&quot;manufacturer&quot;``: Set of manufacturers for the scanners</span>
+<span class="sd">          - ``&quot;scanner&quot;``: Set of scanner names</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">tz</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>
+        <span class="n">dataset</span><span class="p">,</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+            <span class="n">curried</span><span class="o">.</span><span class="n">keyfilter</span><span class="p">(</span>
+                <span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="n">k</span>
+                <span class="ow">in</span> <span class="p">[</span>
+                    <span class="s2">&quot;volume&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;spacings&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;dimension_original&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;manufacturer&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;scanner&quot;</span><span class="p">,</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">curried</span><span class="o">.</span><span class="n">update_in</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;volume&quot;</span><span class="p">],</span> <span class="n">func</span><span class="o">=</span><span class="n">_</span><span class="o">.</span><span class="n">shape</span><span class="p">)),</span>
+        <span class="n">merge_with_reduce</span><span class="p">(</span>
+            <span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span> <span class="o">+</span> <span class="p">[</span><span class="n">y</span><span class="p">]</span>
+        <span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">update_in</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;spacings&quot;</span><span class="p">],</span> <span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">update_in</span><span class="p">(</span>
+            <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dimension_original&quot;</span><span class="p">],</span> <span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">update_in</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;volume&quot;</span><span class="p">],</span> <span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">update_in</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;manufacturer&quot;</span><span class="p">],</span> <span class="n">func</span><span class="o">=</span><span class="nb">set</span><span class="p">),</span>
+        <span class="n">curried</span><span class="o">.</span><span class="n">update_in</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;scanner&quot;</span><span class="p">],</span> <span class="n">func</span><span class="o">=</span><span class="nb">set</span><span class="p">),</span>
+        <span class="n">rename_key</span><span class="p">(</span><span class="s2">&quot;volume&quot;</span><span class="p">,</span> <span class="s2">&quot;dimension_actual&quot;</span><span class="p">),</span>
+    <span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tin Chi Pang.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

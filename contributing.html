@@ -1,0 +1,714 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Contributing &#8212; turtwig  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contributing';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="turtwig API Reference" href="turtwig-api.html" />
+    <link rel="prev" title="Tutorials" href="tutorials.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">turtwig  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="nix-templates.html">
+    Nix Templates
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="turtwig-api.html">
+    turtwig API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="nix-templates.html">
+    Nix Templates
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="turtwig-api.html">
+    turtwig API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Contributing</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading">#</a></h1>
+<p>Below list several concepts and details to help you read and contribute to the project.</p>
+<section id="installing-project-dependencies">
+<h2>Installing Project Dependencies<a class="headerlink" href="#installing-project-dependencies" title="Link to this heading">#</a></h2>
+<p>You can install the project dependencies via <em>one</em> of the options below:</p>
+<section id="installing-via-uv">
+<h3>1. Installing via <a class="reference external" href="https://docs.astral.sh/uv/">uv</a><a class="headerlink" href="#installing-via-uv" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://docs.astral.sh/uv/">uv</a> manages and configures Python dependencies.
+Install it following the <a class="reference external" href="https://docs.astral.sh/uv/getting-started/installation/">installation guide</a>
+and append <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span></code> in front of any Python commands which will automatically sync the dependencies.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w">  </span><span class="c1"># Will automatically sync dependencies and run python</span>
+uv<span class="w"> </span>sync<span class="w">        </span><span class="c1"># Or, sync the dependencies manually</span>
+</pre></div>
+</div>
+</section>
+<section id="installing-via-nix">
+<h3>2. Installing via <a class="reference external" href="https://nixos.org/">Nix</a><a class="headerlink" href="#installing-via-nix" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://nixos.org/">Nix</a> refers to both the functional programming language <em>and</em>
+the package manager to create isolated, reproducible development shells. A <code class="docutils literal notranslate"><span class="pre">flake.nix</span></code>
+file defines project dependencies and is used to create a development shell. Install Nix
+following the <a class="reference external" href="https://nixos.org/download/">Nix installation guide</a>. Then, start a
+development shell with the command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run if experimental features are enabled</span>
+nix<span class="w"> </span>develop
+<span class="c1"># Run if experimental features are not enabled</span>
+nix<span class="w"> </span>--extra-experimental-features<span class="w"> </span>nix-command<span class="w"> </span>--extra-experimental-features<span class="w"> </span>flakes<span class="w"> </span>develop
+<span class="c1"># you can now run `uv run python ...` etc</span>
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">(Optional) Activate Shell Automatically with <a class="reference external" href="https://direnv.net/">direnv</a></p>
+<p><a class="reference external" href="https://direnv.net/">direnv</a> is used to automatically activate a Nix flake
+shell when you enter into the project directory. Install it following the
+<a class="reference external" href="https://direnv.net/docs/installation.html">direnv installation guide</a> and <a class="reference external" href="https://direnv.net/docs/hook.html">hook
+direnv into your shell</a> (HINT: run <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$SHELL</span></code>
+to determine your shell). Then, run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>direnv<span class="w"> </span>allow<span class="w">   </span><span class="c1"># Allow the .envrc file to be executed automatically</span>
+direnv<span class="w"> </span>disallow<span class="w">  </span><span class="c1"># stop automatically executing .envrc upon entering the directory</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Direnv allow the execution of arbitrary code in the .envrc file. Please examine <cite>.envrc</cite> before enabling it!</p>
+</div>
+</div>
+</section>
+<section id="installing-via-pip-venv">
+<h3>3. Installing via <a class="reference external" href="https://pip.pypa.io/en/stable/">pip</a> (<code class="docutils literal notranslate"><span class="pre">venv</span></code>)<a class="headerlink" href="#installing-via-pip-venv" title="Link to this heading">#</a></h3>
+<p>First, create and activate a virtual environment, then install the dependencies with pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv<span class="w">   </span><span class="c1"># Create a virtual environment</span>
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">  </span><span class="c1"># Activate the environment on linux (see online documentation for other systems)</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>./requirements.txt
+</pre></div>
+</div>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading">#</a></h2>
+<p>Run the tests with the command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>pytest
+</pre></div>
+</div>
+<p>To create a new test file, create a file with the name <code class="docutils literal notranslate"><span class="pre">test_&lt;module_name&gt;.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">tests</span></code> directory.
+A template for a test file is shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># Add the project directory to the path so that the module can be imported</span>
+<span class="n">dir_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dir_path</span><span class="si">}</span><span class="s2">/../../../turtwig&quot;</span><span class="p">))</span>
+
+<span class="kn">from</span> <span class="nn">turtwig</span> <span class="kn">import</span> <span class="n">some_function</span>
+
+
+<span class="k">class</span> <span class="nc">TestSomeFunction</span><span class="p">:</span>
+
+    <span class="c1"># MUST start with &#39;test_&#39;</span>
+    <span class="k">def</span> <span class="nf">test_it_does_something_cool</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 1. initialise some test input</span>
+        <span class="c1"># 2. call some_function with the test input</span>
+        <span class="c1"># 3. assert the output is as expected</span>
+        <span class="c1"># 4. ???</span>
+        <span class="c1"># 5. profit</span>
+</pre></div>
+</div>
+</section>
+<section id="validating-function-arguments">
+<h2>Validating Function Arguments<a class="headerlink" href="#validating-function-arguments" title="Link to this heading">#</a></h2>
+<p>Decorate a function with <code class="docutils literal notranslate"><span class="pre">&#64;pydantic.validate_call</span></code> to validate its input arguments.
+To add a custom validation function <code class="docutils literal notranslate"><span class="pre">my_validator`</span></code> to specific argument, annotate
+it with <code class="docutils literal notranslate"><span class="pre">typing.Annotated[...,</span> <span class="pre">pydantic.AfterValidator(my_validator)]</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">validate_call</span><span class="p">,</span> <span class="n">AfterValidator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Annotated</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_validator</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+<span class="gp">... </span><span class="w">    </span><span class="sd">&quot;&quot;&quot; Ensure that value is positive &quot;&quot;&quot;</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Value must be positive&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">value</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@validate_call</span><span class="p">()</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">a</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">AfterValidator</span><span class="p">(</span><span class="n">my_validator</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">b</span><span class="p">:</span> <span class="nb">int</span>
+<span class="gp">... </span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">3.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># ValueError: Value must be positive</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># ValidationError: Parameter &#39;a&#39; must be of type &#39;float&#39;</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>See <a class="reference external" href="https://docs.pydantic.dev/latest/api/functional_validators/">Pydantic Functional Validators</a> for other validators like <code class="docutils literal notranslate"><span class="pre">AfterValidator</span></code>.</p>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Curried Validation Functions</p>
+<p>A curried validation function must list all arguments apart from
+the input data as strictly keyword-only for curry to work. I.e. the
+function signature must have the form <code class="docutils literal notranslate"><span class="pre">my_validator(value,</span> <span class="pre">*,</span> <span class="pre">kwarg1,</span> <span class="pre">kwarg2,</span> <span class="pre">...)</span></code>.</p>
+</div>
+</section>
+<section id="functional-programming-concepts">
+<h2>Functional Programming Concepts<a class="headerlink" href="#functional-programming-concepts" title="Link to this heading">#</a></h2>
+<p>Many parts of the project are written roughly in the <strong>functional programming</strong> paradigm. Various
+concepts related to this paradigm are listed below.</p>
+<section id="pipe">
+<h3>Pipe<a class="headerlink" href="#pipe" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">toolz.pipe</span></code> is used extensively throughout the codebase. Given a value <code class="docutils literal notranslate"><span class="pre">x</span></code> and a list of functions, a pipe applies each function to the value. For example,
+<code class="docutils literal notranslate"><span class="pre">pipe(x,</span> <span class="pre">f,</span> <span class="pre">g,</span> <span class="pre">h)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">h(g(f(x)))</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">toolz</span> <span class="kn">import</span> <span class="n">pipe</span><span class="p">,</span> <span class="n">identity</span><span class="p">,</span> <span class="n">concat</span><span class="p">,</span> <span class="n">curried</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">do_nothing</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipe</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>   <span class="c1"># value to be passed along</span>
+<span class="gp">... </span>    <span class="k">lambda</span> <span class="n">lst</span><span class="p">:</span> <span class="n">lst</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">identity</span> <span class="k">if</span> <span class="n">do_nothing</span> <span class="k">else</span> <span class="n">concat</span><span class="p">,</span>   <span class="c1"># identity will be called here</span>
+<span class="gp">... </span>    <span class="n">curried</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>  <span class="c1"># get(5) is still a FUNCTION, see &quot;curry&quot; below</span>
+<span class="gp">... </span>    <span class="nb">str</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">&#39;4&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">curried</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">5</span><span class="p">)(</span><span class="n">identity</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)))</span>  <span class="c1"># equivalent to the above</span>
+<span class="go">&#39;4&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="curry">
+<h3>Curry<a class="headerlink" href="#curry" title="Link to this heading">#</a></h3>
+<p>Yummy.</p>
+<p>A “curried” function (decorated with <code class="docutils literal notranslate"><span class="pre">&#64;curry</span></code>) can be called with
+<em>only some of the required arguments</em> (i.e. partially parameterised).
+If not all arguments are provided, a <em>new function</em> is returned which
+can be called with the remaining arguments.</p>
+<p>All functions in <code class="docutils literal notranslate"><span class="pre">turtwig</span></code> are curried, excluding those that only take in
+one argument.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">turtwig.futils</span> <span class="kn">import</span> <span class="n">curry</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@curry</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add_5</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># add_5 is equivalent to lambda b: 5 + b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add_5</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># call with remaining argument</span>
+<span class="go">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># You can also just use the function normally</span>
+<span class="go">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>  <span class="c1"># equivalent to lambda a: a + 6</span>
+<span class="go">&lt;function add at 0x7f7b3c7b7d30&gt;</span>
+</pre></div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Using <code class="docutils literal notranslate"><span class="pre">&#64;curry</span></code> with other decorators</p>
+<p>If you are using <code class="docutils literal notranslate"><span class="pre">&#64;curry</span></code> with other decorators,
+<code class="docutils literal notranslate"><span class="pre">&#64;curry</span></code> MUST be the last decorator. Otherwise the outer
+decorator will only be applied to the (possibly) partially
+parameterised function. e.g. a function with both <code class="docutils literal notranslate"><span class="pre">&#64;curry</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&#64;validate_call</span></code> should be decorated as</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@curry</span>  <span class="c1"># curry is the last decorator!</span>
+<span class="gp">... </span><span class="nd">@validate_call</span><span class="p">()</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># validate_call only runs after all arguments are provided</span>
+<span class="go">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@validate_call</span><span class="p">()</span>
+<span class="gp">... </span><span class="nd">@curry</span>  <span class="c1"># curry is the last decorator!</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">add2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add2</span><span class="p">(</span><span class="mi">5</span><span class="p">)(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># ValidationError: Parameter &#39;b&#39; not provided</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="useful-pre-commit-hook">
+<h2>Useful Pre-Commit Hook<a class="headerlink" href="#useful-pre-commit-hook" title="Link to this heading">#</a></h2>
+<p>Below is a useful sample pre-commit hook for <code class="docutils literal notranslate"><span class="pre">.git/hooks/pre-commit</span></code> that</p>
+<ol class="arabic simple">
+<li><p>Dumps <code class="docutils literal notranslate"><span class="pre">uv</span></code> dependencies to <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></p></li>
+<li><p>Updates sphinx pages</p></li>
+<li><p>Runs pytest</p></li>
+<li><p>Runs code formatters (<code class="docutils literal notranslate"><span class="pre">black</span></code>, <code class="docutils literal notranslate"><span class="pre">isort</span></code>)</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/usr/bin/env zsh</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="nb">set</span><span class="w"> </span>-e<span class="w"> </span><span class="c1"># Exit immediately if a command exits with a non-zero status</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Dumping requirements.txt...&quot;</span>
+<span class="linenos"> 6</span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;requirements.txt&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos"> 7</span><span class="w">    </span>rm<span class="w"> </span>requirements.txt
+<span class="linenos"> 8</span><span class="k">fi</span>
+<span class="linenos"> 9</span>uv<span class="w"> </span>pip<span class="w"> </span>compile<span class="w"> </span>pyproject.toml<span class="w"> </span>--quiet<span class="w"> </span>--output-file<span class="w"> </span>requirements.txt
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Updating sphinx pages...&quot;</span>
+<span class="linenos">12</span>make<span class="w"> </span>-C<span class="w"> </span>docs<span class="w"> </span>clean
+<span class="linenos">13</span>make<span class="w"> </span>-C<span class="w"> </span>docs<span class="w"> </span>html
+<span class="linenos">14</span>
+<span class="linenos">15</span>uv<span class="w"> </span>run<span class="w"> </span>black<span class="w"> </span>.
+<span class="linenos">16</span>uv<span class="w"> </span>run<span class="w"> </span>isort<span class="w"> </span>.
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Running pytest...&quot;</span>
+<span class="linenos">19</span>uv<span class="w"> </span>run<span class="w"> </span>pytest
+<span class="linenos">20</span><span class="nv">PYTEST_STATUS</span><span class="o">=</span><span class="nv">$?</span><span class="w">  </span><span class="c1"># capture exit status</span>
+<span class="linenos">21</span><span class="nb">exit</span><span class="w"> </span><span class="nv">$PYTEST_STATUS</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tutorials.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorials</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="turtwig-api.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><code class="docutils literal notranslate"><span class="pre">turtwig</span></code> API Reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-project-dependencies">Installing Project Dependencies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-via-uv">1. Installing via uv</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-via-nix">2. Installing via Nix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-via-pip-venv">3. Installing via pip (<code class="docutils literal notranslate"><span class="pre">venv</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-function-arguments">Validating Function Arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functional-programming-concepts">Functional Programming Concepts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pipe">Pipe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#curry">Curry</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-pre-commit-hook">Useful Pre-Commit Hook</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/contributing.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tin Chi Pang.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

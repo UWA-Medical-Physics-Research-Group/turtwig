@@ -1,0 +1,938 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>turtwig.data &#8212; turtwig  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'turtwig.data';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="turtwig.validation" href="turtwig.validation.html" />
+    <link rel="prev" title="turtwig API Reference" href="turtwig-api.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">turtwig  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="nix-templates.html">
+    Nix Templates
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="turtwig-api.html">
+    turtwig API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="nix-templates.html">
+    Nix Templates
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="turtwig-api.html">
+    turtwig API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">turtwig.data</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="turtwig.validation.html"><code class="docutils literal notranslate"><span class="pre">turtwig.validation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="turtwig.futils.html"><code class="docutils literal notranslate"><span class="pre">turtwig.futils</span></code></a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="turtwig-api.html" class="nav-link"><code class="docutils literal notranslate"><span class="pre">turtwig</span></code> API Reference</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><code class="docutils literal notranslate"><span class="pre">turtwig.data</span></code></span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-turtwig.data">
+<span id="turtwig-data"></span><span id="turtwig-api-data"></span><h1><code class="docutils literal notranslate"><span class="pre">turtwig.data</span></code><a class="headerlink" href="#module-turtwig.data" title="Link to this heading">#</a></h1>
+<p>Functions for handling various data objects.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.bounding_box_3d">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">bounding_box_3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="turtwig.validation.html#turtwig.validation.NumpyArrayAnnotation" title="turtwig.validation.datatype.NumpyArrayAnnotation"><span class="pre">NumpyArrayAnnotation</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">AfterValidator</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">func</span></span><span class="o"><span class="pre">=</span></span><span class="pre">is_ndim</span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/data/numpy.html#bounding_box_3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.bounding_box_3d" title="Link to this definition">#</a></dt>
+<dd><p>Compute bounding box of a 3D binary array</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>arr<span class="classifier">np.ndarray</span></dt><dd><p>3D binary array of boolean or numeric values. If numeric, 0 is
+considered background (i.e. False).</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>tuple[int, int, int, int, int, int]</dt><dd><p>Bounding box coordinates of minimum and maximum values in each axis
+in the order of row, column, and depth</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bounding_box_3d</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">(2, 4, 3, 6, 4, 7)</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.compute_dataset_stats">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">compute_dataset_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="turtwig.validation.html#turtwig.validation.DicomDict" title="turtwig.validation.datatype.DicomDict"><span class="pre">DicomDict</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/data/dicom.html#compute_dataset_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.compute_dataset_stats" title="Link to this definition">#</a></dt>
+<dd><p>Return dictionary of statistics from patient scans in <cite>dataset</cite></p>
+<section id="id1">
+<h2>Parameters<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>dataset<span class="classifier">Iterable[DicomDict]</span></dt><dd><p>List of patient scans</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h2>Returns<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>dict[str, dict[str, np.ndarray | set[str]]]</dt><dd><dl class="simple">
+<dt>Dictionary containing the keys:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;dimension_original&quot;</span></code>: Mean dimensions of the original volumes
+when they were loaded</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;dimension_actual&quot;</span></code>: Mean dimensions of the volumes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;spacings&quot;</span></code>: Mean spacings of the volumes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;manufacturer&quot;</span></code>: Set of manufacturers for the scanners</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;scanner&quot;</span></code>: Set of scanner names</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.crop_to_bbox_3d">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">crop_to_bbox_3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="turtwig.validation.html#turtwig.validation.NumpyArrayAnnotation" title="turtwig.validation.datatype.NumpyArrayAnnotation"><span class="pre">NumpyArrayAnnotation</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">AfterValidator</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">func</span></span><span class="o"><span class="pre">=</span></span><span class="pre">is_ndim</span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/turtwig/data/numpy.html#crop_to_bbox_3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.crop_to_bbox_3d" title="Link to this definition">#</a></dt>
+<dd><p>Crop a 3D array to its bounding box, optionally thresholding the array first</p>
+<section id="id3">
+<h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>arr<span class="classifier">np.ndarray</span></dt><dd><p>3D array to crop. Must be be binart if <code class="docutils literal notranslate"><span class="pre">thresh</span></code> is None.</p>
+</dd>
+<dt>thresh<span class="classifier">float, optional</span></dt><dd><p>Threshold value to apply to the array before cropping if provided. If
+None, no thresholding is applied and <code class="docutils literal notranslate"><span class="pre">arr</span></code> is assumed to be binary. If
+provided, values greater than <code class="docutils literal notranslate"><span class="pre">thresh</span></code> are considered as True.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>np.ndarray</dt><dd><p>Cropped 3D array to its bounding box</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.dict_from_h5">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">dict_from_h5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">File</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">_H5FileAnnotation</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">Group</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">_H5GroupAnnotation</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/data/h5.html#dict_from_h5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.dict_from_h5" title="Link to this definition">#</a></dt>
+<dd><p>Load a h5 file as a dictionary.</p>
+<p>WARNING: this loads the entire H5 file at once. To take advantage
+of lazy loading, use the <code class="docutils literal notranslate"><span class="pre">h5py</span></code> library directly.</p>
+<section id="id5">
+<h2>Parameters<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>hf: h5py.File | h5py.Group | str | Path</dt><dd><p>H5 file or group to load from. If a string or Path, then the file
+is opened in read mode</p>
+</dd>
+</dl>
+</section>
+<section id="id6">
+<h2>Returns<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>dict</dt><dd><p>Dictionary loaded from the h5 file</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.dict_to_h5">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">dict_to_h5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="turtwig.validation.html#turtwig.validation.NumpyArrayAnnotation" title="turtwig.validation.datatype.NumpyArrayAnnotation"><span class="pre">NumpyArrayAnnotation</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="turtwig.validation.html#turtwig.validation.NumpyArrayAnnotation" title="turtwig.validation.datatype.NumpyArrayAnnotation"><span class="pre">NumpyArrayAnnotation</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="turtwig.validation.html#turtwig.validation.IteratorAnnotation" title="turtwig.validation.datatype.IteratorAnnotation"><span class="pre">IteratorAnnotation</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">File</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">_H5FileAnnotation</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">Group</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">_H5GroupAnnotation</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/turtwig/data/h5.html#dict_to_h5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.dict_to_h5" title="Link to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>Serialise a dictionary to an h5 file. Supported types are:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">str,</span> <span class="pre">int,</span> <span class="pre">float</span></code>: saved as is</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">date</span></code>: saved as a string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dict</span></code>: saved as a group recursively</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>: saved as a dataset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tuple,</span> <span class="pre">list:</span></code> If all elements are numeric or are numpy arrays,
+saved as a dataset. Else, saved as a group with indices as keys</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Iterator[dict]</span></code>: saved as a group with indices as keys</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: skipped</p></li>
+</ul>
+</dd>
+</dl>
+<section id="id7">
+<h2>Parameters<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>data: dict</dt><dd><p>Dictionary to save. Each value is saved as a dataset or group.</p>
+</dd>
+<dt>hf: h5py.File | h5py.Group | str | Path</dt><dd><p>H5 file or group to save to. If a string or Path, then the file
+is opened in append mode</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.load_all_masks">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">load_all_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dicom_collection_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'organ</span> <span class="pre">name'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/data/dicom.html#load_all_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.load_all_masks" title="Link to this definition">#</a></dt>
+<dd><p>Load dictionary of masks from folders of DICOM files in <cite>dicom_collection_path</cite></p>
+<p>Returned masks will have each 2D slice’s width increase from left to
+right and height from top to bottom. The depth of the masks will
+increase from top to bottom (head to feet).</p>
+<p><strong>NOTE</strong>: May not be the same shape as the volume.</p>
+<section id="id8">
+<h2>Parameters<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>dicom_collection_path<span class="classifier">str | Path</span></dt><dd><p>Path to the directory containing directories of DICOM files including the RT struct file</p>
+</dd>
+</dl>
+</section>
+<section id="id9">
+<h2>Returns<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Iterator[MaskDict]</dt><dd><p>An iterator of dictionaries containing the masks for each organ</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.load_all_patient_scans">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">load_all_patient_scans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dicom_collection_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="turtwig.validation.html#turtwig.validation.DicomDict" title="turtwig.validation.datatype.DicomDict"><span class="pre">DicomDict</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/data/dicom.html#load_all_patient_scans"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.load_all_patient_scans" title="Link to this definition">#</a></dt>
+<dd><p>Load DicomDicts from folders of DICOM files in <cite>dicom_collection_path</cite></p>
+<p>Patient scan is a dictionary containing the volume, mask, and metadata
+of the scan. The volume and mask will have shape (width, height, depth)
+where each 2D slice’s width increases from left to right and height from
+top to bottom. The depth of the arrays will increase from top to bottom
+(head to feet). The volume is in Hounsfield units (HU).</p>
+<section id="id10">
+<h2>Parameters<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>dicom_collection_path<span class="classifier">str | Path</span></dt><dd><p>Path to the directory containing folders of DICOM files</p>
+</dd>
+</dl>
+</section>
+<section id="id11">
+<h2>Returns<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Iterator[DicomDict]</dt><dd><p>An iterator of DicomDict dictionaries.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.load_all_volumes">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">load_all_volumes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dicom_collection_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/data/dicom.html#load_all_volumes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.load_all_volumes" title="Link to this definition">#</a></dt>
+<dd><p>Load 3D volumes from folders of DICOM files in <cite>dicom_collection_path</cite></p>
+<p>Returned volumes will have each 2D slice’s width increase from left to
+right and height from top to bottom. The depth of the volumes will
+increase from top to bottom (head to feet). The intensity values are also
+in Hounsfield units (HU).</p>
+<section id="id12">
+<h2>Parameters<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>dicom_collection_path<span class="classifier">str | Path</span></dt><dd><p>Path to the directory containing directories of DICOM files</p>
+</dd>
+</dl>
+</section>
+<section id="id13">
+<h2>Returns<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Iterator[np.ndarray]</dt><dd><p>An iterator of 3D volumes</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.load_mask">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">load_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dicom_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'organ</span> <span class="pre">name'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/turtwig/data/dicom.html#load_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.load_mask" title="Link to this definition">#</a></dt>
+<dd><p>Load masks of shape (H, W, D) from a folder of DICOM files in <cite>dicom_path</cite></p>
+<p>Returned mask will have each 2D slice’s width increase from left to
+right and height from top to bottom. The depth of the volume will
+increase from top to bottom (head to feet).</p>
+<p><strong>NOTE</strong>: May not be the same shape as the volume.</p>
+<section id="id14">
+<h2>Parameters<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>dicom_path<span class="classifier">str | Path</span></dt><dd><p>Path to the directory containing DICOM files including the
+RT struct file</p>
+</dd>
+</dl>
+</section>
+<section id="id15">
+<h2>Returns<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>MaskDict | None</dt><dd><p>Dictionary containing the masks for each organ, or None if no
+masks are found</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.load_patient_scan">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">load_patient_scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dicom_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="turtwig.validation.html#turtwig.validation.DicomDict" title="turtwig.validation.datatype.DicomDict"><span class="pre">DicomDict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/turtwig/data/dicom.html#load_patient_scan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.load_patient_scan" title="Link to this definition">#</a></dt>
+<dd><p>Load DicomDict from directory of DICOM files in <cite>dicom_path</cite></p>
+<p>Patient scan is a dictionary containing the volume, mask, and metadata
+of the scan. The volume and mask will have shape (width, height, depth)
+where each 2D slice’s width increases from left to right and height from
+top to bottom. The depth of the arrays will increase from top to bottom
+(head to feet). The volume is in Hounsfield units (HU).</p>
+<p>None is returned if no organ masks are found. Use <code class="docutils literal notranslate"><span class="pre">load_volume</span></code> and
+<code class="docutils literal notranslate"><span class="pre">load_mask</span></code> if only one of the volume or mask is available.</p>
+<section id="id16">
+<h2>Parameters<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>dicom_path<span class="classifier">str | Path</span></dt><dd><p>Path to the directory containing DICOM files</p>
+</dd>
+</dl>
+</section>
+<section id="id17">
+<h2>Returns<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>DicomDict | None</dt><dd><p>Dictionary containing the volume, mask, and metadata, or None
+if no masks are found</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.load_roi_names">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">load_roi_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dicom_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/data/dicom.html#load_roi_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.load_roi_names" title="Link to this definition">#</a></dt>
+<dd><p>Return an iterator of ROI names for each folders of DICOM files in given directory</p>
+<section id="id18">
+<h2>Parameters<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>dicom_dir<span class="classifier">str | Path</span></dt><dd><p>Path to the directory containing folders of DICOM files</p>
+</dd>
+</dl>
+</section>
+<section id="id19">
+<h2>Returns<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Iterator[list[str]]</dt><dd><p>Iterator of lists of ROI names for each folder of DICOM files</p>
+</dd>
+</dl>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">it</span> <span class="o">=</span> <span class="n">load_roi_names</span><span class="p">(</span><span class="s2">&quot;path/to/dicom_dir&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<span class="go">[&quot;brain&quot;, &quot;liver&quot;, &quot;heart&quot;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<span class="go">[&quot;bladder&quot;, &quot;prostate&quot;]</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.load_volume">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">load_volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dicom_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/turtwig/data/dicom.html#load_volume"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.load_volume" title="Link to this definition">#</a></dt>
+<dd><p>Load 3D volume of shape (H, W, D) from DICOM files in <code class="docutils literal notranslate"><span class="pre">dicom_path</span></code></p>
+<p>Returned volume will have each 2D slice’s width increase from left to
+right and height from top to bottom. The depth of the volume will
+increase from top to bottom (head to feet). The intensity values are also
+in Hounsfield units (HU).</p>
+<section id="id20">
+<h2>Parameters<a class="headerlink" href="#id20" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>dicom_path<span class="classifier">str | Path</span></dt><dd><p>Path to the directory containing DICOM files</p>
+</dd>
+</dl>
+</section>
+<section id="id21">
+<h2>Returns<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>np.ndarray | None</dt><dd><p>3D volume in Hounsfield units (HU) or None if no DICOM files are found</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.make_isotropic">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">make_isotropic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">array:</span> <span class="pre">~typing.Annotated[~numpy.ndarray,</span> <span class="pre">~turtwig.validation.datatype.NumpyArrayAnnotation.__class_getitem__.&lt;locals&gt;.TypedNumpyArrayAnnotation,</span> <span class="pre">~pydantic.functional_validators.AfterValidator(func=~turtwig.validation.numpy.is_ndim)],</span> <span class="pre">spacings:</span> <span class="pre">list[int</span> <span class="pre">|</span> <span class="pre">float]</span> <span class="pre">|</span> <span class="pre">tuple[int</span> <span class="pre">|</span> <span class="pre">float],</span> <span class="pre">method:</span> <span class="pre">~typing.Literal['nearest',</span> <span class="pre">'linear',</span> <span class="pre">'b_spline',</span> <span class="pre">'gaussian']</span> <span class="pre">=</span> <span class="pre">'linear'</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/turtwig/data/numpy.html#make_isotropic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.make_isotropic" title="Link to this definition">#</a></dt>
+<dd><p>Return an isotropic array with uniformly 1 unit of spacing between coordinates</p>
+<p>Only accepts arrays of shape (H, W, D) or (H, W) for 2D and 3D arrays respectively</p>
+<section id="id22">
+<h2>Parameters<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>array<span class="classifier">np.nddarray</span></dt><dd><p>A 2D or 3D array to interpolate</p>
+</dd>
+<dt>spacings<span class="classifier">list[int | float] | tuple[int | float]</span></dt><dd><p>Spacing of coordinate points for each dimension</p>
+</dd>
+<dt>method<span class="classifier">str, optional</span></dt><dd><p>Interpolation method, by default “linear”</p>
+</dd>
+</dl>
+</section>
+<section id="id23">
+<h2>Returns<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>np.ndarray</dt><dd><p>Interpolated array on an isotropic grid</p>
+</dd>
+</dl>
+</section>
+<section id="id24">
+<h2>Examples<a class="headerlink" href="#id24" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">make_isotropic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="go">array([[1. , 1.5, 2. , 0. ],</span>
+<span class="go">       [2. , 2.5, 3. , 0. ],</span>
+<span class="go">       [3. , 3.5, 4. , 0. ],</span>
+<span class="go">       [0. , 0. , 0. , 0. ]])</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.map_interval">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">map_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">array:</span> <span class="pre">~typing.Annotated[~numpy.ndarray,</span> <span class="pre">~turtwig.validation.datatype.NumpyArrayAnnotation.__class_getitem__.&lt;locals&gt;.TypedNumpyArrayAnnotation],</span> <span class="pre">from_range:</span> <span class="pre">tuple[int</span> <span class="pre">|</span> <span class="pre">float,</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">float],</span> <span class="pre">to_range:</span> <span class="pre">tuple[int</span> <span class="pre">|</span> <span class="pre">float,</span> <span class="pre">int</span> <span class="pre">|</span> <span class="pre">float]</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TypedNumpyArrayAnnotation]</span></span></span><a class="reference internal" href="_modules/turtwig/data/numpy.html#map_interval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.map_interval" title="Link to this definition">#</a></dt>
+<dd><p>Map values in an <code class="docutils literal notranslate"><span class="pre">array</span></code> in range <code class="docutils literal notranslate"><span class="pre">from_range</span></code> to <code class="docutils literal notranslate"><span class="pre">to_range</span></code></p>
+<section id="id25">
+<h2>Parameters<a class="headerlink" href="#id25" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>array<span class="classifier">np.ndarray</span></dt><dd><p>Array with numeric elements to map</p>
+</dd>
+<dt>from_range<span class="classifier">tuple[int | float, int | float]</span></dt><dd><p>Range of values in <code class="docutils literal notranslate"><span class="pre">array</span></code>, a tuple of (min, max) values</p>
+</dd>
+<dt>to_range<span class="classifier">tuple[int | float, int | float]</span></dt><dd><p>Range of values to map to, a tuple of (min, max) values</p>
+</dd>
+</dl>
+</section>
+<section id="id26">
+<h2>Returns<a class="headerlink" href="#id26" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>np.ndarray</dt><dd><p>Array with values mapped to range <cite>to_range</cite></p>
+</dd>
+</dl>
+</section>
+<section id="id27">
+<h2>Examples<a class="headerlink" href="#id27" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">map_interval</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">array([0.  , 0.25, 0.5 , 0.75, 1.  ])</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.purge_dicom_dir">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">purge_dicom_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dicom_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prog_bar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/turtwig/data/dicom.html#purge_dicom_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.purge_dicom_dir" title="Link to this definition">#</a></dt>
+<dd><p>Remove all .dcm files that are not part of a CT image series or RT struct</p>
+<p>WARNING: This searches through all subdirectories as well!</p>
+<p>This is necessary before loading masks from rt_struct files as
+<code class="docutils literal notranslate"><span class="pre">rt_utils.RTStructBuilder.create_from</span></code> may try to use e.g. array dimensions
+in dose plans which will be different from actual array dimensions in the
+CT image series -&gt; hence an array broadcasting error.
+See <a class="github reference external" href="https://github.com/qurit/rt-utils/issues/62">qurit/rt-utils#62</a></p>
+<section id="id28">
+<h2>Parameters<a class="headerlink" href="#id28" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>dicom_dir<span class="classifier">str | Path</span></dt><dd><p>Path to the directory containing DICOM files</p>
+</dd>
+<dt>prog_bar<span class="classifier">bool, optional</span></dt><dd><p>Whether to show a progress bar, by default True</p>
+</dd>
+</dl>
+</section>
+<section id="side-effects">
+<h2>Side Effects<a class="headerlink" href="#side-effects" title="Link to this heading">#</a></h2>
+<p>Removes all .dcm files that are not part of a CT image series or RT struct
+in <code class="docutils literal notranslate"><span class="pre">dicom_dir</span></code>.</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.data.z_score_scale">
+<span class="sig-prename descclassname"><span class="pre">turtwig.data.</span></span><span class="sig-name descname"><span class="pre">z_score_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">array:</span> <span class="pre">~typing.Annotated[~numpy.ndarray,</span> <span class="pre">~turtwig.validation.datatype.NumpyArrayAnnotation.__class_getitem__.&lt;locals&gt;.TypedNumpyArrayAnnotation]</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TypedNumpyArrayAnnotation]</span></span></span><a class="reference internal" href="_modules/turtwig/data/numpy.html#z_score_scale"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.data.z_score_scale" title="Link to this definition">#</a></dt>
+<dd><p>Z-score normalise <code class="docutils literal notranslate"><span class="pre">array</span></code> to have mean 0 and standard deviation 1</p>
+<p>Z-score normalisation is calculated as (x - mean) / std</p>
+<section id="id29">
+<h2>Parameters<a class="headerlink" href="#id29" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>array<span class="classifier">np.ndarray</span></dt><dd><p>Array with numeric elements to normalise</p>
+</dd>
+</dl>
+</section>
+<section id="id30">
+<h2>Returns<a class="headerlink" href="#id30" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>np.ndarray</dt><dd><p>Normalised array with mean 0 and standard deviation 1</p>
+</dd>
+</dl>
+</section>
+<section id="id31">
+<h2>Examples<a class="headerlink" href="#id31" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a_normed</span> <span class="o">=</span> <span class="n">z_score_scale</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a_normed</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">a_normed</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="go">np.float64(0.0), np.float64(0.9999999999999999)</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="turtwig-api.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><code class="docutils literal notranslate"><span class="pre">turtwig</span></code> API Reference</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="turtwig.validation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><code class="docutils literal notranslate"><span class="pre">turtwig.validation</span></code></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.bounding_box_3d"><code class="docutils literal notranslate"><span class="pre">bounding_box_3d()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.compute_dataset_stats"><code class="docutils literal notranslate"><span class="pre">compute_dataset_stats()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.crop_to_bbox_3d"><code class="docutils literal notranslate"><span class="pre">crop_to_bbox_3d()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.dict_from_h5"><code class="docutils literal notranslate"><span class="pre">dict_from_h5()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.dict_to_h5"><code class="docutils literal notranslate"><span class="pre">dict_to_h5()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.load_all_masks"><code class="docutils literal notranslate"><span class="pre">load_all_masks()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.load_all_patient_scans"><code class="docutils literal notranslate"><span class="pre">load_all_patient_scans()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.load_all_volumes"><code class="docutils literal notranslate"><span class="pre">load_all_volumes()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.load_mask"><code class="docutils literal notranslate"><span class="pre">load_mask()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.load_patient_scan"><code class="docutils literal notranslate"><span class="pre">load_patient_scan()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.load_roi_names"><code class="docutils literal notranslate"><span class="pre">load_roi_names()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.load_volume"><code class="docutils literal notranslate"><span class="pre">load_volume()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.make_isotropic"><code class="docutils literal notranslate"><span class="pre">make_isotropic()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.map_interval"><code class="docutils literal notranslate"><span class="pre">map_interval()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.purge_dicom_dir"><code class="docutils literal notranslate"><span class="pre">purge_dicom_dir()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.data.z_score_scale"><code class="docutils literal notranslate"><span class="pre">z_score_scale()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/turtwig.data.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tin Chi Pang.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

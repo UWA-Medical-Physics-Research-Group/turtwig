@@ -1,0 +1,1186 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>turtwig.futils &#8212; turtwig  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'turtwig.futils';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="turtwig.validation" href="turtwig.validation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">turtwig  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="nix-templates.html">
+    Nix Templates
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="turtwig-api.html">
+    turtwig API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="nix-templates.html">
+    Nix Templates
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contributing
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="turtwig-api.html">
+    turtwig API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="turtwig.data.html"><code class="docutils literal notranslate"><span class="pre">turtwig.data</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="turtwig.validation.html"><code class="docutils literal notranslate"><span class="pre">turtwig.validation</span></code></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">turtwig.futils</span></code></a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="turtwig-api.html" class="nav-link"><code class="docutils literal notranslate"><span class="pre">turtwig</span></code> API Reference</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis"><code class="docutils literal notranslate"><span class="pre">turtwig.futils</span></code></span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-turtwig.futils">
+<span id="turtwig-futils"></span><span id="turtwig-api-futils"></span><h1><code class="docutils literal notranslate"><span class="pre">turtwig.futils</span></code><a class="headerlink" href="#module-turtwig.futils" title="Link to this heading">#</a></h1>
+<p>Functional utilities.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.call_method">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">call_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/futils/oop.html#call_method"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.call_method" title="Link to this definition">#</a></dt>
+<dd><p>Return a function that take an object, calls <code class="docutils literal notranslate"><span class="pre">method_name</span></code> on it, and returns the object</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>method_name: str</dt><dd><p>Name of the method to call</p>
+</dd>
+<dt>pure: bool</dt><dd><p>If True, the input object is copied before calling the method to avoid
+modifying the input object.</p>
+</dd>
+<dt>args, kwargs: any</dt><dd><p>Arguments to pass to the method</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Callable[[T], T]</dt><dd><p>Unary Function that takes an object, calls <code class="docutils literal notranslate"><span class="pre">method_name</span></code> on it, and
+returns the object</p>
+</dd>
+</dl>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Test</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+<span class="gp">... </span>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="o">=</span> <span class="n">Test</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test2</span> <span class="o">=</span> <span class="n">call_method</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">pure</span><span class="o">=</span><span class="kc">True</span><span class="p">)(</span><span class="n">test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test2</span><span class="o">.</span><span class="n">x</span>
+<span class="go">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span><span class="o">.</span><span class="n">x</span>   <span class="c1"># original object is not modified</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="ow">is</span> <span class="n">test2</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test3</span> <span class="o">=</span> <span class="n">call_method</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">pure</span><span class="o">=</span><span class="kc">False</span><span class="p">)(</span><span class="n">test</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test3</span><span class="o">.</span><span class="n">x</span>
+<span class="go">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span><span class="o">.</span><span class="n">x</span>   <span class="c1"># original object is modified</span>
+<span class="go">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="ow">is</span> <span class="n">test3</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.capture_placeholders">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">capture_placeholders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placeholders</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">re_pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.*?'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/turtwig/futils/string.html#capture_placeholders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.capture_placeholders" title="Link to this definition">#</a></dt>
+<dd><p>Replace placeholders in a string <code class="docutils literal notranslate"><span class="pre">s</span></code> with <code class="docutils literal notranslate"><span class="pre">&quot;(re_pattern)&quot;</span></code></p>
+<p>Placeholders are strings in the form of <code class="docutils literal notranslate"><span class="pre">&quot;{placeholder}&quot;</span></code>. They can be any
+combination of numbers, characters, and underscore. Placeholders in <code class="docutils literal notranslate"><span class="pre">s</span></code>
+but not in the list of <code class="docutils literal notranslate"><span class="pre">placeholders</span></code> will not be encased in parentheses
+(i.e., not in a capturing group) but will still be replaced.</p>
+<section id="id1">
+<h2>Parameters<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>s<span class="classifier">str</span></dt><dd><p>String containing placeholders, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;somestuff{a}_{b}.nii.gz&quot;</span></code>.</p>
+</dd>
+<dt>placeholders<span class="classifier">list[str]</span></dt><dd><p>List of placeholders to match in the pattern, e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;a&quot;,</span> <span class="pre">&quot;b&quot;]</span></code>.</p>
+</dd>
+<dt>re_pattern<span class="classifier">str, optional</span></dt><dd><p>Regex pattern to replace placeholders with, by default any valid Python
+identifier. Matches any character except line terminators by default.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h2>Returns<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>str</dt><dd><p>String with placeholders replaced by the specified <code class="docutils literal notranslate"><span class="pre">re_pattern</span></code>.</p>
+</dd>
+</dl>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;somestuff</span><span class="si">{a}</span><span class="s2">_</span><span class="si">{b}</span><span class="s2">adf</span><span class="si">{c}</span><span class="s2">.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">placeholders</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">capture_placeholders</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">placeholders</span><span class="p">)</span>
+<span class="go">&quot;somestuff(.*?)_(.*?)adf.*?\.&quot;</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.curry">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">curry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fallback</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/turtwig/futils/decorator.html#curry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.curry" title="Link to this definition">#</a></dt>
+<dd><p>A curried function <code class="docutils literal notranslate"><span class="pre">func</span></code> can be partially parameterised.</p>
+<p>If a curried function is passed only some of its arguments, a new
+function is returned with those arguments filled in. The new
+function can be called with the remaining arguments later on.</p>
+<p>Evaluation of the function only occurs when all mandatory arguments
+are provided. Unlike <code class="docutils literal notranslate"><span class="pre">toolz.curry</span></code> and similar libraries, this
+function does not use <code class="docutils literal notranslate"><span class="pre">functools.partial</span></code> if <code class="docutils literal notranslate"><span class="pre">fallback=False</span></code>,
+meaning decorators of the wrapped function will only be applied
+once all mandatory arguments are provided. This means, e.g. a
+decorator that validates the arguments to a function will not throw
+error that mandatory arguments are missing if the function is still
+partially applied - it’ll only run when all mandatory arguments are
+provided.</p>
+<section id="id3">
+<h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>func<span class="classifier">Callable</span></dt><dd><p>The function to curry</p>
+</dd>
+<dt>fallback<span class="classifier">bool</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, fallback on <code class="docutils literal notranslate"><span class="pre">toolz.curry</span></code> if <code class="docutils literal notranslate"><span class="pre">curry</span></code> fails to extract
+parameters from <code class="docutils literal notranslate"><span class="pre">func</span></code>. This is useful for built-in CPython functions.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Callable | Any</dt><dd><p>Curried function that can be partially applied if not all mandatory
+arguments are provided. Else, the result of the function is returned.</p>
+</dd>
+</dl>
+</section>
+<section id="caveats">
+<h2>Caveats<a class="headerlink" href="#caveats" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>If you use the curried function <code class="docutils literal notranslate"><span class="pre">func(a,</span> <span class="pre">b)</span></code> with inputs <code class="docutils literal notranslate"><span class="pre">func(a=2)(5)</span></code>, the
+value <code class="docutils literal notranslate"><span class="pre">5</span></code> will the fill the first positional argument <code class="docutils literal notranslate"><span class="pre">a</span></code>, and you’ll get
+a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> for duplicate values because <code class="docutils literal notranslate"><span class="pre">a</span></code> is also filled by the
+keyword argument <code class="docutils literal notranslate"><span class="pre">a=2</span></code>. This is because <code class="docutils literal notranslate"><span class="pre">func(a=2)(5)</span></code> is equivalent to
+<code class="docutils literal notranslate"><span class="pre">func(5,</span> <span class="pre">a=2)</span></code> which will throw an error for non-curried functions as well.</p></li>
+<li><p>Built-in CPython functions are not supported by the <code class="docutils literal notranslate"><span class="pre">inspect</span></code>
+module. Set <code class="docutils literal notranslate"><span class="pre">fallback=True</span></code> to curry those functions using <code class="docutils literal notranslate"><span class="pre">toolz.curry</span></code>
+instead.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>Example<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@curry</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># If not all required parameters are provided, a function is returned</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add_5</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># equivalent to lambda b: 5 + b + 3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add_5</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># call with remaining argument</span>
+<span class="go">11</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># using function normally</span>
+<span class="go">11</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">curry</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># not supported by inspect, use fallback!</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.generate_full_paths">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">generate_full_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_generator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/futils/path.html#generate_full_paths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.generate_full_paths" title="Link to this definition">#</a></dt>
+<dd><p>Concatenate root onto paths generated by path_generator</p>
+<section id="id6">
+<h2>Parameters<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>root: str</dt><dd><p>Root directory to concatenate onto paths</p>
+</dd>
+<dt>path_generator: Callable</dt><dd><p>Function that take <code class="docutils literal notranslate"><span class="pre">root</span></code> as input and returns a generator of paths</p>
+</dd>
+</dl>
+</section>
+<section id="id7">
+<h2>Returns<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Generator[str, None, None]</dt><dd><p>Generator of full paths by appending <code class="docutils literal notranslate"><span class="pre">root</span></code> to paths generated
+by <code class="docutils literal notranslate"><span class="pre">path_generator</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h2>Example<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">generate_full_paths</span><span class="p">(</span><span class="s2">&quot;/path&quot;</span><span class="p">,</span> <span class="n">path_generator</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">)</span>
+<span class="go">[&quot;/path/file1.txt&quot;, &quot;/path/file2.txt&quot;, ...]</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.growby">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">growby</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">R</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">R</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">R</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/futils/sequence.html#growby"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.growby" title="Link to this definition">#</a></dt>
+<dd><p>Grow a sequence by repeatedly applying <code class="docutils literal notranslate"><span class="pre">func</span></code> to last item in sequence</p>
+<section id="id9">
+<h2>Parameters<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>func<span class="classifier">Callable</span></dt><dd><p>Function to be called repeatedly on the last element of the sequence</p>
+</dd>
+<dt>init<span class="classifier">any</span></dt><dd><p>Initial value of the sequence</p>
+</dd>
+<dt>length<span class="classifier">int | None</span></dt><dd><p>Length of the sequence to be generated, if None, sequence is infinite</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h2>Returns<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Iterator[T | R]</dt><dd><p>Sequence constructed by repeatedly applying <code class="docutils literal notranslate"><span class="pre">func</span></code>, i.e. compute
+<code class="docutils literal notranslate"><span class="pre">[init,</span> <span class="pre">func(init),</span> <span class="pre">func(func(init)),</span> <span class="pre">...]</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="id11">
+<h2>Examples<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">growby</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<span class="go">[1, 2, 3, 4, 5]</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.growby_fs">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">growby_fs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">funcs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">R</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">R</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">R</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/futils/sequence.html#growby_fs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.growby_fs" title="Link to this definition">#</a></dt>
+<dd><p>Grow a sequence by applying list of functions to the last element of the current sequence</p>
+<p>i.e. Given a list of functions <code class="docutils literal notranslate"><span class="pre">[f1,</span> <span class="pre">f2,</span> <span class="pre">...]</span></code>, compute the sequence
+<code class="docutils literal notranslate"><span class="pre">[init,</span> <span class="pre">f1(init),</span> <span class="pre">f2(f1(init)),</span> <span class="pre">f3(f2(f1(init))),</span> <span class="pre">...]</span></code></p>
+<section id="id12">
+<h2>Parameters<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>funcs<span class="classifier">Callable</span></dt><dd><p>List of functions to be called on the last element of the sequence</p>
+</dd>
+<dt>init: any</dt><dd><p>Initial value of the sequence</p>
+</dd>
+</dl>
+</section>
+<section id="id13">
+<h2>Returns<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Generator[T | R, None, None]</dt><dd><p>Sequence constructed by repeatedly applying each function in <code class="docutils literal notranslate"><span class="pre">funcs</span></code>,
+<code class="docutils literal notranslate"><span class="pre">[init,</span> <span class="pre">f1(init),</span> <span class="pre">f2(f1(init)),</span> <span class="pre">...]</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="id14">
+<h2>Examples<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fs</span> <span class="o">=</span> <span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">growby_accum</span><span class="p">(</span><span class="n">fs</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">[1, 2, 4, 16]</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.iterate_while">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">iterate_while</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">R</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">R</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">R</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">T</span></span></span><a class="reference internal" href="_modules/turtwig/futils/common.html#iterate_while"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.iterate_while" title="Link to this definition">#</a></dt>
+<dd><p>Repeatedly apply <code class="docutils literal notranslate"><span class="pre">func</span></code> to a value until <code class="docutils literal notranslate"><span class="pre">pred(value)</span></code> is false</p>
+<section id="id15">
+<h2>Parameters<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>func<span class="classifier">Callable[[T], R]</span></dt><dd><p>Function to be called repeatedly</p>
+</dd>
+<dt>pred<span class="classifier">Callable[[T | R], bool]</span></dt><dd><p>Function that takes the output of <code class="docutils literal notranslate"><span class="pre">func</span></code> and returns a boolean</p>
+</dd>
+<dt>initial<span class="classifier">T</span></dt><dd><p>Initial value to be passed to <code class="docutils literal notranslate"><span class="pre">func</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="id16">
+<h2>Returns<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>R | T</dt><dd><p>Output of <code class="docutils literal notranslate"><span class="pre">func</span></code> when condition is met</p>
+</dd>
+</dl>
+</section>
+<section id="id17">
+<h2>Examples<a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">pred</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">iterate_while</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">iterate_while</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.list_files">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">list_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_hidden</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/futils/path.html#list_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.list_files" title="Link to this definition">#</a></dt>
+<dd><p>Return list of full paths of files in a given path, searching through subdirectories</p>
+<section id="id18">
+<h2>Parameters<a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>list_hidden: bool</dt><dd><p>Whether to include hidden files (starting with a dot ‘.’)</p>
+</dd>
+</dl>
+</section>
+<section id="id19">
+<h2>Returns<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>list[str]</dt><dd><p>List of full paths of files in the given path</p>
+</dd>
+</dl>
+</section>
+<section id="id20">
+<h2>Example<a class="headerlink" href="#id20" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_files</span><span class="p">(</span><span class="s2">&quot;/path/&quot;</span><span class="p">)</span>
+<span class="go">[&quot;/path/file1.txt&quot;, &quot;/path/to/dir/file2.txt&quot;, ...]</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.merge_with_reduce">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">merge_with_reduce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dicts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">K</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">V</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">AfterValidator</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">func</span></span><span class="o"><span class="pre">=</span></span><span class="pre">all_same_keys</span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">V</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">V2</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">V</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">V2</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">K</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">V</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">K</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">V2</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/futils/dict.html#merge_with_reduce"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.merge_with_reduce" title="Link to this definition">#</a></dt>
+<dd><p>Reductively merge a list of dictionaries with the same keys into a single dictionary.</p>
+<p>Reduced version of <code class="docutils literal notranslate"><span class="pre">toolz.merge_with</span></code>.</p>
+<section id="id21">
+<h2>Parameters<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>dicts<span class="classifier">Iterable[dict[K, V]]</span></dt><dd><p>Iterable of dictionaries to merge, all with the same keys.</p>
+</dd>
+<dt>func<span class="classifier">Callable[[V | V2, V], V2]</span></dt><dd><p>Reduction function taking two values and returning a single value.</p>
+</dd>
+</dl>
+</section>
+<section id="id22">
+<h2>Returns<a class="headerlink" href="#id22" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>dict[K, V] | dict[K, V2]</dt><dd><p>Merged dictionary with the same keys as the input dictionaries.</p>
+</dd>
+</dl>
+</section>
+<section id="id23">
+<h2>Examples<a class="headerlink" href="#id23" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dicts</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">merge_with_reduce</span><span class="p">(</span><span class="n">dicts</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span> <span class="o">+</span> <span class="p">[</span><span class="n">y</span><span class="p">])</span>
+<span class="go">{&#39;b&#39;: [1, 3, 5], &#39;c&#39;: [2, 4, 6]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">merge_with_reduce</span><span class="p">(</span><span class="n">dicts</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">{&#39;b&#39;: 1, &#39;c&#39;: 16777216}</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.next_available_path">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">next_available_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="_modules/turtwig/futils/path.html#next_available_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.next_available_path" title="Link to this definition">#</a></dt>
+<dd><p>Appends an integer suffix “-&lt;int&gt;” to the given path if it already exists, starting at 1.</p>
+<section id="id24">
+<h2>Parameters<a class="headerlink" href="#id24" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>path: str | Path</dt><dd><p>Path to check for existence and append suffix if it exists</p>
+</dd>
+</dl>
+</section>
+<section id="id25">
+<h2>Returns<a class="headerlink" href="#id25" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Path</dt><dd><p>New path name with suffix appended if it already exists</p>
+</dd>
+</dl>
+</section>
+<section id="id26">
+<h2>Example<a class="headerlink" href="#id26" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">next_available_path</span><span class="p">(</span><span class="s2">&quot;/path/to/file.txt&quot;</span><span class="p">)</span> <span class="c1"># file.txt exists</span>
+<span class="go">Path(&quot;/path/to/file-1.txt&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">next_available_path</span><span class="p">(</span><span class="s2">&quot;/path/to/file-1.txt&quot;</span><span class="p">)</span> <span class="c1"># file-1.txt exists</span>
+<span class="go">Path(&quot;/path/to/file-2.txt&quot;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">next_available_path</span><span class="p">(</span><span class="s2">&quot;/path/to/file-2.txt&quot;</span><span class="p">)</span> <span class="c1"># file-2.txt don&#39;t exist</span>
+<span class="go">Path(&quot;/path/to/file-2.txt&quot;)</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.placeholder_matches">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">placeholder_matches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placeholders</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">re_pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.*?'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/futils/string.html#placeholder_matches"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.placeholder_matches" title="Link to this definition">#</a></dt>
+<dd><p>Return placeholder values for each string in a list that match pattern</p>
+<p>Placeholders are string in the form of “{placeholder}”. They can be any
+combination of numbers, characters, and underscore. Placeholders not in
+pattern will still be matched but not captured in the output.</p>
+<section id="id27">
+<h2>Parameters<a class="headerlink" href="#id27" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>str_list<span class="classifier">list[str]</span></dt><dd><p>List of strings to match against the pattern</p>
+</dd>
+<dt>pattern<span class="classifier">str</span></dt><dd><p>Pattern containing placeholders to match file names, e.g.
+<code class="docutils literal notranslate"><span class="pre">&quot;/path/to/{organ}_{observer}.nii.gz&quot;</span></code></p>
+</dd>
+<dt>placeholders<span class="classifier">list[str]</span></dt><dd><p>List of placeholders to match in the pattern, e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;organ&quot;,</span> <span class="pre">&quot;observer&quot;]</span></code></p>
+</dd>
+<dt>re_pattern<span class="classifier">str, optional</span></dt><dd><p>Regex pattern filter placeholder matches by, by default any character
+except line terminators</p>
+</dd>
+</dl>
+</section>
+<section id="id28">
+<h2>Returns<a class="headerlink" href="#id28" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>set[tuple[str, …]]</dt><dd><p>List of tuples containing the matches for each placeholder.</p>
+</dd>
+</dl>
+</section>
+<section id="id29">
+<h2>Example<a class="headerlink" href="#id29" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">placeholder_matches</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span>
+<span class="gp">... </span>       <span class="s2">&quot;/path/to/bladder_jd.nii.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="s2">&quot;/path/to/brain_md.nii.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>       <span class="s2">&quot;/path/to/eye_sp.nii.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;/path/to/</span><span class="si">{organ}</span><span class="s2">_</span><span class="si">{observer}</span><span class="s2">.nii.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;organ&quot;</span><span class="p">,</span> <span class="s2">&quot;observer&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">[(&quot;bladder&quot;, &quot;jd&quot;), (&quot;brain&quot;, &quot;md&quot;), (&quot;eye&quot;, &quot;sp&quot;)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">placeholder_matches</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;/path/to/bladder_jd.nii.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;/path/to/brain_md.nii.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;/path/to/eye_sp.nii.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;/path/to/</span><span class="si">{organ}</span><span class="s2">_</span><span class="si">{observer}</span><span class="s2">.nii.gz&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">[</span><span class="s2">&quot;organ&quot;</span><span class="p">,</span> <span class="s2">&quot;observer&quot;</span><span class="p">],</span>
+<span class="gp">... </span>   <span class="sa">r</span><span class="s2">&quot;[^b]+&quot;</span><span class="p">,</span>    <span class="c1"># Any string that does not contain the letter &#39;b&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">[(&quot;eye&quot;, &quot;sp&quot;)]</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.pmap">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">pmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">iterables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">executor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'process'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'thread'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'process'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">IMapIterator</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/turtwig/futils/parallel.html#pmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.pmap" title="Link to this definition">#</a></dt>
+<dd><p>Parallel map function using Process or Thread pool</p>
+<section id="id30">
+<h2>Parameters<a class="headerlink" href="#id30" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>func<span class="classifier">Callable</span></dt><dd><p>Function to apply to each element of the iterable.</p>
+</dd>
+<dt>n_workers<span class="classifier">Optional[int]</span></dt><dd><p>Number of workers to use. If None, the number of workers is set to the number of CPUs.</p>
+</dd>
+<dt>executor<span class="classifier">Literal[“process”, “thread”]</span></dt><dd><p>Executor to use, process or thread workers.</p>
+</dd>
+</dl>
+</section>
+<section id="id31">
+<h2>Returns<a class="headerlink" href="#id31" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>IMapIterator | Generator[Any, None, None] | Any</dt><dd><p>Results of applying the function to each element of the iterable.</p>
+</dd>
+</dl>
+</section>
+<section id="id32">
+<h2>Examples<a class="headerlink" href="#id32" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">pmap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">n_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">[0, 1, 4, 9, 16]</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.rename_key">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">rename_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/turtwig/futils/dict.html#rename_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.rename_key" title="Link to this definition">#</a></dt>
+<dd><p>Rename a key in a dictionary.</p>
+<section id="id33">
+<h2>Parameters<a class="headerlink" href="#id33" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>old_name<span class="classifier">str</span></dt><dd><p>Old key name.</p>
+</dd>
+<dt>new_name<span class="classifier">str</span></dt><dd><p>New key name.</p>
+</dd>
+<dt>dictionary<span class="classifier">dict</span></dt><dd><p>Dictionary to rename the key.</p>
+</dd>
+</dl>
+</section>
+<section id="id34">
+<h2>Returns<a class="headerlink" href="#id34" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>dict</dt><dd><p>Dictionary with the key renamed.</p>
+</dd>
+</dl>
+</section>
+<section id="id35">
+<h2>Examples<a class="headerlink" href="#id35" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rename_key</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="go">{&#39;b&#39;: 1, &#39;c&#39;: 2}</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.resolve_path_placeholders">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">resolve_path_placeholders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">placeholders</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/futils/path.html#resolve_path_placeholders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.resolve_path_placeholders" title="Link to this definition">#</a></dt>
+<dd><p>Search directory using path_pattern and resolve placeholders with actual values</p>
+<section id="id36">
+<h2>Parameters<a class="headerlink" href="#id36" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>path_pattern: str</dt><dd><p>Pattern to match directory paths, e.g. “/a/{b}/{c}”</p>
+</dd>
+<dt>placeholders: list[str]</dt><dd><p>List of placeholders to match in the pattern, e.g. [“b”, “c”]</p>
+</dd>
+</dl>
+</section>
+<section id="id37">
+<h2>Returns<a class="headerlink" href="#id37" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>list[str]</dt><dd><p>List of paths with placeholders replaced with actual values</p>
+</dd>
+</dl>
+</section>
+<section id="id38">
+<h2>Example<a class="headerlink" href="#id38" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resolve_path_placeholders</span><span class="p">(</span><span class="s2">&quot;/a/</span><span class="si">{b}</span><span class="s2">/</span><span class="si">{c}</span><span class="s2">/d/</span><span class="si">{e}</span><span class="s2">.jpg&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">])</span>
+<span class="go">[&quot;/a/val1/val2/d/{e}.jpg&quot;, &quot;/a/val3/val4/d/{e}.jpg&quot;, ...]</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.side_effect">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">side_effect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pass_val</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">T</span></span></span><a class="reference internal" href="_modules/turtwig/futils/common.html#side_effect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.side_effect" title="Link to this definition">#</a></dt>
+<dd><p>Perform side effect by calling <code class="docutils literal notranslate"><span class="pre">func</span></code> and let <code class="docutils literal notranslate"><span class="pre">val</span></code> pass through</p>
+<section id="id39">
+<h2>Parameters<a class="headerlink" href="#id39" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>func<span class="classifier">Callable</span></dt><dd><p>Function to be called, cannot take any arguments if <code class="docutils literal notranslate"><span class="pre">pass_val</span></code> is False,
+otherwise must take <code class="docutils literal notranslate"><span class="pre">val</span></code> as its only argument</p>
+</dd>
+<dt>val<span class="classifier">T</span></dt><dd><p>Value to be returned</p>
+</dd>
+<dt>pass_val<span class="classifier">bool</span></dt><dd><p>Whether to pass <code class="docutils literal notranslate"><span class="pre">val</span></code> to <code class="docutils literal notranslate"><span class="pre">func</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="id40">
+<h2>Returns<a class="headerlink" href="#id40" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>T</dt><dd><p>The input value <code class="docutils literal notranslate"><span class="pre">val</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="id41">
+<h2>Examples<a class="headerlink" href="#id41" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">print_something</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">side_effect</span><span class="p">(</span><span class="n">print_something</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">Hello</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">print_val</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">side_effect</span><span class="p">(</span><span class="n">print_val</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">pass_val</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.star">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">star</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/futils/common.html#star"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.star" title="Link to this definition">#</a></dt>
+<dd><p>Returns function: x -&gt; <code class="docutils literal notranslate"><span class="pre">func(*x)</span></code>, i.e. unpacks arguments and pass to <code class="docutils literal notranslate"><span class="pre">func</span></code></p>
+<section id="id42">
+<h2>Parameters<a class="headerlink" href="#id42" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>func<span class="classifier">Callable[…, T]</span></dt><dd><p>Function to be called</p>
+</dd>
+</dl>
+</section>
+<section id="id43">
+<h2>Returns<a class="headerlink" href="#id43" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Callable[…, T]</dt><dd><p>Function that unpacks the argument and pass them to <code class="docutils literal notranslate"><span class="pre">func</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="id44">
+<h2>Examples<a class="headerlink" href="#id44" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">star</span><span class="p">(</span><span class="n">add</span><span class="p">)((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1"># equivalent to add(*(1, 2))</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">add</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1"># ERROR</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.starfilter">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">starfilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/turtwig/futils/common.html#starfilter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.starfilter" title="Link to this definition">#</a></dt>
+<dd><p>Filter elements of <code class="docutils literal notranslate"><span class="pre">iterable</span></code> using non-unary function <code class="docutils literal notranslate"><span class="pre">func(a,</span> <span class="pre">b,</span> <span class="pre">...)</span></code></p>
+<p>Used this instead of <code class="docutils literal notranslate"><span class="pre">filter</span></code> when argument parameters have already been
+“pre-zipped” into tuples.</p>
+<section id="id45">
+<h2>Parameters<a class="headerlink" href="#id45" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>func<span class="classifier">Callable[…, bool]</span></dt><dd><p>Function to be called on each element of <code class="docutils literal notranslate"><span class="pre">iterable</span></code></p>
+</dd>
+<dt>iterable<span class="classifier">Iterable[tuple[Any]]</span></dt><dd><p>Iterable of tuples of arguments</p>
+</dd>
+</dl>
+</section>
+<section id="id46">
+<h2>Returns<a class="headerlink" href="#id46" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Iterator[tuple[Any, …]]</dt><dd><p>Iterator of elements of <code class="docutils literal notranslate"><span class="pre">iterable</span></code> for which <code class="docutils literal notranslate"><span class="pre">func</span></code> returns True</p>
+</dd>
+</dl>
+</section>
+<section id="id47">
+<h2>Examples<a class="headerlink" href="#id47" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lst</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">starfilter</span><span class="p">(</span><span class="n">is_even</span><span class="p">,</span> <span class="n">lst</span><span class="p">))</span>
+<span class="go">[(4, 4)]</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.starmap">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">starmap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span></span></span><a class="reference internal" href="_modules/turtwig/futils/common.html#starmap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.starmap" title="Link to this definition">#</a></dt>
+<dd><p>Map non-unary function <code class="docutils literal notranslate"><span class="pre">func(a,</span> <span class="pre">b,</span> <span class="pre">...)</span></code> over the elements of <code class="docutils literal notranslate"><span class="pre">iterable</span></code>.</p>
+<p>Used this instead of <code class="docutils literal notranslate"><span class="pre">map</span></code> when argument parameters have already been
+“pre-zipped” into tuples.</p>
+<p>Curried version of <code class="docutils literal notranslate"><span class="pre">itertools.starmap</span></code>.</p>
+<section id="id48">
+<h2>Parameters<a class="headerlink" href="#id48" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>func<span class="classifier">Callable[…, T]</span></dt><dd><p>Function to be called on each element of <code class="docutils literal notranslate"><span class="pre">iterable</span></code></p>
+</dd>
+<dt>iterable<span class="classifier">Iterable[tuple[Any]]</span></dt><dd><p>Iterable of tuples of arguments</p>
+</dd>
+</dl>
+</section>
+<section id="id49">
+<h2>Returns<a class="headerlink" href="#id49" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Iterator[T]</dt><dd><p>Iterator of results of calling <code class="docutils literal notranslate"><span class="pre">func</span></code> on each element of <code class="docutils literal notranslate"><span class="pre">iterable</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="id50">
+<h2>Examples<a class="headerlink" href="#id50" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lst</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">starmap</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="n">lst</span><span class="p">))</span>
+<span class="go">[3, 7]</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="turtwig.futils.transform_nth">
+<span class="sig-prename descclassname"><span class="pre">turtwig.futils.</span></span><span class="sig-name descname"><span class="pre">transform_nth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterable</span></span></span><a class="reference internal" href="_modules/turtwig/futils/sequence.html#transform_nth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#turtwig.futils.transform_nth" title="Link to this definition">#</a></dt>
+<dd><p>Apply a function <code class="docutils literal notranslate"><span class="pre">func</span></code> to the nth element of a sequence</p>
+<section id="id51">
+<h2>Parameters<a class="headerlink" href="#id51" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>n<span class="classifier">int</span></dt><dd><p>Index of the element to be transformed</p>
+</dd>
+<dt>func<span class="classifier">Callable</span></dt><dd><p>Function to be applied to the nth element</p>
+</dd>
+<dt>seq<span class="classifier">Iterable</span></dt><dd><p>Sequence to be transformed</p>
+</dd>
+</dl>
+</section>
+<section id="id52">
+<h2>Returns<a class="headerlink" href="#id52" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>Iterable</dt><dd><p>Sequence with the nth element transformed</p>
+</dd>
+</dl>
+</section>
+<section id="id53">
+<h2>Examples<a class="headerlink" href="#id53" title="Link to this heading">#</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">transform_nth</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+<span class="go">[1, &#39;a&#39;, 3]</span>
+</pre></div>
+</div>
+</section>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="turtwig.validation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><code class="docutils literal notranslate"><span class="pre">turtwig.validation</span></code></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.call_method"><code class="docutils literal notranslate"><span class="pre">call_method()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.capture_placeholders"><code class="docutils literal notranslate"><span class="pre">capture_placeholders()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.curry"><code class="docutils literal notranslate"><span class="pre">curry()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.generate_full_paths"><code class="docutils literal notranslate"><span class="pre">generate_full_paths()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.growby"><code class="docutils literal notranslate"><span class="pre">growby()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.growby_fs"><code class="docutils literal notranslate"><span class="pre">growby_fs()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.iterate_while"><code class="docutils literal notranslate"><span class="pre">iterate_while()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.list_files"><code class="docutils literal notranslate"><span class="pre">list_files()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.merge_with_reduce"><code class="docutils literal notranslate"><span class="pre">merge_with_reduce()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.next_available_path"><code class="docutils literal notranslate"><span class="pre">next_available_path()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.placeholder_matches"><code class="docutils literal notranslate"><span class="pre">placeholder_matches()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.pmap"><code class="docutils literal notranslate"><span class="pre">pmap()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.rename_key"><code class="docutils literal notranslate"><span class="pre">rename_key()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.resolve_path_placeholders"><code class="docutils literal notranslate"><span class="pre">resolve_path_placeholders()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.side_effect"><code class="docutils literal notranslate"><span class="pre">side_effect()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.star"><code class="docutils literal notranslate"><span class="pre">star()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.starfilter"><code class="docutils literal notranslate"><span class="pre">starfilter()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.starmap"><code class="docutils literal notranslate"><span class="pre">starmap()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtwig.futils.transform_nth"><code class="docutils literal notranslate"><span class="pre">transform_nth()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/turtwig.futils.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025, Tin Chi Pang.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
